@@ -1,35 +1,13 @@
 fileFormatVersion: 2
-guid: 6ebd77ff0801ad74da96c1ac910ad8b3
+guid: 476490d301998164aa54925b9505b4c9
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: ground
-    100002: ground_001
-    100004: //RootNode
-    100006: mauern
-    100008: mauer
-    100010: top
-    400000: ground
-    400002: ground_001
-    400004: //RootNode
-    400006: mauern
-    400008: mauer
-    400010: top
-    2300000: ground
-    2300002: ground_001
-    2300004: mauern
-    2300006: mauer
-    2300008: top
-    3300000: ground
-    3300002: ground_001
-    3300004: mauern
-    3300006: mauer
-    3300008: top
-    4300000: ground
-    4300002: mauern
-    4300004: ground_001
-    4300006: mauer
-    4300008: top
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Cube_011
     7400000: Default Take
     9500000: //RootNode
   materials:
