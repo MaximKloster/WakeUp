@@ -15,9 +15,7 @@ public class WheelchairController : MonoBehaviour
     [SerializeField]
     [Range(1, 180)]
     int collisionSegments = 360;
-    [SerializeField]
-    [Range(0, 10)]
-    float collisionDistance = 5.0f;
+
 
     [SerializeField]
     GUISkin ValueSkin;
@@ -30,6 +28,7 @@ public class WheelchairController : MonoBehaviour
 
     public float XMedian { get { return xMedian; } } public float YMedian { get { return yMedian; } }
     public float[] DistanceSegments { get; private set; }
+    float collisionDistance = 3.0f;
     #endregion
 
     // Use this for initialization
@@ -162,7 +161,7 @@ public class WheelchairController : MonoBehaviour
             outputXMedian = 0;
 
         // Y output
-            inputYList.Add(inputY);
+        inputYList.Add(inputY);
 
 
         if (inputYList.Count > listLenght)

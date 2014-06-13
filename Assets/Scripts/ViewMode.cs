@@ -24,7 +24,7 @@ public class ViewMode : MonoBehaviour
     string keyButtonText = "Keys";
     float xMedian, yMedian;
     int[] distanceSegments = new int[12];
-    int collisionDistance = 5;
+    int collisionDistance = 60;
 
     // Use this for initialization
     void Start()
@@ -145,12 +145,12 @@ public class ViewMode : MonoBehaviour
     {
         float distance = distanceSegments[segment];
         guiDistanceObject.transform.FindChild(segment.ToString()).GetComponent<SpriteRenderer>().sprite =
-            distance >= collisionDistance * 0.9 || distance == -1 ? guiDisctanceTextures[0] :
-            distance >= collisionDistance * 0.7 ? guiDisctanceTextures[1] :
-            distance >= collisionDistance * 0.5 ? guiDisctanceTextures[2] :
-            distance >= collisionDistance * 0.3 ? guiDisctanceTextures[3] :
-            distance >= collisionDistance * 0.1 ? guiDisctanceTextures[4] :
-            guiDisctanceTextures[5];
+            distance >= collisionDistance * 0.9 || distance < 0 ? guiDisctanceTextures[0] :
+            distance >= collisionDistance * 0.55 ? guiDisctanceTextures[1] :
+            distance >= collisionDistance * 0.35 ? guiDisctanceTextures[2] :
+            distance >= collisionDistance * 0.25 ? guiDisctanceTextures[3] :
+            distance >= collisionDistance * 0.15 ? guiDisctanceTextures[4] :
+            guiDisctanceTextures[6];
     }
 
     // RPCs
@@ -168,9 +168,9 @@ public class ViewMode : MonoBehaviour
     public void SetCollisionDistance(int index, float distance)
     {
         if (currentViewMode == ViewModes.TurkMode
-            && distanceSegments[index] != (int)distance)
+            && distanceSegments[index] != (int)(distance * 20))
         {
-            distanceSegments[index] = (int)distance;
+            distanceSegments[index] = (int)(distance * 20);
             UpdateGUIDistanceTexture(index);
         }
     }
