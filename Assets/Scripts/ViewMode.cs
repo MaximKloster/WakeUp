@@ -5,7 +5,7 @@ public class ViewMode : MonoBehaviour
 {
     // Game variables
     [SerializeField]
-    GameObject spawnPoint, wheelchair, cameraFollower, guiDistance;
+    GameObject wheelchair, cameraFollower, guiDistance;
     [SerializeField]
     Sprite[] guiDisctanceTextures = new Sprite[6];
 
@@ -88,7 +88,7 @@ public class ViewMode : MonoBehaviour
 
     void SetControllerObject(GameObject controller)
     {
-        controllerObject = Instantiate(controller, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
+        controllerObject = Instantiate(controller, GameObject.FindGameObjectWithTag("Respawn").transform.position, GameObject.FindGameObjectWithTag("Respawn").transform.rotation) as GameObject;
     }
 
     void OnGUI()
