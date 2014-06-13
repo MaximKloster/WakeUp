@@ -4,8 +4,7 @@ using System.Linq;
 
 public class WheelchairController : MonoBehaviour
 {
-    [SerializeField]
-    bool keys;
+    #region Variables
     [SerializeField]
     int inputListLenght = 20;
     [SerializeField]
@@ -13,20 +12,31 @@ public class WheelchairController : MonoBehaviour
     [SerializeField]
     [Range(0, 1)]
     float differenceTolerance = 0.25f, xSensitivity = 1, ySensitivity = 1;
+    [SerializeField]
+    [Range(1, 180)]
+    int collisionSegments = 360;
+    [SerializeField]
+    [Range(0, 10)]
+    float collisionDistance = 5.0f;
 
     [SerializeField]
     GUISkin ValueSkin;
 
-    string keyButtonText = "Keys";
+    // Input variables
+    public bool Keys { get; set; }
     List<float> inputXList = new List<float>();
     List<float> inputYList = new List<float>();
     float xInput, yInput, xAverage, yAverage, xMedian, yMedian;
     int nullCounterX, nullCounterY;
 
-    // Use this for initialization
-    void Start()
-    {
+    public float XMedian { get { return xMedian; } } public float YMedian { get { return yMedian; } }
+    public float[] DistanceSegments { get; private set; }
+    #endregion
 
+    // Use this for initialization
+    void Awake()
+    {
+        DistanceSegments = new float[12];
     }
 
     // Update is called once per frame
@@ -47,7 +57,8 @@ public class WheelchairController : MonoBehaviour
 
     void UpdateMovement()
     {
-        if (!keys)
+        #region Wheel input
+        if (!Keys)
         {
             float xValue = xMedian, yValue = yMedian;
 
@@ -65,6 +76,8 @@ public class WheelchairController : MonoBehaviour
                     transform.Rotate(0, (yValue - xValue) / 10 * rotationSpeed, 0);
             }
         }
+        #endregion
+        #region Key input
         else
         {
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
@@ -77,6 +90,9 @@ public class WheelchairController : MonoBehaviour
             else if (Input.GetKey(KeyCode.D))
                 transform.Rotate(0, rotationSpeed, 0);
         }
+        #endregion
+
+        RaycastSweep();
     }
 
     void UpdateWheel()
@@ -85,6 +101,48 @@ public class WheelchairController : MonoBehaviour
         //wheelBackLeft.Rotate(0, -wheelColliderBackLeft.rpm / 60 * 360 * Time.deltaTime, 0);
         //wheelFrontRight.Rotate(0, -wheelColliderFrontRight.rpm / 60 * 360 * Time.deltaTime, 0);
         //wheelFrontLeft.Rotate(0, -wheelColliderFrontLeft.rpm / 60 * 360 * Time.deltaTime, 0);
+    }
+
+    void RaycastSweep()
+    {
+        int angle = 360;
+        Vector3 startPos = transform.position + transform.up * 0.5f; // umm, start position !
+        Vector3 targetPos = Vector3.zero; // variable for calculated end position
+
+        int startAngle = -195; // half the angle to the Left of the forward
+        int finishAngle = 165; // half the angle to the Right of the forward
+
+        // the gap between each ray (increment)
+        int inc = angle / collisionSegments;
+
+        RaycastHit hit;
+
+        for (int i = 0; i < DistanceSegments.Length; i++)
+            DistanceSegments[i] = collisionDistance + 1;
+
+        // step through and find each target point
+        for (int i = 0; i < finishAngle * 2; i += inc) // Angle from forward
+        {
+            targetPos = transform.position + transform.up * 0.5f + (Quaternion.Euler(0, startAngle + i, 0) * transform.forward).normalized * collisionDistance;
+
+            // linecast between points
+            if (Physics.Linecast(startPos, targetPos, out hit))
+            {
+                if (hit.distance < DistanceSegments[(int)(i / 30)] || DistanceSegments[(int)(i / 30)] == -1)
+                    DistanceSegments[(int)(i / 30)] = hit.distance;
+
+                // to show ray just for testing
+                Debug.DrawLine(startPos, targetPos, Color.red);
+            }
+            else
+            {
+                if (DistanceSegments[(int)(i / 30)] == collisionDistance + 1)
+                    DistanceSegments[(int)(i / 30)] = -1;
+
+                // to show ray just for testing
+                Debug.DrawLine(startPos, targetPos, Color.green);
+            }
+        }
     }
 
     void CleanInput(float inputX, float inputY, int listLenght,
@@ -153,23 +211,5 @@ public class WheelchairController : MonoBehaviour
             outputYAverage = 0;
             outputYMedian = 0;
         }
-    }
-
-    void OnGUI()
-    {
-        if (GUI.Button(new Rect(Screen.width / 15, Screen.height / 15, 100, 20), keyButtonText))
-        {
-            keyButtonText = keyButtonText == "Keys" ? "Turk" : "Keys";
-            keys = !keys;
-        }
-
-        GUI.Label(new Rect(Screen.width / 3, Screen.height / 15, 200, 50), "X: " + Mathf.Round(xInput).ToString(), ValueSkin.label);
-        GUI.Label(new Rect(Screen.width / 2, Screen.height / 15, 200, 50), "Y: " + Mathf.Round(yInput).ToString(), ValueSkin.label);
-
-        GUI.Label(new Rect(Screen.width / 3, Screen.height / 5, 200, 50), "X Ave: " + Mathf.Round(xAverage), ValueSkin.label);
-        GUI.Label(new Rect(Screen.width / 2, Screen.height / 5, 200, 50), "Y Ave: " + Mathf.Round(yAverage), ValueSkin.label);
-
-        GUI.Label(new Rect(Screen.width / 3, Screen.height / 3, 200, 50), "X Med: " + Mathf.Round(xMedian), ValueSkin.label);
-        GUI.Label(new Rect(Screen.width / 2, Screen.height / 3, 200, 50), "Y Med: " + Mathf.Round(yMedian), ValueSkin.label);
     }
 }
