@@ -26,8 +26,7 @@ public class WheelchairController : MonoBehaviour
     public bool Keys { get; set; }
     List<float> inputXList = new List<float>();
     List<float> inputYList = new List<float>();
-    float xInput, yInput, xAverage, yAverage, xMedian, yMedian;
-    int nullCounterX, nullCounterY;
+    float xInput, yInput, xMedian, yMedian;
 
     public float XMedian { get { return xMedian; } } public float YMedian { get { return yMedian; } }
     public float[] DistanceSegments { get; private set; }
@@ -51,8 +50,7 @@ public class WheelchairController : MonoBehaviour
         xInput = Input.GetAxis("Mouse X");
         yInput = Input.GetAxis("Mouse Y");
 
-        CleanInput(xInput * xSensitivity, yInput * ySensitivity, inputListLenght,
-            out xAverage, out yAverage, out xMedian, out yMedian);
+        CleanInput(xInput * xSensitivity, yInput * ySensitivity, inputListLenght, out xMedian, out yMedian);
     }
 
     void UpdateMovement()
@@ -62,7 +60,7 @@ public class WheelchairController : MonoBehaviour
         {
             float xValue = xMedian, yValue = yMedian;
 
-            if (Mathf.Abs(xValue) > inputTolerance || Mathf.Abs(yAverage) > inputTolerance)
+            if (Mathf.Abs(xValue) > inputTolerance || Mathf.Abs(yValue) > inputTolerance)
             {
                 if (xValue < -inputTolerance && yValue < -inputTolerance)
                     transform.Translate(Vector3.forward * -(xValue + yValue) / 200 * speed);
@@ -110,7 +108,7 @@ public class WheelchairController : MonoBehaviour
         Vector3 targetPos = Vector3.zero; // variable for calculated end position
 
         int startAngle = -195; // half the angle to the Left of the forward
-        int finishAngle = 165; // half the angle to the Right of the forward
+        int finishAngle = 180; // half the angle to the Right of the forward
 
         // the gap between each ray (increment)
         int inc = angle / collisionSegments;
@@ -146,70 +144,37 @@ public class WheelchairController : MonoBehaviour
     }
 
     void CleanInput(float inputX, float inputY, int listLenght,
-        out float outputXAverage, out float outputYAverage, out float outputXMedian, out float outputYMedian)
+        out float outputXMedian, out float outputYMedian)
     {
         // X output
-        if (inputX != 0)
-        {
-            inputXList.Add(inputX);
-            nullCounterX = 0;
-        }
-        else
-        {
-            if (inputXList.Count > 0)
-                inputXList.Add(inputXList[inputXList.Count - 1]);
-            nullCounterX++;
-        }
+        inputXList.Add(inputX);
 
         if (inputXList.Count > listLenght)
             inputXList.RemoveAt(0);
 
-        if (inputXList.Count > 0 && nullCounterX < listLenght / 4)
+        if (inputXList.Count > 0)
         {
-            // Average X
-            outputXAverage = inputXList.Average();
-
             // Median X
             var inputXListOrdered = inputXList.OrderBy(g => g);
             outputXMedian = inputXListOrdered.ElementAt(((int)(inputXList.Count / 2)));
         }
         else
-        {
-            inputXList.Clear();
-            outputXAverage = 0;
             outputXMedian = 0;
-        }
 
         // Y output
-        if (inputY != 0)
-        {
             inputYList.Add(inputY);
-            nullCounterY = 0;
-        }
-        else
-        {
-            if (inputYList.Count > 0)
-                inputYList.Add(inputYList[inputYList.Count - 1]);
-            nullCounterY++;
-        }
+
 
         if (inputYList.Count > listLenght)
             inputYList.RemoveAt(0);
 
-        if (inputYList.Count > 0 && nullCounterY < listLenght / 4)
+        if (inputYList.Count > 0)
         {
-            // Average Y
-            outputYAverage = inputYList.Average();
-
             // Median X
             var inputYListOrdered = inputYList.OrderBy(g => g);
             outputYMedian = inputYListOrdered.ElementAt(((int)(inputYList.Count / 2)));
         }
         else
-        {
-            inputYList.Clear();
-            outputYAverage = 0;
             outputYMedian = 0;
-        }
     }
 }

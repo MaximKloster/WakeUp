@@ -11,11 +11,661 @@ Platform assembly: D:\Oculus_Projekt\Builds\NetworkTest_Data\Managed\UnityEngine
 Loading D:\Oculus_Projekt\Builds\NetworkTest_Data\Managed\UnityEngine.dll into Unity Child Domain
 Platform assembly: D:\Oculus_Projekt\Builds\NetworkTest_Data\Managed\Assembly-CSharp.dll (this message is harmless)
 Loading D:\Oculus_Projekt\Builds\NetworkTest_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-- Completed reload, in  0.072 seconds
+- Completed reload, in  0.059 seconds
 desktop: 1920x1080 60Hz; virtual: 3600x1080 at -1680,0
 <RI> Initializing input.
 <RI> Input initialized.
 Platform assembly: D:\Oculus_Projekt\Builds\NetworkTest_Data\Managed\System.Core.dll (this message is harmless)
+Couldn't send RPC function 'SetControllerValues'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetControllerValues'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetControllerValues'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetControllerValues'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetControllerValues'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetControllerValues'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetControllerValues'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetControllerValues'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetControllerValues'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetControllerValues'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
+Couldn't send RPC function 'SetCollisionDistance'
+
+ 
+(Filename:  Line: 2458)
+
 Couldn't send RPC function 'SetControllerValues'
 
  

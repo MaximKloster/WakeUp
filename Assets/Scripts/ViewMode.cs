@@ -24,7 +24,7 @@ public class ViewMode : MonoBehaviour
     string keyButtonText = "Keys";
     float xMedian, yMedian;
     int[] distanceSegments = new int[12];
-    int collisionDistance = 10;
+    int collisionDistance = 5;
 
     // Use this for initialization
     void Start()
@@ -45,7 +45,7 @@ public class ViewMode : MonoBehaviour
             else
             {
                 SetControllerObject(cameraFollower);
-                controllerObject.GetComponentInChildren<Camera>().camera.rect = new Rect(0.5f, 0, 0.5f, 0.5f);
+                //controllerObject.GetComponentInChildren<Camera>().camera.rect = new Rect(0.5f, 0, 0.5f, 0.5f);
                 networkConnection.RefreshHostListStandalone = true;
 
                 if (currentViewMode == ViewModes.TurkMode)
@@ -145,10 +145,10 @@ public class ViewMode : MonoBehaviour
     {
         float distance = distanceSegments[segment];
         guiDistanceObject.transform.FindChild(segment.ToString()).GetComponent<SpriteRenderer>().sprite =
-            distance >= collisionDistance || distance == -1 ? guiDisctanceTextures[0] :
+            distance >= collisionDistance * 0.9 || distance == -1 ? guiDisctanceTextures[0] :
             distance >= collisionDistance * 0.7 ? guiDisctanceTextures[1] :
-            distance >= collisionDistance * 0.4 ? guiDisctanceTextures[2] :
-            distance >= collisionDistance * 0.2 ? guiDisctanceTextures[3] :
+            distance >= collisionDistance * 0.5 ? guiDisctanceTextures[2] :
+            distance >= collisionDistance * 0.3 ? guiDisctanceTextures[3] :
             distance >= collisionDistance * 0.1 ? guiDisctanceTextures[4] :
             guiDisctanceTextures[5];
     }
