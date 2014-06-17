@@ -12,6 +12,7 @@ public class DoorController : MonoBehaviour
 
     // Door variables
     float angleStartPosition;
+    bool openDoor, closeDoor;
 
     // Use this for initialization
     void Start()
@@ -22,16 +23,30 @@ public class DoorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Open door
+        if(openDoor)
+            transform.FindChild("Door Object").transform.rotation = Quaternion.Lerp(transform.FindChild("Door Object").transform.rotation, Quaternion.Euler(new Vector3(270, angleStartPosition - angleCompletOpen, 0)), timeToClose * Time.deltaTime);
+        // Close door
+        else if (closeDoor)
+        {
+            transform.FindChild("Door Object").transform.rotation = Quaternion.Lerp(transform.FindChild("Door Object").transform.rotation, Quaternion.Euler(new Vector3(270, angleStartPosition, 0)), timeToClose * Time.deltaTime);
+            if (transform.FindChild("Door Object").transform.rotation.eulerAngles.y <= angleStartPosition + 1)
+            {
+                closeDoor = false;
 
+            }
+        }
     }
 
     public void OpenDoor()
     {
-
+        closeDoor = false;
+        openDoor = true;
     }
     public void CloseDoor()
     {
-        Debug.Log("close door");
-        transform.FindChild("Door Object").transform.rotation = Quaternion.Lerp(transform.FindChild("Door Object").transform.rotation, Quaternion.Euler(new Vector3(270, 0, 0)), timeToClose * Time.deltaTime);
+        openDoor = false;
+        closeDoor = true;
+
     }
 }
