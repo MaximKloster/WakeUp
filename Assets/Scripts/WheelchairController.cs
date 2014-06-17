@@ -46,6 +46,8 @@ public class WheelchairController : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKey(KeyCode.Escape)) Screen.showCursor = true;
+
         xInput = Input.GetAxis("Mouse X");
         yInput = Input.GetAxis("Mouse Y");
 
@@ -106,7 +108,7 @@ public class WheelchairController : MonoBehaviour
         Vector3 startPos = transform.position + transform.up * 0.5f; // umm, start position !
         Vector3 targetPos = Vector3.zero; // variable for calculated end position
 
-        int startAngle = -195; // half the angle to the Left of the forward
+        int startAngle = -180; // half the angle to the Left of the forward
         int finishAngle = 180; // half the angle to the Right of the forward
 
         // the gap between each ray (increment)
