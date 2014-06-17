@@ -6,11 +6,12 @@ public class ViewMode : MonoBehaviour
     // Game variables
     [SerializeField]
     GameObject wheelchair, cameraFollower, guiDistance;
+
     [SerializeField]
     Sprite[] guiDisctanceTextures = new Sprite[6];
 
     [SerializeField]
-    GUISkin ValueSkin;
+    GUISkin valueSkin;
 
     // Mode/Network variables
     enum ViewModes { GameMode, GameMasterMode, TurkMode }
@@ -18,13 +19,15 @@ public class ViewMode : MonoBehaviour
     bool chooseViewMode = true, viewModeSetted, tryToConnect = true;
     GameObject controllerObject, guiDistanceObject;
     NetworkConnection networkConnection;
-
-    // GUI variables
-    bool keys;
-    string keyButtonText = "Keys";
     float xMedian, yMedian;
     int[] distanceSegments = new int[12];
     int collisionDistance = 60;
+
+    // GUI variables
+    public GameObject ControllerObject { get { return controllerObject; } }
+    public float XMedian { get { return xMedian; } }
+    public float YMedian { get { return yMedian; } }
+    public GUISkin ValueSkin { get { return valueSkin; } }
 
     // Use this for initialization
     void Start()
@@ -45,7 +48,6 @@ public class ViewMode : MonoBehaviour
             else
             {
                 SetControllerObject(cameraFollower);
-                //controllerObject.GetComponentInChildren<Camera>().camera.rect = new Rect(0.5f, 0, 0.5f, 0.5f);
                 networkConnection.RefreshHostListStandalone = true;
 
                 if (currentViewMode == ViewModes.TurkMode)
@@ -93,24 +95,26 @@ public class ViewMode : MonoBehaviour
 
     void OnGUI()
     {
-        GUI.Label(new Rect(10, Screen.height - 50, 300, 50), "Net: " + networkConnection.Connected, ValueSkin.label);
+        GUI.Label(new Rect(10, Screen.height - 50, 300, 50), "Net: " + networkConnection.Connected, valueSkin.label);
 
         if (chooseViewMode)
         {
-            if (GUI.Button(new Rect(100, 10, 100, 50), "GameMode", ValueSkin.button))
+            if (GUI.Button(new Rect(100, 10, 100, 50), "GameMode", valueSkin.button))
+            {
                 SetViewMode(ViewModes.GameMode);
-            if (GUI.Button(new Rect(250, 10, 100, 50), "MasterMode", ValueSkin.button))
+                gameObject.AddComponent("GameModeView");
+            }
+            if (GUI.Button(new Rect(250, 10, 100, 50), "MasterMode", valueSkin.button))
+            {
                 SetViewMode(ViewModes.GameMasterMode);
-            if (GUI.Button(new Rect(400, 10, 100, 50), "TurkMode", ValueSkin.button))
+                gameObject.AddComponent("GameMasterModeView");
+            }
+            if (GUI.Button(new Rect(400, 10, 100, 50), "TurkMode", valueSkin.button))
+            {
                 SetViewMode(ViewModes.TurkMode);
+                gameObject.AddComponent("TurkModeView");
+            }
         }
-
-        if (currentViewMode == ViewModes.GameMode && networkConnection.Connected)
-            ShowGameModeView();
-        else if (currentViewMode == ViewModes.GameMasterMode && networkConnection.Connected)
-            ShowGameMasterModeView();
-        else if (currentViewMode == ViewModes.TurkMode && networkConnection.Connected)
-            ShowTurkModeView();
     }
 
     void SetViewMode(ViewModes viewMode)
@@ -118,40 +122,7 @@ public class ViewMode : MonoBehaviour
         currentViewMode = viewMode;
         chooseViewMode = false;
         viewModeSetted = true;
-    }
-
-    void ShowGameModeView()
-    {
-        if (GUI.Button(new Rect(Screen.width / 15, Screen.height / 15, 100, 20), keyButtonText))
-        {
-            keyButtonText = keyButtonText == "Keys" ? "Turk" : "Keys";
-            keys = !keys;
-            controllerObject.GetComponent<WheelchairController>().Keys = keys;
-        }
-
-        GUI.Label(new Rect(Screen.width / 3, Screen.height - 50, 200, 50), "X Med: " + Mathf.Round(controllerObject.GetComponent<WheelchairController>().XMedian), ValueSkin.label);
-        GUI.Label(new Rect(Screen.width / 2, Screen.height - 50, 200, 50), "Y Med: " + Mathf.Round(controllerObject.GetComponent<WheelchairController>().YMedian), ValueSkin.label);
-    }
-    void ShowGameMasterModeView()
-    {
-        GUI.Label(new Rect(Screen.width / 3, Screen.height - 50, 200, 50), "You are game master!", ValueSkin.label);
-    }
-    void ShowTurkModeView()
-    {
-        GUI.Label(new Rect(Screen.width / 3, Screen.height - 50, 200, 50), "X Med: " + Mathf.Round(xMedian), ValueSkin.label);
-        GUI.Label(new Rect(Screen.width / 2, Screen.height - 50, 200, 50), "Y Med: " + Mathf.Round(yMedian), ValueSkin.label);
-    }
-    void UpdateGUIDistanceTexture(int segment)
-    {
-        float distance = distanceSegments[segment];
-        guiDistanceObject.transform.FindChild(segment.ToString()).GetComponent<SpriteRenderer>().sprite =
-            distance >= collisionDistance * 0.9 || distance < 0 ? guiDisctanceTextures[0] :
-            distance >= collisionDistance * 0.55 ? guiDisctanceTextures[1] :
-            distance >= collisionDistance * 0.35 ? guiDisctanceTextures[2] :
-            distance >= collisionDistance * 0.25 ? guiDisctanceTextures[3] :
-            distance >= collisionDistance * 0.15 ? guiDisctanceTextures[4] :
-            guiDisctanceTextures[6];
-    }
+    }    
 
     // RPCs
     [RPC]
@@ -173,5 +144,16 @@ public class ViewMode : MonoBehaviour
             distanceSegments[index] = (int)(distance * 20);
             UpdateGUIDistanceTexture(index);
         }
+    }
+    void UpdateGUIDistanceTexture(int segment)
+    {
+        float distance = distanceSegments[segment];
+        guiDistanceObject.transform.FindChild(segment.ToString()).GetComponent<SpriteRenderer>().sprite =
+            distance >= collisionDistance * 0.9 || distance < 0 ? guiDisctanceTextures[0] :
+            distance >= collisionDistance * 0.55 ? guiDisctanceTextures[1] :
+            distance >= collisionDistance * 0.35 ? guiDisctanceTextures[2] :
+            distance >= collisionDistance * 0.25 ? guiDisctanceTextures[3] :
+            distance >= collisionDistance * 0.15 ? guiDisctanceTextures[4] :
+            guiDisctanceTextures[6];
     }
 }
