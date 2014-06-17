@@ -78,9 +78,9 @@ public class WheelchairController : MonoBehaviour
         else
         {
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-                transform.Translate(Vector3.forward / 5 * speed);
+                transform.Translate(Vector3.forward / 8 * speed);
             else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-                transform.Translate(Vector3.back / 5 * speed);
+                transform.Translate(Vector3.back / 8 * speed);
 
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
                 transform.Rotate(0, -rotationSpeed *5, 0);
