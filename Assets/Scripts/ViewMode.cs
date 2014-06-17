@@ -130,7 +130,7 @@ public class ViewMode : MonoBehaviour
         }
 
         GUI.Label(new Rect(Screen.width / 3, Screen.height - 50, 200, 50), "X Med: " + Mathf.Round(controllerObject.GetComponent<WheelchairController>().XMedian), ValueSkin.label);
-        GUI.Label(new Rect(Screen.width / 2, Screen.height - 50, 200, 50), "Y Med: " + Mathf.Round(controllerObject.GetComponent<WheelchairController>().XMedian), ValueSkin.label);
+        GUI.Label(new Rect(Screen.width / 2, Screen.height - 50, 200, 50), "Y Med: " + Mathf.Round(controllerObject.GetComponent<WheelchairController>().YMedian), ValueSkin.label);
     }
     void ShowGameMasterModeView()
     {
