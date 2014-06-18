@@ -4,10 +4,33 @@ ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
     100000: //RootNode
+    100002: BezierCurve
+    100004: BezierCurve_001
+    100006: Camera
+    100008: Lamp
+    100010: metall
+    100012: sitz
     400000: //RootNode
+    400002: BezierCurve
+    400004: BezierCurve_001
+    400006: Camera
+    400008: Lamp
+    400010: metall
+    400012: sitz
     2300000: //RootNode
+    2300002: BezierCurve
+    2300004: BezierCurve_001
+    2300006: metall
+    2300008: sitz
     3300000: //RootNode
+    3300002: BezierCurve
+    3300004: BezierCurve_001
+    3300006: metall
+    3300008: sitz
     4300000: BezierCurve
+    4300002: BezierCurve_001
+    4300004: sitz
+    4300006: metall
     7400000: Default Take
     9500000: //RootNode
   materials:
