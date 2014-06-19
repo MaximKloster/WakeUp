@@ -7,8 +7,10 @@ public class DoorController : MonoBehaviour
     [SerializeField]
     [Range(0, 180)]
     float angleCompleteOpen = 90, slideCompleteOpen = 1;
+
     [SerializeField]
     float SpeedToOpen = 2.0f, SpeedToClose = 0.5f;
+
     [SerializeField]
     AudioClip soundOnClose, soundOnClosing;
 
