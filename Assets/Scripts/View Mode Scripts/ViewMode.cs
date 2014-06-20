@@ -102,7 +102,6 @@ public class ViewMode : MonoBehaviour
             if (GUI.Button(new Rect(100, 10, 100, 50), "GameMode", valueSkin.button))
             {
                 SetViewMode(ViewModes.GameMode);
-                Screen.showCursor = false;
                 gameObject.AddComponent("GameModeView");
             }
             if (GUI.Button(new Rect(250, 10, 100, 50), "MasterMode", valueSkin.button))

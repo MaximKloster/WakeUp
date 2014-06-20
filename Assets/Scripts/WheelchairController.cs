@@ -8,7 +8,7 @@ public class WheelchairController : MonoBehaviour
     [SerializeField]
     int inputListLenght = 20;
     [SerializeField]
-    float speed = 1, rotationSpeed = 1, inputTolerance = 0.5f;
+    float speed = 1, rotationSpeed = 1, inputTolerance = 0.5f, maximumSpeed = 1;
     [SerializeField]
     [Range(0, 1)]
     float differenceTolerance = 0.25f, xSensitivity = 1, ySensitivity = 1;
@@ -46,8 +46,6 @@ public class WheelchairController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Escape)) Screen.showCursor = true;
-
         xInput = Input.GetAxis("Mouse X");
         yInput = Input.GetAxis("Mouse Y");
 
@@ -64,7 +62,10 @@ public class WheelchairController : MonoBehaviour
             if (Mathf.Abs(xValue) > inputTolerance || Mathf.Abs(yValue) > inputTolerance)
             {
                 if (xValue < -inputTolerance && yValue < -inputTolerance)
-                    transform.Translate(Vector3.forward * -(xValue + yValue) / 200 * speed);
+                {
+                    //transform.Translate(Vector3.forward * -(xValue + yValue) / 200 * speed);
+                    transform.Translate(Vector3.forward * -forwardSpeedCheck(xValue, yValue));
+                }
                 else if (xValue > inputTolerance && yValue > inputTolerance)
                     transform.Translate(Vector3.back * (xValue + yValue) / 200 * speed);
 
@@ -94,6 +95,11 @@ public class WheelchairController : MonoBehaviour
         RaycastSweep();
     }
 
+    float forwardSpeedCheck(float xValue, float yValue)
+    {
+        if (((xValue + yValue) / 200 * speed) > maximumSpeed) return maximumSpeed;
+        else return ((xValue + yValue) / 200 * speed);
+    }
     void UpdateWheel()
     {
         //wheelBackRight.Rotate(0, -wheelColliderBackRight.rpm / 60 * 360 * Time.deltaTime, 0);
