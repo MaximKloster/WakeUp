@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class neonlamp : MonoBehaviour
+public class NeonlightController : MonoBehaviour
 {
     public bool flackern = false;
     public bool on = true;
@@ -21,6 +21,4 @@ public class neonlamp : MonoBehaviour
         }
 
     }
-
-
 }
