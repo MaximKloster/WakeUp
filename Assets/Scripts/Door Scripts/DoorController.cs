@@ -9,7 +9,13 @@ public class DoorController : MonoBehaviour
     float angleCompleteOpen = 90, slideCompleteOpen = 1;
 
     [SerializeField]
+    int eventCount = -1;
+
+    [SerializeField]
     float SpeedToOpen = 2.0f, SpeedToClose = 0.5f;
+
+    [SerializeField]
+    bool doubleDoor;
 
     [SerializeField]
     AudioClip soundOnClose, soundOnClosing;
@@ -29,22 +35,34 @@ public class DoorController : MonoBehaviour
         startPosition = transform;
         doorSounds = gameObject.AddComponent<AudioSource>();
         doorSounds.playOnAwake = false;
+
+        if (doubleDoor)
+            angleCompleteOpen *= -1;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (eventCount == 0) transform.FindChild("Door Open Trigger").gameObject.SetActive(false);
+
         //Open door
         if (openDoor)
         {
+            PlaySoundOnClosing();
+
             if (doorType == "Door")
             {
                 doorTransform.transform.rotation = Quaternion.Lerp(doorTransform.transform.rotation,
                     Quaternion.Euler(new Vector3(0, startPosition.rotation.eulerAngles.y - angleCompleteOpen, 0)),
                     SpeedToOpen * Time.deltaTime);
 
-                if (doorTransform.transform.rotation.eulerAngles.y <= startPosition.rotation.eulerAngles.y - angleCompleteOpen + 1)
+                if ((!doubleDoor && doorTransform.transform.rotation.eulerAngles.y <= startPosition.rotation.eulerAngles.y - angleCompleteOpen + 1)
+                    || (doubleDoor && doorTransform.transform.rotation.eulerAngles.y >= startPosition.rotation.eulerAngles.y - angleCompleteOpen - 1))
+                {
                     openDoor = false;
+                    doorSounds.Stop();
+                    eventCount--;
+                }
             }
             else if (doorType == "Slide Door")
             {
@@ -53,7 +71,11 @@ public class DoorController : MonoBehaviour
                     SpeedToOpen * Time.deltaTime);
 
                 if (doorTransform.transform.position.z >= startPosition.position.z + slideCompleteOpen - 0.1f)
+                {
                     openDoor = false;
+                    doorSounds.Stop();
+                    eventCount--;
+                }
             }
         }
         // Close door
@@ -65,14 +87,12 @@ public class DoorController : MonoBehaviour
                     Quaternion.Euler(new Vector3(0, startPosition.rotation.eulerAngles.y, 0)),
                     SpeedToClose * Time.deltaTime);
 
-                if (doorTransform.transform.rotation.eulerAngles.y >= startPosition.rotation.eulerAngles.y - 1)
+                if ((!doubleDoor && doorTransform.transform.rotation.eulerAngles.y >= startPosition.rotation.eulerAngles.y - 1)
+                    || (doubleDoor && doorTransform.transform.rotation.eulerAngles.y <= startPosition.rotation.eulerAngles.y - 1))
                 {
                     closeDoor = false;
                     if (soundOnClose)
-                    {
-                        doorSounds.clip = soundOnClose;
-                        doorSounds.Play();
-                    }
+                        PlaySoundOnClose();
                 }
             }
             else if (doorType == "Slide Door")
@@ -85,13 +105,21 @@ public class DoorController : MonoBehaviour
                 {
                     closeDoor = false;
                     if (soundOnClose)
-                    {
-                        doorSounds.clip = soundOnClose;
-                        doorSounds.Play();
-                    }
+                        PlaySoundOnClose();
                 }
             }
         }
+    }
+
+    void PlaySoundOnClosing()
+    {
+        doorSounds.clip = soundOnClosing;
+        doorSounds.Play();
+    }
+    void PlaySoundOnClose()
+    {
+        doorSounds.clip = soundOnClose;
+        doorSounds.Play();
     }
 
     public void OpenDoor()

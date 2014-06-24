@@ -22,7 +22,6 @@ public class SoundController : MonoBehaviour
             soundActive = false;
             eventCount--;
         }
-
     }
 
     public void ActivateEvent()
