@@ -133,6 +133,8 @@ public class WheelchairController : MonoBehaviour
             // linecast between points
             if (Physics.Linecast(startPos, targetPos, out hit))
             {
+                //if(hit.transform.tag == "Curtain")
+
                 if (hit.distance < DistanceSegments[(int)(i / 30)] || DistanceSegments[(int)(i / 30)] == -1)
                     DistanceSegments[(int)(i / 30)] = hit.distance;
 
