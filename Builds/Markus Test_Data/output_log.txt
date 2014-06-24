@@ -1,161 +1,1277 @@
 Initialize engine version: 4.3.4f1 (e444f76e01cd)
 GfxDevice: creating device client; threaded=1
 Direct3D:
-    Version:  Direct3D 9.0c [nvd3dum.dll 9.18.13.3165]
-    Renderer: NVIDIA GeForce GTX 770
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 770 (ID=0x1184)
     Vendor:   NVIDIA
-    VRAM:     1990 MB (via DXGI)
-    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
+    VRAM:     1990 MB
 Begin MonoManager ReloadAssembly
 Platform assembly: D:\Oculus_Projekt\Builds\Markus Test_Data\Managed\UnityEngine.dll (this message is harmless)
 Loading D:\Oculus_Projekt\Builds\Markus Test_Data\Managed\UnityEngine.dll into Unity Child Domain
 Platform assembly: D:\Oculus_Projekt\Builds\Markus Test_Data\Managed\Assembly-CSharp.dll (this message is harmless)
 Loading D:\Oculus_Projekt\Builds\Markus Test_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-- Completed reload, in  0.049 seconds
+- Completed reload, in  0.100 seconds
 desktop: 1920x1080 60Hz; virtual: 3600x1080 at -1680,0
 <RI> Initializing input.
 <RI> Input initialized.
 Platform assembly: D:\Oculus_Projekt\Builds\Markus Test_Data\Managed\System.Core.dll (this message is harmless)
-HandleD3DDeviceLost
-  HandleD3DDeviceLost: still lost
-Skipped rendering frame because GfxDevice is in invalid state (device lost)
+The referenced script on this Behaviour is missing!
  
-(Filename:  Line: 1539)
+(Filename:  Line: 1699)
 
-HandleD3DDeviceLost
-  HandleD3DDeviceLost: still lost
-Skipped frame because GfxDevice is in invalid state (device lost)
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
  
-(Filename:  Line: 1650)
+(Filename:  Line: 479)
 
-HandleD3DDeviceLost
-  HandleD3DDeviceLost: still lost
-Skipped frame because GfxDevice is in invalid state (device lost)
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
  
-(Filename:  Line: 1650)
+(Filename:  Line: 479)
 
-HandleD3DDeviceLost
-  HandleD3DDeviceLost: still lost
-Skipped frame because GfxDevice is in invalid state (device lost)
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
  
-(Filename:  Line: 1650)
+(Filename:  Line: 479)
 
-HandleD3DDeviceLost
-  HandleD3DDeviceLost: still lost
-Skipped frame because GfxDevice is in invalid state (device lost)
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
  
-(Filename:  Line: 1650)
+(Filename:  Line: 479)
 
-HandleD3DDeviceLost
-  HandleD3DDeviceLost: still lost
-Skipped frame because GfxDevice is in invalid state (device lost)
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
  
-(Filename:  Line: 1650)
+(Filename:  Line: 479)
 
-HandleD3DDeviceLost
-  HandleD3DDeviceLost: still lost
-Skipped frame because GfxDevice is in invalid state (device lost)
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
  
-(Filename:  Line: 1650)
+(Filename:  Line: 479)
 
-HandleD3DDeviceLost
-  HandleD3DDeviceLost: still lost
-Skipped frame because GfxDevice is in invalid state (device lost)
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
  
-(Filename:  Line: 1650)
+(Filename:  Line: 479)
 
-HandleD3DDeviceLost
-  HandleD3DDeviceLost: still lost
-Skipped frame because GfxDevice is in invalid state (device lost)
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
  
-(Filename:  Line: 1650)
+(Filename:  Line: 479)
 
-HandleD3DDeviceLost
-  HandleD3DDeviceLost: still lost
-Skipped frame because GfxDevice is in invalid state (device lost)
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
  
-(Filename:  Line: 1650)
+(Filename:  Line: 479)
 
-HandleD3DDeviceLost
-  HandleD3DDeviceLost: still lost
-Skipped frame because GfxDevice is in invalid state (device lost)
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
  
-(Filename:  Line: 1650)
+(Filename:  Line: 479)
 
-HandleD3DDeviceLost
-  HandleD3DDeviceLost: still lost
-Skipped frame because GfxDevice is in invalid state (device lost)
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
  
-(Filename:  Line: 1650)
+(Filename:  Line: 479)
 
-HandleD3DDeviceLost
-  HandleD3DDeviceLost: needs reset, doing it
-FullResetD3DDevice
-ResetD3DDevice
-dev->Reset
-D3Dwindow device not lost anymore
-Couldn't send RPC function 'SetControllerValues'
-
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
  
-(Filename:  Line: 2458)
+(Filename:  Line: 479)
 
-Couldn't send RPC function 'SetCollisionDistance'
-
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
  
-(Filename:  Line: 2458)
+(Filename:  Line: 479)
 
-Couldn't send RPC function 'SetCollisionDistance'
-
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
  
-(Filename:  Line: 2458)
+(Filename:  Line: 479)
 
-Couldn't send RPC function 'SetCollisionDistance'
-
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
  
-(Filename:  Line: 2458)
+(Filename:  Line: 479)
 
-Couldn't send RPC function 'SetCollisionDistance'
-
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
  
-(Filename:  Line: 2458)
+(Filename:  Line: 479)
 
-Couldn't send RPC function 'SetCollisionDistance'
-
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
  
-(Filename:  Line: 2458)
+(Filename:  Line: 479)
 
-Couldn't send RPC function 'SetCollisionDistance'
-
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
  
-(Filename:  Line: 2458)
+(Filename:  Line: 479)
 
-Couldn't send RPC function 'SetCollisionDistance'
-
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
  
-(Filename:  Line: 2458)
+(Filename:  Line: 479)
 
-Couldn't send RPC function 'SetCollisionDistance'
-
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
  
-(Filename:  Line: 2458)
+(Filename:  Line: 479)
 
-Couldn't send RPC function 'SetCollisionDistance'
-
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
  
-(Filename:  Line: 2458)
+(Filename:  Line: 479)
 
-Couldn't send RPC function 'SetCollisionDistance'
-
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
  
-(Filename:  Line: 2458)
+(Filename:  Line: 479)
 
-Couldn't send RPC function 'SetCollisionDistance'
-
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
  
-(Filename:  Line: 2458)
+(Filename:  Line: 479)
 
-Couldn't send RPC function 'SetCollisionDistance'
-
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
  
-(Filename:  Line: 2458)
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
+
+Sending RPC failed because 'SetTurkSegments' parameter 2 didn't match the RPC declaration. Expected 'System.Single' but got 'System.Int32'
+ 
+(Filename:  Line: 479)
 

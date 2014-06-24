@@ -2,6 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 
+public struct TurkSegments
+{
+    public int segment;
+    public string name;
+    public float distance;
+
+    public TurkSegments(int segment, string name, float distance)
+    {
+        this.segment = segment;
+        this.name = name;
+        this.distance = distance;
+    }
+}
+
 public class WheelchairController : MonoBehaviour
 {
     #region Variables
@@ -28,13 +42,16 @@ public class WheelchairController : MonoBehaviour
 
     public float XMedian { get { return xMedian; } } public float YMedian { get { return yMedian; } }
     public float[] DistanceSegments { get; private set; }
+    public List<TurkSegments> TurkSegmentList { get; private set; }
     float collisionDistance = 3.0f;
+
     #endregion
 
     // Use this for initialization
     void Awake()
     {
         DistanceSegments = new float[12];
+        TurkSegmentList = new List<TurkSegments>();
     }
 
     // Update is called once per frame
@@ -86,9 +103,9 @@ public class WheelchairController : MonoBehaviour
                 transform.Translate(Vector3.back / 8 * speed);
 
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-                transform.Rotate(0, -rotationSpeed *5, 0);
+                transform.Rotate(0, -rotationSpeed * 5, 0);
             else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-                transform.Rotate(0, rotationSpeed *5, 0);
+                transform.Rotate(0, rotationSpeed * 5, 0);
         }
         #endregion
 
@@ -125,21 +142,34 @@ public class WheelchairController : MonoBehaviour
         for (int i = 0; i < DistanceSegments.Length; i++)
             DistanceSegments[i] = collisionDistance + 1;
 
+        TurkSegmentList.Clear();
+
         // step through and find each target point
         for (int i = 0; i < finishAngle * 2; i += inc) // Angle from forward
         {
             targetPos = transform.position + transform.up * 0.5f + (Quaternion.Euler(0, startAngle + i, 0) * transform.forward).normalized * collisionDistance;
 
             // linecast between points
-            if (Physics.Linecast(startPos, targetPos, out hit))
+            if (i % 4 != 0 && Physics.Linecast(startPos, targetPos, out hit, 1))
             {
-                //if(hit.transform.tag == "Curtain")
-
                 if (hit.distance < DistanceSegments[(int)(i / 30)] || DistanceSegments[(int)(i / 30)] == -1)
                     DistanceSegments[(int)(i / 30)] = hit.distance;
 
                 // to show ray just for testing
                 Debug.DrawLine(startPos, targetPos, Color.red);
+            }
+            else if (i % 4 == 0 && Physics.Linecast(startPos, targetPos, out hit, ~1 << 7))
+            {
+                if (TurkSegmentList.Exists(t => t.segment == (int)(i / 30) && t.name == hit.transform.tag && t.distance > hit.distance)) // optimizable !!!
+                {
+                    TurkSegmentList.Remove(TurkSegmentList.Find(t => t.segment == (int)(i / 30) && t.name == hit.transform.tag && t.distance > hit.distance));
+                    TurkSegmentList.Add(new TurkSegments((int)(i / 30), hit.transform.tag, hit.distance));
+                }
+                else if (!TurkSegmentList.Exists(t => t.segment == (int)(i / 30) && t.name == hit.transform.tag && t.distance < hit.distance))
+                    TurkSegmentList.Add(new TurkSegments((int)(i / 30), hit.transform.tag, hit.distance));
+
+                // to show ray just for testing
+                Debug.DrawLine(startPos, targetPos, Color.yellow);
             }
             else
             {

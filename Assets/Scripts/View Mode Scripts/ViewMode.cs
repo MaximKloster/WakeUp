@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ViewMode : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class ViewMode : MonoBehaviour
     float xMedian, yMedian;
     int[] distanceSegments = new int[12];
     int collisionDistance = 60;
+    List<TurkSegments> turkSegmentList = new List<TurkSegments>();
 
     // GUI variables
     public GameObject ControllerObject { get { return controllerObject; } }
@@ -84,6 +86,12 @@ public class ViewMode : MonoBehaviour
             // Collision distance
             for (int i = 0; i < controllerObject.GetComponent<WheelchairController>().DistanceSegments.Length; i++)
                 networkView.RPC("SetCollisionDistance", RPCMode.Others, i, controllerObject.GetComponent<WheelchairController>().DistanceSegments[i]);
+
+            // Turk segments
+            networkView.RPC("SetTurkSegments", RPCMode.Others, 0, "start", 0f);
+            foreach (var turkSegment in controllerObject.GetComponent<WheelchairController>().TurkSegmentList)
+                networkView.RPC("SetTurkSegments", RPCMode.Others, turkSegment.segment, turkSegment.name, turkSegment.distance);
+            networkView.RPC("SetTurkSegments", RPCMode.Others, 0, "ready", 0f);
         }
         #endregion
     }
@@ -122,7 +130,7 @@ public class ViewMode : MonoBehaviour
         currentViewMode = viewMode;
         chooseViewMode = false;
         viewModeSetted = true;
-    }    
+    }
 
     // RPCs
     [RPC]
@@ -139,7 +147,7 @@ public class ViewMode : MonoBehaviour
     public void SetCollisionDistance(int index, float distance)
     {
         if (currentViewMode == ViewModes.TurkMode
-            && distanceSegments[index] != (int)(distance * 20))
+            && distanceSegments[index] != (int)(distance * 20)) // kann ggf. zur Performanceverbesserung vor dem RPC Call abgefragt werde!!!
         {
             distanceSegments[index] = (int)(distance * 20);
             UpdateGUIDistanceTexture(index);
@@ -155,5 +163,22 @@ public class ViewMode : MonoBehaviour
             distance >= collisionDistance * 0.25 ? guiDisctanceTextures[3] :
             distance >= collisionDistance * 0.15 ? guiDisctanceTextures[4] :
             guiDisctanceTextures[6];
+    }
+    [RPC]
+    public void SetTurkSegments(int segment, string name, float distance)
+    {
+        if (currentViewMode == ViewModes.TurkMode)
+        {
+            if (name == "start")
+                turkSegmentList.Clear();
+            else if (name == "ready")
+                UpdateGUITurkSegments();
+            else
+                turkSegmentList.Add(new TurkSegments(segment, name, distance));
+        }
+    }
+    void UpdateGUITurkSegments()
+    {
+        //guiDistanceObject.transform.position
     }
 }
