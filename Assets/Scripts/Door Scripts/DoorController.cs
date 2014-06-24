@@ -48,16 +48,14 @@ public class DoorController : MonoBehaviour
         //Open door
         if (openDoor)
         {
-            PlaySoundOnClosing();
-
             if (doorType == "Door")
             {
                 doorTransform.transform.rotation = Quaternion.Lerp(doorTransform.transform.rotation,
                     Quaternion.Euler(new Vector3(0, startPosition.rotation.eulerAngles.y - angleCompleteOpen, 0)),
                     SpeedToOpen * Time.deltaTime);
 
-                if ((!doubleDoor && doorTransform.transform.rotation.eulerAngles.y <= startPosition.rotation.eulerAngles.y - angleCompleteOpen + 1)
-                    || (doubleDoor && doorTransform.transform.rotation.eulerAngles.y >= startPosition.rotation.eulerAngles.y - angleCompleteOpen - 1))
+                if ((!doubleDoor && doorTransform.transform.rotation.eulerAngles.y <= startPosition.rotation.eulerAngles.y - angleCompleteOpen + 3)
+                    || (doubleDoor && doorTransform.transform.rotation.eulerAngles.y >= startPosition.rotation.eulerAngles.y - angleCompleteOpen - 3))
                 {
                     openDoor = false;
                     doorSounds.Stop();
@@ -87,8 +85,8 @@ public class DoorController : MonoBehaviour
                     Quaternion.Euler(new Vector3(0, startPosition.rotation.eulerAngles.y, 0)),
                     SpeedToClose * Time.deltaTime);
 
-                if ((!doubleDoor && doorTransform.transform.rotation.eulerAngles.y >= startPosition.rotation.eulerAngles.y - 1)
-                    || (doubleDoor && doorTransform.transform.rotation.eulerAngles.y <= startPosition.rotation.eulerAngles.y - 1))
+                if ((!doubleDoor && doorTransform.transform.rotation.eulerAngles.y >= startPosition.rotation.eulerAngles.y - 3)
+                    || (doubleDoor && doorTransform.transform.rotation.eulerAngles.y <= startPosition.rotation.eulerAngles.y - 3))
                 {
                     closeDoor = false;
                     if (soundOnClose)
@@ -126,10 +124,14 @@ public class DoorController : MonoBehaviour
     {
         closeDoor = false;
         openDoor = true;
+
+        PlaySoundOnClosing();
     }
     public void CloseDoor()
     {
         openDoor = false;
         closeDoor = true;
+
+        PlaySoundOnClosing();
     }
 }
