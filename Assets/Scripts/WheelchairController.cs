@@ -7,12 +7,14 @@ public struct TurkSegments
     public int segment;
     public string name;
     public float distance;
+    public string type;
 
-    public TurkSegments(int segment, string name, float distance)
+    public TurkSegments(int segment, string name, float distance, string type)
     {
         this.segment = segment;
         this.name = name;
         this.distance = distance;
+        this.type = type;
     }
 }
 
@@ -163,10 +165,10 @@ public class WheelchairController : MonoBehaviour
                 if (TurkSegmentList.Exists(t => t.segment == (int)(i / 30) && t.name == hit.transform.tag && t.distance > hit.distance)) // optimizable !!!
                 {
                     TurkSegmentList.Remove(TurkSegmentList.Find(t => t.segment == (int)(i / 30) && t.name == hit.transform.tag && t.distance > hit.distance));
-                    TurkSegmentList.Add(new TurkSegments((int)(i / 30), hit.transform.tag, hit.distance));
+                    TurkSegmentList.Add(new TurkSegments((int)(i / 30), hit.transform.tag, hit.distance, hit.transform.tag));
                 }
                 else if (!TurkSegmentList.Exists(t => t.segment == (int)(i / 30) && t.name == hit.transform.tag && t.distance < hit.distance))
-                    TurkSegmentList.Add(new TurkSegments((int)(i / 30), hit.transform.tag, hit.distance));
+                    TurkSegmentList.Add(new TurkSegments((int)(i / 30), hit.transform.tag, hit.distance, hit.transform.tag));
 
                 // to show ray just for testing
                 Debug.DrawLine(startPos, targetPos, Color.yellow);

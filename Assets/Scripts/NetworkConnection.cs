@@ -22,7 +22,7 @@ public class NetworkConnection : MonoBehaviour
 {
     // public variables
     public int PortNumber { get; private set; }
-    public string GameTypeName { get { return "Game"; } } // TODO set name
+    public string GameTypeName { get { return "GameX"; } } // TODO set name
     public List<HostData> HostDataList { get; private set; }
     public bool Connected { get; private set; }
     public List<Player> PlayersGameList { get; set; }

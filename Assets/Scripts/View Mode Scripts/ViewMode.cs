@@ -6,10 +6,12 @@ public class ViewMode : MonoBehaviour
 {
     // Game variables
     [SerializeField]
-    GameObject wheelchair, cameraFollower, guiDistance;
+    GameObject wheelchair, cameraFollower, guiDistance, spriteObject;
 
     [SerializeField]
     Sprite[] guiDisctanceTextures = new Sprite[6];
+    [SerializeField]
+    Sprite[] turkElementSprites;
 
     [SerializeField]
     GUISkin valueSkin;
@@ -23,13 +25,16 @@ public class ViewMode : MonoBehaviour
     float xMedian, yMedian;
     int[] distanceSegments = new int[12];
     int collisionDistance = 60;
-    List<TurkSegments> turkSegmentList = new List<TurkSegments>();
+    List<TurkSegments> turkElementList = new List<TurkSegments>();
+    List<GameObject> turkElementObjectList = new List<GameObject>();
 
     // GUI variables
     public GameObject ControllerObject { get { return controllerObject; } }
     public float XMedian { get { return xMedian; } }
     public float YMedian { get { return yMedian; } }
     public GUISkin ValueSkin { get { return valueSkin; } }
+
+    public string info;
 
     // Use this for initialization
     void Start()
@@ -88,10 +93,10 @@ public class ViewMode : MonoBehaviour
                 networkView.RPC("SetCollisionDistance", RPCMode.Others, i, controllerObject.GetComponent<WheelchairController>().DistanceSegments[i]);
 
             // Turk segments
-            networkView.RPC("SetTurkSegments", RPCMode.Others, 0, "start", 0f);
-            foreach (var turkSegment in controllerObject.GetComponent<WheelchairController>().TurkSegmentList)
-                networkView.RPC("SetTurkSegments", RPCMode.Others, turkSegment.segment, turkSegment.name, turkSegment.distance);
-            networkView.RPC("SetTurkSegments", RPCMode.Others, 0, "ready", 0f);
+            networkView.RPC("SetTurkElements", RPCMode.Others, 0, "start", 0f, "");
+            foreach (var turkElement in controllerObject.GetComponent<WheelchairController>().TurkSegmentList)
+                networkView.RPC("SetTurkElements", RPCMode.Others, turkElement.segment, turkElement.name, turkElement.distance, turkElement.type);
+            networkView.RPC("SetTurkElements", RPCMode.Others, 0, "ready", 0f, "");
         }
         #endregion
     }
@@ -165,20 +170,43 @@ public class ViewMode : MonoBehaviour
             guiDisctanceTextures[6];
     }
     [RPC]
-    public void SetTurkSegments(int segment, string name, float distance)
+    public void SetTurkElements(int segment, string name, float distance, string type)
     {
         if (currentViewMode == ViewModes.TurkMode)
         {
             if (name == "start")
-                turkSegmentList.Clear();
+                turkElementList.Clear();
             else if (name == "ready")
-                UpdateGUITurkSegments();
+                UpdateGUITurkElements();
             else
-                turkSegmentList.Add(new TurkSegments(segment, name, distance));
+                turkElementList.Add(new TurkSegments(segment, name, distance, type));
         }
     }
-    void UpdateGUITurkSegments()
+    void UpdateGUITurkElements()
     {
-        //guiDistanceObject.transform.position
+        foreach (var turkElementObject in turkElementObjectList)
+            Destroy(turkElementObject);
+        turkElementObjectList.Clear();
+
+        foreach (var turkElement in turkElementList)
+        {
+            Debug.Log(turkElement.segment);
+
+            if (turkElement.segment >= 6 && turkElement.segment <= 7)
+            {
+                int beta = 90 - (turkElement.segment % 3) * 30;
+
+                float alpha = 90 - beta;
+
+                float x = Mathf.Sin(alpha) * turkElement.distance;
+                float y = Mathf.Cos(alpha) * turkElement.distance;
+
+                turkElementObjectList.Add(Instantiate(spriteObject, new Vector3(-x, y, 1.5f), Quaternion.Euler(0, 0, 0)) as GameObject);
+                turkElementObjectList[turkElementObjectList.Count - 1].GetComponent<SpriteRenderer>().sprite =
+                    turkElement.type == "Curtain" ? turkElementSprites[0] : turkElementSprites[0];
+            }
+        }
+
+        
     }
 }
