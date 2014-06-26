@@ -192,16 +192,16 @@ public class ViewMode : MonoBehaviour
         {
             Debug.Log(turkElement.segment);
 
-            if (turkElement.segment >= 6 && turkElement.segment <= 7)
+            if (turkElement.segment >= 6 && turkElement.segment <= 6)
             {
-                int beta = 90 - (turkElement.segment % 3) * 30;
+                int beta = 90 - (turkElement.segment % 3) * 30 + 1; //// WTF
 
-                float alpha = 90 - beta;
+                //float alpha = 90 - beta;
 
-                float x = Mathf.Sin(alpha) * turkElement.distance;
-                float y = Mathf.Cos(alpha) * turkElement.distance;
+                float x = Mathf.Sin(beta) * turkElement.distance;
+                float y = Mathf.Cos(beta) * turkElement.distance;
 
-                turkElementObjectList.Add(Instantiate(spriteObject, new Vector3(-x, y, 1.5f), Quaternion.Euler(0, 0, 0)) as GameObject);
+                turkElementObjectList.Add(Instantiate(spriteObject, new Vector3(x, -y, 0.3f), Quaternion.Euler(0, 0, 0)) as GameObject);
                 turkElementObjectList[turkElementObjectList.Count - 1].GetComponent<SpriteRenderer>().sprite =
                     turkElement.type == "Curtain" ? turkElementSprites[0] : turkElementSprites[0];
             }
