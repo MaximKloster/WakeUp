@@ -37,9 +37,6 @@ public class WheelchairController : MonoBehaviour
     [Range(0, 10)]
     float delayTime = 3;
 
-    bool chairStay = true, chairAccelerate = false;
-    Vector3 chairAcceleration;
-    float startTime;
 
     [SerializeField]
     GUISkin ValueSkin;
@@ -123,13 +120,11 @@ public class WheelchairController : MonoBehaviour
 
     float SpeedLimit(float xValue, float yValue)
     {
-        if (((xValue + yValue) / 200 * speed) > maximumSpeed)
-        {
-            float limitSpeed = (xValue + yValue) / 200 * speed;
-            Debug.Log("Limit: "+ limitSpeed);
-            return maximumSpeed;
-        }
-        else return ((xValue + yValue) / 200 * speed);
+        float currentSpeed = (xValue + yValue) / 500 * speed;
+        Debug.Log("Speed: " + currentSpeed);
+
+        if (((xValue + yValue) / 500 * speed) > maximumSpeed) return maximumSpeed;
+        else return ((xValue + yValue) / 500 * speed);
     }
     void UpdateWheel()
     {
