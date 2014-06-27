@@ -90,10 +90,10 @@ public class WheelchairController : MonoBehaviour
             {
                 if (xValue < -inputTolerance && yValue < -inputTolerance)
                 {
-                    transform.Translate(Vector3.forward * -forwardSpeedCheck(xValue, yValue));
+                    transform.Translate(Vector3.forward * SpeedLimit(-xValue, -yValue));
                 }
                 else if (xValue > inputTolerance && yValue > inputTolerance)
-                    transform.Translate(Vector3.back * (xValue + yValue) / 200 * speed);
+                    transform.Translate(Vector3.back * SpeedLimit(xValue, yValue));
 
                 if (Mathf.Abs(xValue - yValue) > (Mathf.Abs(xValue) + Mathf.Abs(yValue)) / 2 * differenceTolerance)
                     transform.Rotate(0, -(xValue - yValue) / 10 * rotationSpeed, 0);
@@ -107,9 +107,9 @@ public class WheelchairController : MonoBehaviour
         else
         {
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-                transform.Translate(Vector3.forward / 8 * speed);
+                transform.Translate(Vector3.forward / 5 * speed);
             else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-                transform.Translate(Vector3.back / 8 * speed);
+                transform.Translate(Vector3.back / 5 * speed);
 
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
                 transform.Rotate(0, -rotationSpeed * 5, 0);
@@ -121,9 +121,14 @@ public class WheelchairController : MonoBehaviour
         RaycastSweep();
     }
 
-    float forwardSpeedCheck(float xValue, float yValue)
+    float SpeedLimit(float xValue, float yValue)
     {
-        if (((xValue + yValue) / 200 * speed) > maximumSpeed) return maximumSpeed;
+        if (((xValue + yValue) / 200 * speed) > maximumSpeed)
+        {
+            float limitSpeed = (xValue + yValue) / 200 * speed;
+            Debug.Log("Limit: "+ limitSpeed);
+            return maximumSpeed;
+        }
         else return ((xValue + yValue) / 200 * speed);
     }
     void UpdateWheel()
