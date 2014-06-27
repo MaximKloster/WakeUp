@@ -32,6 +32,14 @@ public class WheelchairController : MonoBehaviour
     [Range(1, 180)]
     int collisionSegments = 360;
 
+    public bool accelerationDelay = false;
+    [SerializeField]
+    [Range(0, 10)]
+    float delayTime = 3;
+
+    bool chairStay = true, chairAccelerate = false;
+    Vector3 chairAcceleration;
+    float startTime;
 
     [SerializeField]
     GUISkin ValueSkin;
@@ -82,7 +90,6 @@ public class WheelchairController : MonoBehaviour
             {
                 if (xValue < -inputTolerance && yValue < -inputTolerance)
                 {
-                    //transform.Translate(Vector3.forward * -(xValue + yValue) / 200 * speed);
                     transform.Translate(Vector3.forward * -forwardSpeedCheck(xValue, yValue));
                 }
                 else if (xValue > inputTolerance && yValue > inputTolerance)
