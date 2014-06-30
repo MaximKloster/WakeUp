@@ -172,10 +172,10 @@ public class WheelchairController : MonoBehaviour
                 if (TurkSegmentList.Exists(t => t.segment == (int)(i / 30) && t.name == hit.transform.tag && t.distance > hit.distance)) // optimizable !!!
                 {
                     TurkSegmentList.Remove(TurkSegmentList.Find(t => t.segment == (int)(i / 30) && t.name == hit.transform.tag && t.distance > hit.distance));
-                    TurkSegmentList.Add(new TurkSegments((int)(i / 30), hit.transform.tag, hit.distance, hit.transform.tag));
+                    TurkSegmentList.Add(new TurkSegments((int)(i / 30), hit.transform.tag, hit.distance, hit.transform.name));
                 }
                 else if (!TurkSegmentList.Exists(t => t.segment == (int)(i / 30) && t.name == hit.transform.tag && t.distance < hit.distance))
-                    TurkSegmentList.Add(new TurkSegments((int)(i / 30), hit.transform.tag, hit.distance, hit.transform.tag));
+                    TurkSegmentList.Add(new TurkSegments((int)(i / 30), hit.transform.tag, hit.distance, hit.transform.name));
 
                 // to show ray just for testing
                 Debug.DrawLine(startPos, targetPos, Color.yellow);

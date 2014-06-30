@@ -165,9 +165,8 @@ public class ViewMode : MonoBehaviour
             distance >= collisionDistance * 0.9 || distance < 0 ? guiDisctanceTextures[0] :
             distance >= collisionDistance * 0.55 ? guiDisctanceTextures[1] :
             distance >= collisionDistance * 0.35 ? guiDisctanceTextures[2] :
-            distance >= collisionDistance * 0.25 ? guiDisctanceTextures[3] :
-            distance >= collisionDistance * 0.15 ? guiDisctanceTextures[4] :
-            guiDisctanceTextures[6];
+            distance >= collisionDistance * 0.15 ? guiDisctanceTextures[3] :
+            guiDisctanceTextures[4];
     }
     [RPC]
     public void SetTurkElements(int segment, string name, float distance, string type)
@@ -191,43 +190,23 @@ public class ViewMode : MonoBehaviour
         foreach (var turkElement in turkElementList)
         {
             int area = (int)(turkElement.segment / 3);
-            int seg = turkElement.segment;// < 6 ? turkElement.segment + 6 : turkElement.segment - 6;
-            //if (area == 2)
-            //{
-            //float alpha = Mathf.Abs(area * 90 - (seg % 3) * 30 - 180); //// WTF
-            //float alpha = (turkElement.segment - 6) * 30;
-            int alpha = 0;
 
-            if (seg == 0 || seg == 6)
-                alpha = 0;
-            else if (seg == 1 || seg == 5 || seg == 7 || seg == 11)
-                alpha = 30;
-            else if (seg == 2 || seg == 4 || seg == 8 || seg == 10)
-                alpha = 60;
-            else if (seg == 3 || seg == 9)
-                alpha = 90;
+            float alpha = Mathf.Abs(area * 90 - (turkElement.segment % 3) * 30 - 180);
 
-            info = alpha.ToString() + " " + seg.ToString() + " " + turkElementList.Count;
-
-            float x = 0, y = 0;
-
-            if (area == 0 || area == 2)
-            {
-                x = Mathf.Sin(alpha) * turkElement.distance;
-                y = Mathf.Sin(90 - alpha) * turkElement.distance;
-            }
-            else if (area == 1 || area == 3)
-            {
-                x = Mathf.Sin(90 - alpha) * turkElement.distance;
-                y = Mathf.Sin(alpha) * turkElement.distance;
-            }
+            float x = Mathf.Sin(alpha * Mathf.Deg2Rad) * turkElement.distance;
+            float y = Mathf.Sin((90 - alpha) * Mathf.Deg2Rad) * turkElement.distance;
 
             turkElementObjectList.Add(Instantiate(spriteObject,
-                new Vector3(seg < 6 ? x : -x, seg < 3 && seg > 8 ? y : -y,
-                    0.3f), Quaternion.Euler(0, 0, 0)) as GameObject);
+                new Vector3(area == 1 ? -x : x, area == 1 || area == 3 ? -y : y, 0.3f), 
+                Quaternion.Euler(0, 0, 0)) as GameObject);
+
             turkElementObjectList[turkElementObjectList.Count - 1].GetComponent<SpriteRenderer>().sprite =
-                turkElement.type == "Curtain" ? turkElementSprites[0] : turkElementSprites[0];
-            //}
+                turkElement.type == "Curtain Trigger" ? turkElementSprites[0] :
+                turkElement.type == "Blood Trigger"   ? turkElementSprites[1] :
+                turkElement.type == "Airstream Trigger" ? turkElementSprites[2] :
+                turkElement.type == "Airshoot Trigger" ? turkElementSprites[3] :
+                turkElement.type == "Touch Trigger" ? turkElementSprites[4] : 
+                turkElementSprites[0];
         }
 
 
