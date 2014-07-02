@@ -20,7 +20,8 @@ public class GameModeView : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Escape))
+            ChangeInput();
     }
 
     void OnGUI()
@@ -30,14 +31,14 @@ public class GameModeView : MonoBehaviour
 
     void ShowGameModeView()
     {
-        if (GUI.Button(new Rect(Screen.width / 15, Screen.height / 15, 100, 20), keyButtonText))
-        {
-            keyButtonText = keyButtonText == "Keys" ? "Turk" : "Keys";
-            keys = !keys;
-            controllerObject.GetComponent<WheelchairController>().Keys = keys;
-        }
+        if (GUI.Button(new Rect(Screen.width -150, 30, 150, 30), keyButtonText + " (Press Esc)"))
+            ChangeInput();
+    }
 
-        GUI.Label(new Rect(Screen.width / 3, Screen.height - 50, 200, 50), "X Med: " + Mathf.Round(controllerObject.GetComponent<WheelchairController>().XMedian), valueSkin.label);
-        GUI.Label(new Rect(Screen.width / 2, Screen.height - 50, 200, 50), "Y Med: " + Mathf.Round(controllerObject.GetComponent<WheelchairController>().YMedian), valueSkin.label);
+    void ChangeInput()
+    {
+        keyButtonText = keyButtonText == "Keys" ? "Turk" : "Keys";
+        keys = !keys;
+        controllerObject.GetComponent<WheelchairController>().Keys = keys;
     }
 }

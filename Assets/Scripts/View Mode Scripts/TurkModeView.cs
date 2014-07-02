@@ -27,9 +27,9 @@ public class TurkModeView : MonoBehaviour
 
     void ShowTurkModeView()
     {
-        GUI.Label(new Rect(Screen.width / 3, Screen.height - 50, 200, 50), "X Med: " + Mathf.Round(viewMode.XMedian), valueSkin.label);
-        GUI.Label(new Rect(Screen.width / 2, Screen.height - 50, 200, 50), "Y Med: " + Mathf.Round(viewMode.YMedian), valueSkin.label);
+        GUI.Label(new Rect(Screen.width / 3, Screen.height - 50, 200, 50), "X: " + Mathf.Round(viewMode.XMedian), valueSkin.label);
+        GUI.Label(new Rect(Screen.width / 2, Screen.height - 50, 200, 50), "Y: " + Mathf.Round(viewMode.YMedian), valueSkin.label);
 
-        GUI.Label(new Rect(Screen.width / 2, Screen.height - 100, 200, 50), "Info: " + viewMode.info, valueSkin.label);
+        GUI.Label(new Rect(10, Screen.height - 100, 200, 50), "Info: " + viewMode.info, valueSkin.label);
     }
 }

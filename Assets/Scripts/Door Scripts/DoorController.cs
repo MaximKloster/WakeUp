@@ -18,7 +18,7 @@ public class DoorController : MonoBehaviour
     bool doubleDoor;
 
     [SerializeField]
-    AudioClip soundOnClose, soundOnClosing;
+    AudioClip soundOnClose = null, soundOnClosing = null;
 
     // Door variables
     string doorType;

@@ -6,7 +6,7 @@ public class ViewMode : MonoBehaviour
 {
     // Game variables
     [SerializeField]
-    GameObject wheelchair, cameraFollower, guiDistance, spriteObject;
+    GameObject wheelchair = null, cameraFollower = null, guiDistance = null, spriteObject = null;
 
     [SerializeField]
     Sprite[] guiDisctanceTextures = new Sprite[6];
@@ -27,6 +27,7 @@ public class ViewMode : MonoBehaviour
     int collisionDistance = 60;
     List<TurkSegments> turkElementList = new List<TurkSegments>();
     List<GameObject> turkElementObjectList = new List<GameObject>();
+    public List<MasterElement> MasterElementList { get; private set; }
 
     // GUI variables
     public GameObject ControllerObject { get { return controllerObject; } }
@@ -40,6 +41,8 @@ public class ViewMode : MonoBehaviour
     void Start()
     {
         networkConnection = GetComponent<NetworkConnection>();
+
+        MasterElementList = new List<MasterElement>();
     }
 
     // Update is called once per frame
@@ -70,14 +73,17 @@ public class ViewMode : MonoBehaviour
         // Try to connect
         if (currentViewMode != ViewModes.GameMode && tryToConnect && !networkConnection.Connected
             && networkConnection.GetHostDataList().Count > 0)
-            foreach (HostData hostData in networkConnection.GetHostDataList())
-                if (hostData.gameName == "WheelchairProject")
-                {
-                    Debug.Log("try connect " + hostData.gameName);
-                    networkConnection.ConnectToServer(hostData);
-                    networkConnection.RefreshHostListStandalone = false;
-                    tryToConnect = false;
-                }
+        {
+            //foreach (HostData hostData in networkConnection.GetHostDataList())
+            HostData hostData = networkConnection.GetHostDataList()[0];
+            if (hostData.gameName == "WheelchairProject")
+            {
+                Debug.Log("try connect " + hostData.gameName);
+                networkConnection.ConnectToServer(hostData);
+                networkConnection.RefreshHostListStandalone = false;
+                tryToConnect = false;
+            }
+        }
         // Send values to clients
         if (currentViewMode == ViewModes.GameMode && networkConnection.Connected)
         {
@@ -93,12 +99,20 @@ public class ViewMode : MonoBehaviour
                 networkView.RPC("SetCollisionDistance", RPCMode.Others, i, controllerObject.GetComponent<WheelchairController>().DistanceSegments[i]);
 
             // Turk segments
-            networkView.RPC("SetTurkElements", RPCMode.Others, 0, "start", 0f, "");
+            networkView.RPC("SetTurkElements", RPCMode.Others, 0, 0f, "start");
             foreach (var turkElement in controllerObject.GetComponent<WheelchairController>().TurkSegmentList)
-                networkView.RPC("SetTurkElements", RPCMode.Others, turkElement.segment, turkElement.name, turkElement.distance, turkElement.type);
-            networkView.RPC("SetTurkElements", RPCMode.Others, 0, "ready", 0f, "");
+                networkView.RPC("SetTurkElements", RPCMode.Others, turkElement.segment, turkElement.distance, turkElement.type);
+            networkView.RPC("SetTurkElements", RPCMode.Others, 0, 0f, "ready");
+
+            // Master elements
+            networkView.RPC("SetMasterElements", RPCMode.Others, "start", 0);
+            foreach (var masterElement in controllerObject.GetComponent<WheelchairController>().MasterElementList)
+                networkView.RPC("SetMasterElements", RPCMode.Others, masterElement.type, masterElement.ID);
+            networkView.RPC("SetMasterElements", RPCMode.Others, "ready", 0);
         }
         #endregion
+
+        info = MasterElementList.Count.ToString();
     }
 
     void SetControllerObject(GameObject controller)
@@ -169,16 +183,16 @@ public class ViewMode : MonoBehaviour
             guiDisctanceTextures[4];
     }
     [RPC]
-    public void SetTurkElements(int segment, string name, float distance, string type)
+    public void SetTurkElements(int segment, float distance, string type)
     {
         if (currentViewMode == ViewModes.TurkMode)
         {
-            if (name == "start")
+            if (type == "start")
                 turkElementList.Clear();
-            else if (name == "ready")
+            else if (type == "ready")
                 UpdateGUITurkElements();
             else
-                turkElementList.Add(new TurkSegments(segment, name, distance, type));
+                turkElementList.Add(new TurkSegments(segment, distance, type));
         }
     }
     void UpdateGUITurkElements()
@@ -197,18 +211,38 @@ public class ViewMode : MonoBehaviour
             float y = Mathf.Sin((90 - alpha) * Mathf.Deg2Rad) * turkElement.distance;
 
             turkElementObjectList.Add(Instantiate(spriteObject,
-                new Vector3(area == 1 ? -x : x, area == 1 || area == 3 ? -y : y, 0.3f), 
+                new Vector3(area == 1 ? -x : x, area == 1 || area == 3 ? -y : y, 0.3f),
                 Quaternion.Euler(0, 0, 0)) as GameObject);
 
-            turkElementObjectList[turkElementObjectList.Count - 1].GetComponent<SpriteRenderer>().sprite =
-                turkElement.type == "Curtain Trigger" ? turkElementSprites[0] :
-                turkElement.type == "Blood Trigger"   ? turkElementSprites[1] :
-                turkElement.type == "Airstream Trigger" ? turkElementSprites[2] :
-                turkElement.type == "Airshoot Trigger" ? turkElementSprites[3] :
-                turkElement.type == "Touch Trigger" ? turkElementSprites[4] : 
-                turkElementSprites[0];
+            SetTurkElementObjectSprite(turkElement.type);
         }
+    }
+    void SetTurkElementObjectSprite(string turkElementType)
+    {
+        turkElementObjectList[turkElementObjectList.Count - 1].GetComponent<SpriteRenderer>().sprite =
+                turkElementType == "Curtain Trigger" ? turkElementSprites[0] :
+                turkElementType == "Blood Trigger" ? turkElementSprites[1] :
+                turkElementType == "Airstream Trigger" ? turkElementSprites[2] :
+                turkElementType == "Airshoot Trigger" ? turkElementSprites[3] :
+                turkElementType == "Touch Trigger" ? turkElementSprites[4] :
+                turkElementSprites[0];
+    }
 
+    [RPC]
+    void SetMasterElements(string type, int ID)
+    {
+        if (currentViewMode == ViewModes.GameMasterMode)
+        {
+            if (type == "start")
+                MasterElementList.Clear();
+            else if (type == "ready")
+                UpdateGUIMasterElements();
+            else
+                MasterElementList.Add(new MasterElement(type, ID));
+        }
+    }
+    void UpdateGUIMasterElements()
+    {
 
     }
 }

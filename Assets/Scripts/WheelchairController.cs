@@ -5,16 +5,25 @@ using System.Linq;
 public struct TurkSegments
 {
     public int segment;
-    public string name;
     public float distance;
     public string type;
 
-    public TurkSegments(int segment, string name, float distance, string type)
+    public TurkSegments(int segment, float distance, string type)
     {
         this.segment = segment;
-        this.name = name;
         this.distance = distance;
         this.type = type;
+    }
+}
+public struct MasterElement
+{
+    public string type;
+    public int ID;
+
+    public MasterElement(string type, int ID)
+    {
+        this.type = type;
+        this.ID = ID;
     }
 }
 
@@ -33,9 +42,9 @@ public class WheelchairController : MonoBehaviour
     int collisionSegments = 360;
 
     public bool accelerationDelay = false;
-    [SerializeField]
-    [Range(0, 10)]
-    float delayTime = 3;
+    //[SerializeField]
+    //[Range(0, 10)]
+    //float delayTime = 3;
 
 
     [SerializeField]
@@ -50,6 +59,8 @@ public class WheelchairController : MonoBehaviour
     public float XMedian { get { return xMedian; } } public float YMedian { get { return yMedian; } }
     public float[] DistanceSegments { get; private set; }
     public List<TurkSegments> TurkSegmentList { get; private set; }
+    string currentTriggerType;
+    public List<MasterElement> MasterElementList { get; private set; }
     float collisionDistance = 3.0f;
 
     #endregion
@@ -59,6 +70,7 @@ public class WheelchairController : MonoBehaviour
     {
         DistanceSegments = new float[12];
         TurkSegmentList = new List<TurkSegments>();
+        MasterElementList = new List<MasterElement>();
     }
 
     // Update is called once per frame
@@ -153,6 +165,11 @@ public class WheelchairController : MonoBehaviour
 
         TurkSegmentList.Clear();
 
+        if (!string.IsNullOrEmpty(currentTriggerType))
+        {
+            TurkSegmentList.Add(new TurkSegments(0, 0, currentTriggerType));
+        }
+
         // step through and find each target point
         for (int i = 0; i < finishAngle * 2; i += inc) // Angle from forward
         {
@@ -167,15 +184,15 @@ public class WheelchairController : MonoBehaviour
                 // to show ray just for testing
                 Debug.DrawLine(startPos, targetPos, Color.red);
             }
-            else if (i % 4 == 0 && Physics.Linecast(startPos, targetPos, out hit, ~1 << 7))
+            else if (i % 4 == 0 && Physics.Linecast(startPos, targetPos, out hit, 1 << 8))
             {
-                if (TurkSegmentList.Exists(t => t.segment == (int)(i / 30) && t.name == hit.transform.tag && t.distance > hit.distance)) // optimizable !!!
+                if (TurkSegmentList.Exists(t => t.segment == (int)(i / 30) && t.distance > hit.distance)) // optimizable !!!
                 {
-                    TurkSegmentList.Remove(TurkSegmentList.Find(t => t.segment == (int)(i / 30) && t.name == hit.transform.tag && t.distance > hit.distance));
-                    TurkSegmentList.Add(new TurkSegments((int)(i / 30), hit.transform.tag, hit.distance, hit.transform.name));
+                    TurkSegmentList.Remove(TurkSegmentList.Find(t => t.segment == (int)(i / 30) && t.distance > hit.distance));
+                    TurkSegmentList.Add(new TurkSegments((int)(i / 30), hit.distance, hit.transform.name));
                 }
-                else if (!TurkSegmentList.Exists(t => t.segment == (int)(i / 30) && t.name == hit.transform.tag && t.distance < hit.distance))
-                    TurkSegmentList.Add(new TurkSegments((int)(i / 30), hit.transform.tag, hit.distance, hit.transform.name));
+                else if (!TurkSegmentList.Exists(t => t.segment == (int)(i / 30) && t.distance < hit.distance))
+                    TurkSegmentList.Add(new TurkSegments((int)(i / 30), hit.distance, hit.transform.name));
 
                 // to show ray just for testing
                 Debug.DrawLine(startPos, targetPos, Color.yellow);
@@ -189,6 +206,21 @@ public class WheelchairController : MonoBehaviour
                 Debug.DrawLine(startPos, targetPos, Color.green);
             }
         }
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == 8)
+            currentTriggerType = other.name;
+        else if (other.gameObject.layer == 9 && !MasterElementList.Exists(e => e.ID == other.gameObject.GetInstanceID()))
+            MasterElementList.Add(new MasterElement(other.name, other.gameObject.GetInstanceID()));
+    }
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == 8)
+            currentTriggerType = string.Empty;
+        else if (other.gameObject.layer == 9
+            && MasterElementList.Exists(e => e.ID == other.gameObject.GetInstanceID()))
+            MasterElementList.Remove(MasterElementList.Find(e => e.ID == other.gameObject.GetInstanceID()));
     }
 
     void CleanInput(float inputX, float inputY, int listLenght,
