@@ -31,7 +31,7 @@ public class GameModeView : MonoBehaviour
 
     void ShowGameModeView()
     {
-        if (GUI.Button(new Rect(Screen.width -150, 30, 150, 30), keyButtonText + " (Press Esc)"))
+        if (GUI.Button(new Rect(Screen.width -150, 0, 150, 30), keyButtonText + " (Press Esc)"))
             ChangeInput();
     }
 

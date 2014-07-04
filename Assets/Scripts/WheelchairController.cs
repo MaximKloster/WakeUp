@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 
-public struct TurkSegments
+public struct TurkSegment
 {
     public int segment;
     public float distance;
     public string type;
 
-    public TurkSegments(int segment, float distance, string type)
+    public TurkSegment(int segment, float distance, string type)
     {
         this.segment = segment;
         this.distance = distance;
@@ -30,8 +30,8 @@ public struct MasterElement
 public class WheelchairController : MonoBehaviour
 {
     #region Variables
-    [SerializeField]
-    int inputListLenght = 20;
+    //[SerializeField]
+    //int inputListLenght = 20;
     [SerializeField]
     float speed = 1, rotationSpeed = 1, inputTolerance = 0.5f, maximumSpeed = 1;
     [SerializeField]
@@ -54,11 +54,11 @@ public class WheelchairController : MonoBehaviour
     public bool Keys { get; set; }
     List<float> inputXList = new List<float>();
     List<float> inputYList = new List<float>();
-    float xInput, yInput, xMedian, yMedian;
+    float xInput, yInput;//, xMedian, yMedian;
 
-    public float XMedian { get { return xMedian; } } public float YMedian { get { return yMedian; } }
+    public float XInput { get { return xInput; } } public float YInput { get { return yInput; } }
     public float[] DistanceSegments { get; private set; }
-    public List<TurkSegments> TurkSegmentList { get; private set; }
+    public List<TurkSegment> TurkSegmentList { get; private set; }
     string currentTriggerType;
     public List<MasterElement> MasterElementList { get; private set; }
     float collisionDistance = 3.0f;
@@ -69,7 +69,7 @@ public class WheelchairController : MonoBehaviour
     void Awake()
     {
         DistanceSegments = new float[12];
-        TurkSegmentList = new List<TurkSegments>();
+        TurkSegmentList = new List<TurkSegment>();
         MasterElementList = new List<MasterElement>();
     }
 
@@ -82,8 +82,8 @@ public class WheelchairController : MonoBehaviour
 
     void Update()
     {
-        xInput = Input.GetAxis("Mouse X");
-        yInput = Input.GetAxis("Mouse Y");
+        xInput = Input.GetAxis("Mouse X") * xSensitivity;
+        yInput = Input.GetAxis("Mouse Y") * ySensitivity;
 
         //CleanInput(xInput * xSensitivity, yInput * ySensitivity, inputListLenght, out xMedian, out yMedian);
     }
@@ -98,9 +98,7 @@ public class WheelchairController : MonoBehaviour
             if (Mathf.Abs(xValue) > inputTolerance || Mathf.Abs(yValue) > inputTolerance)
             {
                 if (xValue < -inputTolerance && yValue < -inputTolerance)
-                {
                     transform.Translate(Vector3.forward * SpeedLimit(-xValue, -yValue));
-                }
                 else if (xValue > inputTolerance && yValue > inputTolerance)
                     transform.Translate(Vector3.back * SpeedLimit(xValue, yValue));
 
@@ -167,7 +165,7 @@ public class WheelchairController : MonoBehaviour
 
         if (!string.IsNullOrEmpty(currentTriggerType))
         {
-            TurkSegmentList.Add(new TurkSegments(0, 0, currentTriggerType));
+            TurkSegmentList.Add(new TurkSegment(0, 0, currentTriggerType));
         }
 
         // step through and find each target point
@@ -189,10 +187,10 @@ public class WheelchairController : MonoBehaviour
                 if (TurkSegmentList.Exists(t => t.segment == (int)(i / 30) && t.distance > hit.distance)) // optimizable !!!
                 {
                     TurkSegmentList.Remove(TurkSegmentList.Find(t => t.segment == (int)(i / 30) && t.distance > hit.distance));
-                    TurkSegmentList.Add(new TurkSegments((int)(i / 30), hit.distance, hit.transform.name));
+                    TurkSegmentList.Add(new TurkSegment((int)(i / 30), hit.distance, hit.transform.name));
                 }
                 else if (!TurkSegmentList.Exists(t => t.segment == (int)(i / 30) && t.distance < hit.distance))
-                    TurkSegmentList.Add(new TurkSegments((int)(i / 30), hit.distance, hit.transform.name));
+                    TurkSegmentList.Add(new TurkSegment((int)(i / 30), hit.distance, hit.transform.name));
 
                 // to show ray just for testing
                 //Debug.DrawLine(startPos, targetPos, Color.yellow);

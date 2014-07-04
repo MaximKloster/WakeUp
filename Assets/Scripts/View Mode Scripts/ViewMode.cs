@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class ViewMode : MonoBehaviour
 {
+    #region Variables
     // Game variables
     [SerializeField]
     GameObject wheelchair = null, cameraFollower = null, guiDistance = null, spriteObject = null;
@@ -17,17 +18,20 @@ public class ViewMode : MonoBehaviour
     GUISkin valueSkin;
 
     // Mode/Network variables
-    enum ViewModes { GameMode, GameMasterMode, TurkMode }
+    enum ViewModes { GameMode, GameMasterMode, TurkMode, ObserverMode }
     ViewModes currentViewMode = ViewModes.GameMode;
     bool chooseViewMode = true, viewModeSetted, tryToConnect = true;
-    GameObject controllerObject, guiDistanceObject;
     NetworkConnection networkConnection;
     float xMedian, yMedian;
-    int[] distanceSegments = new int[12];
-    int collisionDistance = 60;
-    List<TurkSegments> turkElementList = new List<TurkSegments>();
-    List<GameObject> turkElementObjectList = new List<GameObject>();
-    public List<MasterElement> MasterElementList { get; private set; }
+    GameObject controllerObject;
+
+    // Turk
+    GameObject guiDistanceObject;
+    int[] distanceSegments = new int[12]; // kann ggf. weg..
+    public GameObject SpriteObject { get { return spriteObject; } }
+    public GameObject GuiDistanceObject { get { return guiDistanceObject; } }
+    public Sprite[] GuiDisctanceTextures { get { return guiDisctanceTextures; } }
+    public Sprite[] TurkElementSprites { get { return turkElementSprites; } }
 
     // GUI variables
     public GameObject ControllerObject { get { return controllerObject; } }
@@ -35,19 +39,25 @@ public class ViewMode : MonoBehaviour
     public float YMedian { get { return yMedian; } }
     public GUISkin ValueSkin { get { return valueSkin; } }
 
-    public string info;
+    public string info; 
+    #endregion
 
     // Use this for initialization
     void Start()
     {
         networkConnection = GetComponent<NetworkConnection>();
+    }
 
-        MasterElementList = new List<MasterElement>();
+    void OnDisconnectedFromServer()
+    {
+        networkConnection.RefreshHostListStandalone = true;
+        tryToConnect = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        #region Set ViewMode
         if (viewModeSetted)
         {
             if (currentViewMode == ViewModes.GameMode)
@@ -67,7 +77,8 @@ public class ViewMode : MonoBehaviour
             }
 
             viewModeSetted = false;
-        }
+        } 
+        #endregion
 
         #region Connection
         // Try to connect
@@ -78,7 +89,6 @@ public class ViewMode : MonoBehaviour
             HostData hostData = networkConnection.GetHostDataList()[0];
             if (hostData.gameName == "WheelchairProject")
             {
-                Debug.Log("try connect " + hostData.gameName);
                 networkConnection.ConnectToServer(hostData);
                 networkConnection.RefreshHostListStandalone = false;
                 tryToConnect = false;
@@ -91,8 +101,8 @@ public class ViewMode : MonoBehaviour
             networkView.RPC("SetControllerValues", RPCMode.Others,
                 controllerObject.transform.position,
                 controllerObject.transform.rotation,
-                controllerObject.GetComponent<WheelchairController>().XMedian,
-                controllerObject.GetComponent<WheelchairController>().YMedian);
+                controllerObject.GetComponent<WheelchairController>().XInput,
+                controllerObject.GetComponent<WheelchairController>().YInput);
 
             // Collision distance
             for (int i = 0; i < controllerObject.GetComponent<WheelchairController>().DistanceSegments.Length; i++)
@@ -111,10 +121,7 @@ public class ViewMode : MonoBehaviour
             networkView.RPC("SetMasterElements", RPCMode.Others, "ready", 0);
         }
         #endregion
-
-        info = MasterElementList.Count.ToString();
     }
-
     void SetControllerObject(GameObject controller)
     {
         controllerObject = Instantiate(controller, GameObject.FindGameObjectWithTag("Respawn").transform.position, GameObject.FindGameObjectWithTag("Respawn").transform.rotation) as GameObject;
@@ -122,7 +129,8 @@ public class ViewMode : MonoBehaviour
 
     void OnGUI()
     {
-        //GUI.Label(new Rect(10, Screen.height - 50, 300, 50), "Net: " + networkConnection.Connected, valueSkin.label);
+        if(!networkConnection.Connected)
+            GUI.Label(new Rect(10, Screen.height - 50, 300, 50), "No connection found!", valueSkin.label);
 
         if (chooseViewMode)
         {
@@ -141,9 +149,10 @@ public class ViewMode : MonoBehaviour
                 SetViewMode(ViewModes.TurkMode);
                 gameObject.AddComponent("TurkModeView");
             }
+            if (GUI.Button(new Rect(550, 10, 100, 50), "ObserverMode", valueSkin.button))
+                SetViewMode(ViewModes.ObserverMode);
         }
     }
-
     void SetViewMode(ViewModes viewMode)
     {
         currentViewMode = viewMode;
@@ -152,6 +161,7 @@ public class ViewMode : MonoBehaviour
     }
 
     // RPCs
+    #region Controller
     [RPC]
     public void SetControllerValues(Vector3 controllerPosition, Quaternion controllerRotation, float xMedian, float yMedian)
     {
@@ -161,7 +171,9 @@ public class ViewMode : MonoBehaviour
         // Set values
         this.xMedian = xMedian;
         this.yMedian = yMedian;
-    }
+    } 
+    #endregion
+    #region Turk Mode
     [RPC]
     public void SetCollisionDistance(int index, float distance)
     {
@@ -169,18 +181,8 @@ public class ViewMode : MonoBehaviour
             && distanceSegments[index] != (int)(distance * 20)) // kann ggf. zur Performanceverbesserung vor dem RPC Call abgefragt werde!!!
         {
             distanceSegments[index] = (int)(distance * 20);
-            UpdateGUIDistanceTexture(index);
+            GetComponent<TurkModeView>().UpdateGUIDistanceTexture(index, distance);
         }
-    }
-    void UpdateGUIDistanceTexture(int segment)
-    {
-        float distance = distanceSegments[segment];
-        guiDistanceObject.transform.FindChild(segment.ToString()).GetComponent<SpriteRenderer>().sprite =
-            distance >= collisionDistance * 0.9 || distance < 0 ? guiDisctanceTextures[0] :
-            distance >= collisionDistance * 0.55 ? guiDisctanceTextures[1] :
-            distance >= collisionDistance * 0.35 ? guiDisctanceTextures[2] :
-            distance >= collisionDistance * 0.15 ? guiDisctanceTextures[3] :
-            guiDisctanceTextures[4];
     }
     [RPC]
     public void SetTurkElements(int segment, float distance, string type)
@@ -188,61 +190,27 @@ public class ViewMode : MonoBehaviour
         if (currentViewMode == ViewModes.TurkMode)
         {
             if (type == "start")
-                turkElementList.Clear();
+                GetComponent<TurkModeView>().ClearTurkElementList();
             else if (type == "ready")
-                UpdateGUITurkElements();
+                GetComponent<TurkModeView>().UpdateGUITurkElements();
             else
-                turkElementList.Add(new TurkSegments(segment, distance, type));
+                GetComponent<TurkModeView>().AddElementToTurkElementList(new TurkSegment(segment, distance, type));
         }
-    }
-    void UpdateGUITurkElements()
-    {
-        foreach (var turkElementObject in turkElementObjectList)
-            Destroy(turkElementObject);
-        turkElementObjectList.Clear();
-
-        foreach (var turkElement in turkElementList)
-        {
-            int area = (int)(turkElement.segment / 3);
-
-            float alpha = Mathf.Abs(area * 90 - (turkElement.segment % 3) * 30 - 180);
-
-            float x = Mathf.Sin(alpha * Mathf.Deg2Rad) * turkElement.distance;
-            float y = Mathf.Sin((90 - alpha) * Mathf.Deg2Rad) * turkElement.distance;
-
-            turkElementObjectList.Add(Instantiate(spriteObject,
-                new Vector3(area == 1 ? -x : x, area == 1 || area == 3 ? -y : y, 0.3f),
-                Quaternion.Euler(0, 0, 0)) as GameObject);
-
-            SetTurkElementObjectSprite(turkElement.type);
-        }
-    }
-    void SetTurkElementObjectSprite(string turkElementType)
-    {
-        turkElementObjectList[turkElementObjectList.Count - 1].GetComponent<SpriteRenderer>().sprite =
-                turkElementType == "Curtain Trigger" ? turkElementSprites[0] :
-                turkElementType == "Blood Trigger" ? turkElementSprites[1] :
-                turkElementType == "Airstream Trigger" ? turkElementSprites[2] :
-                turkElementType == "Airshoot Trigger" ? turkElementSprites[3] :
-                turkElementType == "Touch Trigger" ? turkElementSprites[4] :
-                turkElementSprites[0];
-    }
-
+    } 
+    #endregion
+    #region Master Mode
     [RPC]
     void SetMasterElements(string type, int ID)
     {
         if (currentViewMode == ViewModes.GameMasterMode)
         {
             if (type == "start")
-                MasterElementList.Clear();
+                GetComponent<GameMasterModeView>().ClearMasterElementList();
             else if (type == "ready")
-                UpdateGUIMasterElements();
+                return;
             else
-                MasterElementList.Add(new MasterElement(type, ID));
+                GetComponent<GameMasterModeView>().AddElementToMasterElementList(new MasterElement(type, ID));
         }
-    }
-    void UpdateGUIMasterElements()
-    {
-
-    }
+    } 
+    #endregion
 }
