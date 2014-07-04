@@ -126,6 +126,11 @@ public class ViewMode : MonoBehaviour
     {
         controllerObject = Instantiate(controller, GameObject.FindGameObjectWithTag("Respawn").transform.position, GameObject.FindGameObjectWithTag("Respawn").transform.rotation) as GameObject;
     }
+    public void SetControllerObjectToStartposition()
+    {
+        networkConnection.CloseServer();
+        Application.LoadLevel(Application.loadedLevel);
+    }
 
     void OnGUI()
     {
@@ -134,24 +139,27 @@ public class ViewMode : MonoBehaviour
 
         if (chooseViewMode)
         {
-            if (GUI.Button(new Rect(100, 10, 100, 50), "GameMode", valueSkin.button))
+            if (GUI.Button(new Rect(100, Screen.height / 2, 100, 50), "GameMode", valueSkin.button))
             {
                 SetViewMode(ViewModes.GameMode);
                 gameObject.AddComponent("GameModeView");
             }
-            if (GUI.Button(new Rect(250, 10, 100, 50), "MasterMode", valueSkin.button))
+            if (GUI.Button(new Rect(250, Screen.height / 2, 100, 50), "MasterMode", valueSkin.button))
             {
                 SetViewMode(ViewModes.GameMasterMode);
                 gameObject.AddComponent("GameMasterModeView");
             }
-            if (GUI.Button(new Rect(400, 10, 100, 50), "TurkMode", valueSkin.button))
+            if (GUI.Button(new Rect(400, Screen.height / 2, 100, 50), "TurkMode", valueSkin.button))
             {
                 SetViewMode(ViewModes.TurkMode);
                 gameObject.AddComponent("TurkModeView");
             }
-            if (GUI.Button(new Rect(550, 10, 100, 50), "ObserverMode", valueSkin.button))
+            if (GUI.Button(new Rect(550, Screen.height / 2, 100, 50), "ObserverMode", valueSkin.button))
                 SetViewMode(ViewModes.ObserverMode);
         }
+
+        if (GUI.Button(new Rect(Screen.width - 150, 0, 150, 30), "Restart"))
+            GetComponent<ViewMode>().SetControllerObjectToStartposition();
     }
     void SetViewMode(ViewModes viewMode)
     {

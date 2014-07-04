@@ -131,7 +131,6 @@ public class WheelchairController : MonoBehaviour
     float SpeedLimit(float xValue, float yValue)
     {
         float currentSpeed = (xValue + yValue) / 500 * speed;
-        Debug.Log("Speed: " + currentSpeed);
 
         if (currentSpeed > maximumSpeed) return maximumSpeed;
         else return currentSpeed;
@@ -180,7 +179,7 @@ public class WheelchairController : MonoBehaviour
                     DistanceSegments[(int)(i / 30)] = hit.distance;
 
                 // to show ray just for testing
-                //Debug.DrawLine(startPos, targetPos, Color.red);
+                Debug.DrawLine(startPos, targetPos, Color.red);
             }
             else if (i % 4 == 0 && Physics.Linecast(startPos, targetPos, out hit, 1 << 8))
             {
@@ -193,7 +192,7 @@ public class WheelchairController : MonoBehaviour
                     TurkSegmentList.Add(new TurkSegment((int)(i / 30), hit.distance, hit.transform.name));
 
                 // to show ray just for testing
-                //Debug.DrawLine(startPos, targetPos, Color.yellow);
+                Debug.DrawLine(startPos, targetPos, Color.yellow);
             }
             else
             {
@@ -201,7 +200,7 @@ public class WheelchairController : MonoBehaviour
                     DistanceSegments[(int)(i / 30)] = -1;
 
                 // to show ray just for testing
-                //Debug.DrawLine(startPos, targetPos, Color.green);
+                Debug.DrawLine(startPos, targetPos, Color.green);
             }
         }
     }
@@ -221,38 +220,38 @@ public class WheelchairController : MonoBehaviour
             MasterElementList.Remove(MasterElementList.Find(e => e.ID == other.gameObject.GetInstanceID()));
     }
 
-    void CleanInput(float inputX, float inputY, int listLenght,
-        out float outputXMedian, out float outputYMedian)
-    {
-        // X output
-        inputXList.Add(inputX);
+    //void CleanInput(float inputX, float inputY, int listLenght,
+    //    out float outputXMedian, out float outputYMedian)
+    //{
+    //    // X output
+    //    inputXList.Add(inputX);
 
-        if (inputXList.Count > listLenght)
-            inputXList.RemoveAt(0);
+    //    if (inputXList.Count > listLenght)
+    //        inputXList.RemoveAt(0);
 
-        if (inputXList.Count > 0)
-        {
-            // Median X
-            var inputXListOrdered = inputXList.OrderBy(g => g);
-            outputXMedian = inputXListOrdered.ElementAt(((int)(inputXList.Count / 2)));
-        }
-        else
-            outputXMedian = 0;
+    //    if (inputXList.Count > 0)
+    //    {
+    //        // Median X
+    //        var inputXListOrdered = inputXList.OrderBy(g => g);
+    //        outputXMedian = inputXListOrdered.ElementAt(((int)(inputXList.Count / 2)));
+    //    }
+    //    else
+    //        outputXMedian = 0;
 
-        // Y output
-        inputYList.Add(inputY);
+    //    // Y output
+    //    inputYList.Add(inputY);
 
 
-        if (inputYList.Count > listLenght)
-            inputYList.RemoveAt(0);
+    //    if (inputYList.Count > listLenght)
+    //        inputYList.RemoveAt(0);
 
-        if (inputYList.Count > 0)
-        {
-            // Median X
-            var inputYListOrdered = inputYList.OrderBy(g => g);
-            outputYMedian = inputYListOrdered.ElementAt(((int)(inputYList.Count / 2)));
-        }
-        else
-            outputYMedian = 0;
-    }
+    //    if (inputYList.Count > 0)
+    //    {
+    //        // Median X
+    //        var inputYListOrdered = inputYList.OrderBy(g => g);
+    //        outputYMedian = inputYListOrdered.ElementAt(((int)(inputYList.Count / 2)));
+    //    }
+    //    else
+    //        outputYMedian = 0;
+    //}
 }
