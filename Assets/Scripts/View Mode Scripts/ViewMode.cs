@@ -122,7 +122,7 @@ public class ViewMode : MonoBehaviour
 
     void OnGUI()
     {
-        GUI.Label(new Rect(10, Screen.height - 50, 300, 50), "Net: " + networkConnection.Connected, valueSkin.label);
+        //GUI.Label(new Rect(10, Screen.height - 50, 300, 50), "Net: " + networkConnection.Connected, valueSkin.label);
 
         if (chooseViewMode)
         {

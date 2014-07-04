@@ -85,7 +85,7 @@ public class WheelchairController : MonoBehaviour
         xInput = Input.GetAxis("Mouse X");
         yInput = Input.GetAxis("Mouse Y");
 
-        CleanInput(xInput * xSensitivity, yInput * ySensitivity, inputListLenght, out xMedian, out yMedian);
+        //CleanInput(xInput * xSensitivity, yInput * ySensitivity, inputListLenght, out xMedian, out yMedian);
     }
 
     void UpdateMovement()
@@ -93,7 +93,7 @@ public class WheelchairController : MonoBehaviour
         #region Wheel input
         if (!Keys)
         {
-            float xValue = xMedian, yValue = yMedian;
+            float xValue = xInput, yValue = yInput;
 
             if (Mathf.Abs(xValue) > inputTolerance || Mathf.Abs(yValue) > inputTolerance)
             {
@@ -135,8 +135,8 @@ public class WheelchairController : MonoBehaviour
         float currentSpeed = (xValue + yValue) / 500 * speed;
         Debug.Log("Speed: " + currentSpeed);
 
-        if (((xValue + yValue) / 500 * speed) > maximumSpeed) return maximumSpeed;
-        else return ((xValue + yValue) / 500 * speed);
+        if (currentSpeed > maximumSpeed) return maximumSpeed;
+        else return currentSpeed;
     }
     void UpdateWheel()
     {
@@ -182,7 +182,7 @@ public class WheelchairController : MonoBehaviour
                     DistanceSegments[(int)(i / 30)] = hit.distance;
 
                 // to show ray just for testing
-                Debug.DrawLine(startPos, targetPos, Color.red);
+                //Debug.DrawLine(startPos, targetPos, Color.red);
             }
             else if (i % 4 == 0 && Physics.Linecast(startPos, targetPos, out hit, 1 << 8))
             {
@@ -195,7 +195,7 @@ public class WheelchairController : MonoBehaviour
                     TurkSegmentList.Add(new TurkSegments((int)(i / 30), hit.distance, hit.transform.name));
 
                 // to show ray just for testing
-                Debug.DrawLine(startPos, targetPos, Color.yellow);
+                //Debug.DrawLine(startPos, targetPos, Color.yellow);
             }
             else
             {
@@ -203,7 +203,7 @@ public class WheelchairController : MonoBehaviour
                     DistanceSegments[(int)(i / 30)] = -1;
 
                 // to show ray just for testing
-                Debug.DrawLine(startPos, targetPos, Color.green);
+                //Debug.DrawLine(startPos, targetPos, Color.green);
             }
         }
     }

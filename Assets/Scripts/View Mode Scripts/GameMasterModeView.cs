@@ -31,8 +31,8 @@ public class GameMasterModeView : MonoBehaviour
                 GUI.Label(new Rect(Screen.width / 15 + 200, Screen.height / 10 * i, 200, Screen.height / 10), "klicked");
         }
 
-        GUI.Label(new Rect(Screen.width / 3, Screen.height - 50, 200, 50), "You are game master!", valueSkin.label);
+        //GUI.Label(new Rect(Screen.width / 3, Screen.height - 50, 200, 50), "You are game master!", valueSkin.label);
 
-        GUI.Label(new Rect(10, Screen.height - 100, 200, 50), "Info: " + transform.GetComponent<ViewMode>().info, valueSkin.label);
+        //GUI.Label(new Rect(10, Screen.height - 100, 200, 50), "Info: " + transform.GetComponent<ViewMode>().info, valueSkin.label);
     }
 }
