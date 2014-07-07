@@ -27,13 +27,32 @@ public struct MasterElement
     }
 }
 
+public struct EyeRaycastObject
+{
+    public Transform raycastObject;
+    public float firstContact;
+    public bool onAction;
+
+    public EyeRaycastObject(Transform raycastObject)
+    {
+        this.raycastObject = raycastObject;
+        firstContact = Time.time;
+        onAction = true;
+    }
+
+    public void OnAction(bool onAction)
+    {
+        this.onAction = onAction;
+    }
+}
+
 public class WheelchairController : MonoBehaviour
 {
     #region Variables
     //[SerializeField]
     //int inputListLenght = 20;
     [SerializeField]
-    float speed = 1, rotationSpeed = 1, inputTolerance = 0.5f, maximumSpeed = 1;
+    float speed = 1, rotationSpeed = 1, inputTolerance = 0.5f, maximumSpeed = 1, openDoorTime = 2;
     [SerializeField]
     [Range(0, 1)]
     float differenceTolerance = 0.25f, xSensitivity = 1, ySensitivity = 1;
@@ -63,6 +82,10 @@ public class WheelchairController : MonoBehaviour
     public List<MasterElement> MasterElementList { get; private set; }
     float collisionDistance = 3.0f;
 
+    List<EyeRaycastObject> eyeRaycastList = new List<EyeRaycastObject>();
+
+    float yStartAngle;
+
     #endregion
 
     // Use this for initialization
@@ -71,6 +94,11 @@ public class WheelchairController : MonoBehaviour
         DistanceSegments = new float[12];
         TurkSegmentList = new List<TurkSegment>();
         MasterElementList = new List<MasterElement>();
+    }
+
+    void Start()
+    {
+        yStartAngle = transform.rotation.eulerAngles.y;
     }
 
     // Update is called once per frame
@@ -126,6 +154,8 @@ public class WheelchairController : MonoBehaviour
         #endregion
 
         RaycastSweep();
+
+        RaycastEye();
     }
 
     float SpeedLimit(float xValue, float yValue)
@@ -170,7 +200,7 @@ public class WheelchairController : MonoBehaviour
         // step through and find each target point
         for (int i = 0; i < finishAngle * 2; i += inc) // Angle from forward
         {
-            targetPos = transform.position + transform.up * 0.5f + (Quaternion.Euler(0, startAngle + i, 0) * transform.forward).normalized * collisionDistance;
+            targetPos = startPos + (Quaternion.Euler(0, startAngle + i, 0) * transform.forward).normalized * collisionDistance;
 
             // linecast between points
             if (i % 4 != 0 && Physics.Linecast(startPos, targetPos, out hit, 1))
@@ -218,6 +248,71 @@ public class WheelchairController : MonoBehaviour
         else if (other.gameObject.layer == 9
             && MasterElementList.Exists(e => e.ID == other.gameObject.GetInstanceID()))
             MasterElementList.Remove(MasterElementList.Find(e => e.ID == other.gameObject.GetInstanceID()));
+    }
+
+    void RaycastEye()
+    {
+        RaycastHit hit;
+
+        Vector3 startPos = transform.FindChild("OVRCameraController").FindChild("CameraRight").position;
+        //Vector3 targetPos = startPos + (transform.FindChild("OVRCameraController").FindChild("CameraRight").rotation * transform.right).normalized * collisionDistance;
+        Vector3 targetPos = startPos + (Quaternion.Euler(
+            transform.FindChild("OVRCameraController").FindChild("CameraRight").rotation.eulerAngles.x,
+            transform.FindChild("OVRCameraController").rotation.eulerAngles.y - transform.rotation.eulerAngles.y + yStartAngle,//transform.FindChild("OVRCameraController").FindChild("CameraRight").rotation.eulerAngles.y,// + 
+            transform.FindChild("OVRCameraController").FindChild("CameraRight").rotation.eulerAngles.z)
+            * transform.right).normalized * collisionDistance;
+
+
+        for (int i = -4; i < 5; i++)
+            for (int j = -4; j < 5; j++)
+            {
+                Vector3 newTargetPos = targetPos + transform.FindChild("OVRCameraController").FindChild("CameraRight").right * 0.1f * i + transform.FindChild("OVRCameraController").FindChild("CameraRight").up * 0.1f * j;
+                if (Physics.Linecast(startPos, newTargetPos, out hit, 1 << 10))
+                {
+                    Debug.DrawLine(startPos, newTargetPos, Color.cyan);
+
+                    if (!eyeRaycastList.Exists(o => o.raycastObject == hit.transform))
+                        eyeRaycastList.Add(new EyeRaycastObject(hit.transform));
+                    else
+                    {
+                        EyeRaycastObject raycastObject = eyeRaycastList.Find(o => o.raycastObject == hit.transform);
+                        //raycastObject.onAction = true;
+                    }
+                    //Debug.Log(hit.transform.tag);
+                }
+                else
+                    Debug.DrawLine(startPos, newTargetPos, Color.blue);
+            }
+
+        foreach (var eyeRaycastObject in eyeRaycastList)
+        {
+            switch (eyeRaycastObject.raycastObject.tag)
+            {
+                case "Door":
+                    if (eyeRaycastObject.onAction)
+                    {
+                        if (Time.time - eyeRaycastObject.firstContact > openDoorTime)
+                        {
+                            eyeRaycastObject.raycastObject.GetComponentInParent<DoorController>().OpenDoor();
+                        }
+                    }
+                    else
+                    {
+                        if (Time.time - eyeRaycastObject.firstContact < openDoorTime)
+                        {
+                            Debug.Log("close");
+                            eyeRaycastObject.raycastObject.GetComponentInParent<DoorController>().CloseDoor(); ////////////////////////////////////////////////////////////////// ??? geht nciht zu 
+                        }
+                        else
+                            eyeRaycastList.Remove(eyeRaycastList.Find(o => o.raycastObject == eyeRaycastObject.raycastObject));
+                    }
+
+                    eyeRaycastObject.OnAction(false);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     //void CleanInput(float inputX, float inputY, int listLenght,
