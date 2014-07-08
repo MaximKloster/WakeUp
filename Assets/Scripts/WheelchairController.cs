@@ -263,56 +263,56 @@ public class WheelchairController : MonoBehaviour
             * transform.right).normalized * collisionDistance;
 
 
-        for (int i = -4; i < 5; i++)
-            for (int j = -4; j < 5; j++)
-            {
-                Vector3 newTargetPos = targetPos + transform.FindChild("OVRCameraController").FindChild("CameraRight").right * 0.1f * i + transform.FindChild("OVRCameraController").FindChild("CameraRight").up * 0.1f * j;
-                if (Physics.Linecast(startPos, newTargetPos, out hit, 1 << 10))
-                {
-                    Debug.DrawLine(startPos, newTargetPos, Color.cyan);
+        //for (int i = -4; i < 5; i++)
+        //    for (int j = -4; j < 5; j++)
+        //    {
+        //        Vector3 newTargetPos = targetPos + transform.FindChild("OVRCameraController").FindChild("CameraRight").right * 0.1f * i + transform.FindChild("OVRCameraController").FindChild("CameraRight").up * 0.1f * j;
+        //        if (Physics.Linecast(startPos, newTargetPos, out hit, 1 << 10))
+        //        {
+        //            Debug.DrawLine(startPos, newTargetPos, Color.cyan);
 
-                    if (!eyeRaycastList.Exists(o => o.raycastObject == hit.transform))
-                        eyeRaycastList.Add(new EyeRaycastObject(hit.transform));
-                    else
-                    {
-                        EyeRaycastObject raycastObject = eyeRaycastList.Find(o => o.raycastObject == hit.transform);
-                        //raycastObject.onAction = true;
-                    }
-                    //Debug.Log(hit.transform.tag);
-                }
-                else
-                    Debug.DrawLine(startPos, newTargetPos, Color.blue);
-            }
+        //            if (!eyeRaycastList.Exists(o => o.raycastObject == hit.transform))
+        //                eyeRaycastList.Add(new EyeRaycastObject(hit.transform));
+        //            else
+        //            {
+        //                EyeRaycastObject raycastObject = eyeRaycastList.Find(o => o.raycastObject == hit.transform);
+        //                //raycastObject.onAction = true;
+        //            }
+        //            //Debug.Log(hit.transform.tag);
+        //        }
+        //        else
+        //            Debug.DrawLine(startPos, newTargetPos, Color.blue);
+        //    }
 
-        foreach (var eyeRaycastObject in eyeRaycastList)
-        {
-            switch (eyeRaycastObject.raycastObject.tag)
-            {
-                case "Door":
-                    if (eyeRaycastObject.onAction)
-                    {
-                        if (Time.time - eyeRaycastObject.firstContact > openDoorTime)
-                        {
-                            eyeRaycastObject.raycastObject.GetComponentInParent<DoorController>().OpenDoor();
-                        }
-                    }
-                    else
-                    {
-                        if (Time.time - eyeRaycastObject.firstContact < openDoorTime)
-                        {
-                            Debug.Log("close");
-                            eyeRaycastObject.raycastObject.GetComponentInParent<DoorController>().CloseDoor(); ////////////////////////////////////////////////////////////////// ??? geht nciht zu 
-                        }
-                        else
-                            eyeRaycastList.Remove(eyeRaycastList.Find(o => o.raycastObject == eyeRaycastObject.raycastObject));
-                    }
+        //foreach (var eyeRaycastObject in eyeRaycastList)
+        //{
+        //    switch (eyeRaycastObject.raycastObject.tag)
+        //    {
+        //        case "Door":
+        //            if (eyeRaycastObject.onAction)
+        //            {
+        //                if (Time.time - eyeRaycastObject.firstContact > openDoorTime)
+        //                {
+        //                    eyeRaycastObject.raycastObject.GetComponentInParent<DoorController>().OpenDoor();
+        //                }
+        //            }
+        //            else
+        //            {
+        //                if (Time.time - eyeRaycastObject.firstContact < openDoorTime)
+        //                {
+        //                    Debug.Log("close");
+        //                    eyeRaycastObject.raycastObject.GetComponentInParent<DoorController>().CloseDoor(); ////////////////////////////////////////////////////////////////// ??? geht nciht zu 
+        //                }
+        //                else
+        //                    eyeRaycastList.Remove(eyeRaycastList.Find(o => o.raycastObject == eyeRaycastObject.raycastObject));
+        //            }
 
-                    eyeRaycastObject.OnAction(false);
-                    break;
-                default:
-                    break;
-            }
-        }
+        //            eyeRaycastObject.OnAction(false);
+        //            break;
+        //        default:
+        //            break;
+        //    }
+        //}
     }
 
     //void CleanInput(float inputX, float inputY, int listLenght,
