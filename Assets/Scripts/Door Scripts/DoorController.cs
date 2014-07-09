@@ -138,7 +138,7 @@ public class DoorController : MonoBehaviour
 
     public void LookAt()
     {
-        if (openByEye && Time.time - firstLookAt > lookToAktionTime)
+        if (openByEye)// && Time.time - firstLookAt > lookToAktionTime)
         {
             firstLookAt = Time.time;
             OpenDoor();
@@ -146,7 +146,7 @@ public class DoorController : MonoBehaviour
     }
     public void LookAway()
     {
-        if (openByEye && Time.time - firstLookAt < lookToAktionTime)
+        if (openByEye)// && Time.time - firstLookAt < lookToAktionTime)
             CloseDoor();
     }
 }

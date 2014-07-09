@@ -370,11 +370,11 @@ public class WheelchairController : MonoBehaviour
             case "Door":
                 if (look)
                 {
-                    lookAtObject.GetComponentInParent<DoorController>().OpenDoor();
+                    lookAtObject.GetComponentInParent<DoorController>().LookAt();
                 }
                 else
                 {
-                    lookAtObject.GetComponentInParent<DoorController>().CloseDoor();
+                    lookAtObject.GetComponentInParent<DoorController>().LookAway();
                 }
                 break;
             case "Flashlight":
