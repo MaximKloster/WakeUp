@@ -15,7 +15,7 @@ public class DoorController : MonoBehaviour
     float SpeedToOpen = 2.0f, SpeedToClose = 0.5f;
 
     [SerializeField]
-    bool doubleDoor;
+    bool openByEye = true, doubleDoor;
 
     [SerializeField]
     AudioClip soundOnClose = null, soundOnClosing = null;
@@ -138,7 +138,7 @@ public class DoorController : MonoBehaviour
 
     public void LookAt()
     {
-        if (Time.time - firstLookAt > lookToAktionTime)
+        if (openByEye && Time.time - firstLookAt > lookToAktionTime)
         {
             firstLookAt = Time.time;
             OpenDoor();
@@ -146,7 +146,7 @@ public class DoorController : MonoBehaviour
     }
     public void LookAway()
     {
-        if (Time.time - firstLookAt < lookToAktionTime)
+        if (openByEye && Time.time - firstLookAt < lookToAktionTime)
             CloseDoor();
     }
 }
