@@ -267,7 +267,6 @@ public class WheelchairController : MonoBehaviour
 
         List<Transform> eyeRaycastTempList = new List<Transform>();
 
-<<<<<<< Updated upstream
         //for (int i = -4; i < 5; i++)
         //    for (int j = -4; j < 5; j++)
         //    {
@@ -318,7 +317,7 @@ public class WheelchairController : MonoBehaviour
         //            break;
         //    }
         //}
-=======
+
         for (int i = -4; i < 5; i++)
             for (int j = -4; j < 5; j++)
             {
@@ -389,7 +388,7 @@ public class WheelchairController : MonoBehaviour
             default:
                 break;
         }
->>>>>>> Stashed changes
+
     }
 
     //void CleanInput(float inputX, float inputY, int listLenght,
