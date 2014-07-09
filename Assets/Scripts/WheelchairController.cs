@@ -371,7 +371,6 @@ public class WheelchairController : MonoBehaviour
                 if (look)
                 {
                     lookAtObject.GetComponentInParent<DoorController>().OpenDoor();
-
                 }
                 else
                 {
@@ -389,7 +388,6 @@ public class WheelchairController : MonoBehaviour
             default:
                 break;
         }
-
     }
 
     //void CleanInput(float inputX, float inputY, int listLenght,
