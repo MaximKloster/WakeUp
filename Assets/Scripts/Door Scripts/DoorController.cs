@@ -25,6 +25,7 @@ public class DoorController : MonoBehaviour
     Transform doorTransform;
     Transform startPosition;
     bool openDoor, closeDoor;
+    float firstLookAt, lookToAktionTime = 2f;
     AudioSource doorSounds;
 
     // Use this for initialization
@@ -133,5 +134,19 @@ public class DoorController : MonoBehaviour
         closeDoor = true;
 
         PlaySoundOnClosing();
+    }
+
+    public void LookAt()
+    {
+        if (Time.time - firstLookAt > lookToAktionTime)
+        {
+            firstLookAt = Time.time;
+            OpenDoor();
+        }
+    }
+    public void LookAway()
+    {
+        if (Time.time - firstLookAt < lookToAktionTime)
+            CloseDoor();
     }
 }

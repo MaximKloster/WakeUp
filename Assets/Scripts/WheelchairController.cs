@@ -31,19 +31,19 @@ public struct EyeRaycastObject
 {
     public Transform raycastObject;
     public float firstContact;
-    public bool onAction;
+    //public bool onAction;
 
     public EyeRaycastObject(Transform raycastObject)
     {
         this.raycastObject = raycastObject;
         firstContact = Time.time;
-        onAction = true;
+        //onAction = true;
     }
 
-    public void OnAction(bool onAction)
-    {
-        this.onAction = onAction;
-    }
+    //public void OnAction(bool onAction)
+    //{
+    //    this.onAction = onAction;
+    //}
 }
 
 public class WheelchairController : MonoBehaviour
@@ -52,7 +52,7 @@ public class WheelchairController : MonoBehaviour
     //[SerializeField]
     //int inputListLenght = 20;
     [SerializeField]
-    float speed = 1, rotationSpeed = 1, inputTolerance = 0.5f, maximumSpeed = 1, openDoorTime = 2;
+    float speed = 1, rotationSpeed = 1, inputTolerance = 0.5f, maximumSpeed = 1, timeToAction = 2;
     [SerializeField]
     [Range(0, 1)]
     float differenceTolerance = 0.25f, xSensitivity = 1, ySensitivity = 1;
@@ -254,15 +254,20 @@ public class WheelchairController : MonoBehaviour
     {
         RaycastHit hit;
 
-        Vector3 startPos = transform.FindChild("OVRCameraController").FindChild("CameraRight").position;
+        var child = transform.FindChild("OVRCameraController").FindChild("CameraRight");
+
+        Vector3 startPos = child.position;
+
         //Vector3 targetPos = startPos + (transform.FindChild("OVRCameraController").FindChild("CameraRight").rotation * transform.right).normalized * collisionDistance;
         Vector3 targetPos = startPos + (Quaternion.Euler(
-            transform.FindChild("OVRCameraController").FindChild("CameraRight").rotation.eulerAngles.x,
-            transform.FindChild("OVRCameraController").rotation.eulerAngles.y - transform.rotation.eulerAngles.y + yStartAngle,//transform.FindChild("OVRCameraController").FindChild("CameraRight").rotation.eulerAngles.y,// + 
-            transform.FindChild("OVRCameraController").FindChild("CameraRight").rotation.eulerAngles.z)
-            * transform.right).normalized * collisionDistance;
+            child.rotation.eulerAngles.x,
+            child.rotation.eulerAngles.y - transform.rotation.eulerAngles.y,// - yStartAngle,
+            child.rotation.eulerAngles.z)
+            * transform.forward).normalized * collisionDistance;
 
+        List<Transform> eyeRaycastTempList = new List<Transform>();
 
+<<<<<<< Updated upstream
         //for (int i = -4; i < 5; i++)
         //    for (int j = -4; j < 5; j++)
         //    {
@@ -313,6 +318,78 @@ public class WheelchairController : MonoBehaviour
         //            break;
         //    }
         //}
+=======
+        for (int i = -4; i < 5; i++)
+            for (int j = -4; j < 5; j++)
+            {
+                Vector3 newTargetPos = targetPos + child.right * 0.1f * i + child.up * 0.1f * j;
+                if (Physics.Linecast(startPos, newTargetPos, out hit, 1 << 10))
+                {
+                    Debug.DrawLine(startPos, newTargetPos, Color.cyan);
+
+                    if (!eyeRaycastList.Exists(t => t.raycastObject == hit.transform))
+                    {
+                        eyeRaycastList.Add(new EyeRaycastObject(hit.transform));
+                        //eyeRaycastTempList.Add(hit.transform);
+                        ChooseLookAtAction(hit.transform, true);
+                    }
+                    //else
+                    //{
+                    //    //EyeRaycastObject raycastObject = eyeRaycastList.Find(o => o.raycastObject == hit.transform);
+                    //    //Debug.Log("allready there");
+                    //    //raycastObject.onAction = true;
+                    //}
+                    ////Debug.Log(hit.transform.tag);
+                }
+                else
+                {
+                    Debug.DrawLine(startPos, newTargetPos, Color.blue);
+                }
+            }
+
+        //for (int i = eyeRaycastList.Count - 1; i > 0; i--)
+        //{
+        //    if (Time.time - eyeRaycastList[i].firstContact > timeToAction)
+        //    {
+        //        eyeRaycastList.RemoveAt(i);
+        //    }
+        //    else if (eyeRaycastTempList.Exists(t => t == eyeRaycastList[i].raycastObject))
+        //    {
+        //        if (Time.time - eyeRaycastList[i].firstContact < timeToAction)
+        //            ChooseLookAtAction(eyeRaycastList[i].raycastObject, false);
+
+        //        eyeRaycastTempList.Remove(eyeRaycastList[i].raycastObject);
+        //        eyeRaycastList.RemoveAt(i);
+        //    }
+        //}
+    }
+
+    void ChooseLookAtAction(Transform lookAtObject, bool look)
+    {
+        switch (lookAtObject.tag)
+        {
+            case "Door":
+                if (look)
+                {
+                    lookAtObject.GetComponentInParent<DoorController>().OpenDoor();
+                }
+                else
+                {
+                    lookAtObject.GetComponentInParent<DoorController>().CloseDoor();
+                }
+                break;
+            case "Flashlight":
+                if (look)
+                {
+                    Transform flashlight = Instantiate(lookAtObject, transform.FindChild("Flashlight Spawnpoint").position, transform.FindChild("Flashlight Spawnpoint").rotation) as Transform;
+                    flashlight.parent = transform;
+                    Destroy(lookAtObject.gameObject);
+                }
+                break;
+            default:
+                break;
+        }
+>>>>>>> Stashed changes
     }
 
     //void CleanInput(float inputX, float inputY, int listLenght,
