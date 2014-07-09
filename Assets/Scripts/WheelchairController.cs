@@ -260,7 +260,7 @@ public class WheelchairController : MonoBehaviour
 
         //Vector3 targetPos = startPos + (transform.FindChild("OVRCameraController").FindChild("CameraRight").rotation * transform.right).normalized * collisionDistance;
         Vector3 targetPos = startPos + (Quaternion.Euler(
-            child.rotation.eulerAngles.x,
+            -child.rotation.eulerAngles.x,
             child.rotation.eulerAngles.y - transform.rotation.eulerAngles.y,// - yStartAngle,
             child.rotation.eulerAngles.z)
             * transform.forward).normalized * collisionDistance;
