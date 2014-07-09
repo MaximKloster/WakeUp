@@ -371,6 +371,7 @@ public class WheelchairController : MonoBehaviour
                 if (look)
                 {
                     lookAtObject.GetComponentInParent<DoorController>().OpenDoor();
+
                 }
                 else
                 {
