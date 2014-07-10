@@ -5,9 +5,9 @@ public class SwitchObjectController : MonoBehaviour
 {
     // variables
     [SerializeField]
-    Transform moveableObject = null;
+    GameObject moveableObject = null;
     [SerializeField]
-    GameObject parent;
+    bool loadAtStart = true;
     Transform startPosition, secondPosition, thirdPosition, switchObject;
     GameObject controllerObject;
 
@@ -21,21 +21,25 @@ public class SwitchObjectController : MonoBehaviour
         thirdPosition = transform.FindChild("Third Position").transform;
 
         //initiate the moveable Object and set at the Start Position
+        if(loadAtStart) loadObject();
+    }
+
+    private void loadObject()
+    {
         controllerObject = Instantiate(moveableObject, startPosition.position, startPosition.rotation) as GameObject;
         controllerObject.transform.parent = transform.FindChild("Switch Object");
     }
 
     public void SwitchPosition()
     {
-        Debug.Log("switching...");
-        if (switchObject.position == startPosition.position)
-        {
+        if (controllerObject == null)
+            loadObject();
+        else if (switchObject.position == startPosition.position)
             switchObject.position = secondPosition.position;
-            Debug.Log("yup");
-        }
         else if (switchObject.position == secondPosition.position)
             switchObject.position = thirdPosition.position;
         else
             switchObject.position = startPosition.position;
     }
+
 }
