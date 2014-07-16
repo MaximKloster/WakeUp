@@ -1,0 +1,159 @@
+# Blender MTL File: 'level4.blend'
+# Material Count: 16
+
+newmtl Fliesen
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd D:\GitHub\Assets\Textures\Level\fliese-badezimmer-wand.png
+
+newmtl Lenolium
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd D:\GitHub\Assets\Textures\Level\linoleum.png
+
+newmtl None
+Ns 0
+Ka 0.000000 0.000000 0.000000
+Kd 0.8 0.8 0.8
+Ks 0.8 0.8 0.8
+d 1
+illum 2
+
+newmtl Wall1
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd D:\GitHub\Assets\Textures\Level\putz.png
+
+newmtl Wall1_putz.png
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd D:\GitHub\Assets\Textures\Level\putz-streifen4.png
+
+newmtl Wall2
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd D:\GitHub\Assets\Textures\Level\putz.png
+
+newmtl asphalt
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.024851 0.023451 0.023716
+Ks 0.091133 0.091133 0.091133
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl beton
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd D:\GitHub\Assets\Textures\Level\beton.jpg
+
+newmtl erde
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd D:\GitHub\Assets\Textures\Level\MomoDirt03.dds
+
+newmtl fasade
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd D:\GitHub\Assets\Textures\Level\helle_klinker.png
+
+newmtl fasade2
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd D:\GitHub\Assets\Textures\Level\hausfassade_putz.png
+
+newmtl fasade2_altehoelzernedachschindeln_512.jpg
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd D:\GitHub\Assets\Textures\Level\altehoelzernedachschindeln_512.jpg
+
+newmtl fensterglas
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.691232 0.691232 0.691232
+Ks 1.000000 1.000000 1.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd D:\GitHub\Assets\Textures\Environment\weißes holz.png
+
+newmtl holzleisten
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.613047 0.604816
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd D:\GitHub\Assets\Textures\Environment\weißes holz.png
+
+newmtl metal
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd D:\GitHub\Assets\Textures\Environment\metall_2_feiner.png
+
+newmtl pflastersteine
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd D:\GitHub\Assets\Textures\Level\pflasterstein_test3.1.png
