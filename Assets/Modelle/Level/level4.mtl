@@ -37,9 +37,9 @@ Ks 0.500000 0.500000 0.500000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd D:\GitHub\Assets\Textures\Level\putz.png
+map_Kd D:\GitHub\Assets\Textures\Level\putz-streifen4.png
 
-newmtl Wall1_putz.png
+newmtl Wall1_putz.png.001
 Ns 96.078431
 Ka 0.000000 0.000000 0.000000
 Kd 0.640000 0.640000 0.640000
@@ -47,7 +47,7 @@ Ks 0.500000 0.500000 0.500000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd D:\GitHub\Assets\Textures\Level\putz-streifen4.png
+map_Kd D:\GitHub\Assets\Textures\Level\putz.png
 
 newmtl Wall2
 Ns 96.078431
@@ -67,6 +67,7 @@ Ks 0.091133 0.091133 0.091133
 Ni 1.000000
 d 1.000000
 illum 2
+map_Kd D:\GitHub\Assets\Textures\Level\asphalt.jpg
 
 newmtl beton
 Ns 96.078431
@@ -106,9 +107,9 @@ Ks 0.500000 0.500000 0.500000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd D:\GitHub\Assets\Textures\Level\hausfassade_putz.png
+map_Kd D:\GitHub\Assets\Textures\Level\altehoelzernedachschindeln_512.jpg
 
-newmtl fasade2_altehoelzernedachschindeln_512.jpg
+newmtl fasade2_hausfassade_putz.png
 Ns 96.078431
 Ka 0.000000 0.000000 0.000000
 Kd 0.640000 0.640000 0.640000
@@ -116,7 +117,7 @@ Ks 0.500000 0.500000 0.500000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd D:\GitHub\Assets\Textures\Level\altehoelzernedachschindeln_512.jpg
+map_Kd D:\GitHub\Assets\Textures\Level\hausfassade_putz.png
 
 newmtl fensterglas
 Ns 96.078431

@@ -39,6 +39,8 @@ ModelImporter:
     100066: Plane_Plane.003_beton
     100068: Plane_Plane.003_pflastersteine
     100070: Plane.001_Plane.004_fasade2_altehoelzernedachschindeln_512.jpg
+    100072: Plane.001_Plane.004_fasade2_hausfassade_putz.png
+    100074: wall_Plane_Wall1_putz.png.001
     400000: Cube.001_Cube.001_None
     400002: Cube.003_Cube.003_None
     400004: Cube_Cube_None
@@ -75,6 +77,8 @@ ModelImporter:
     400066: Plane_Plane.003_beton
     400068: Plane_Plane.003_pflastersteine
     400070: Plane.001_Plane.004_fasade2_altehoelzernedachschindeln_512.jpg
+    400072: Plane.001_Plane.004_fasade2_hausfassade_putz.png
+    400074: wall_Plane_Wall1_putz.png.001
     2300000: Cube.001_Cube.001_None
     2300002: Cube.003_Cube.003_None
     2300004: Cube_Cube_None
@@ -110,6 +114,8 @@ ModelImporter:
     2300064: Plane_Plane.003_beton
     2300066: Plane_Plane.003_pflastersteine
     2300068: Plane.001_Plane.004_fasade2_altehoelzernedachschindeln_512.jpg
+    2300070: Plane.001_Plane.004_fasade2_hausfassade_putz.png
+    2300072: wall_Plane_Wall1_putz.png.001
     3300000: Cube.001_Cube.001_None
     3300002: Cube.003_Cube.003_None
     3300004: Cube_Cube_None
@@ -145,6 +151,8 @@ ModelImporter:
     3300064: Plane_Plane.003_beton
     3300066: Plane_Plane.003_pflastersteine
     3300068: Plane.001_Plane.004_fasade2_altehoelzernedachschindeln_512.jpg
+    3300070: Plane.001_Plane.004_fasade2_hausfassade_putz.png
+    3300072: wall_Plane_Wall1_putz.png.001
     4300000: Cube.001_Cube.001_None
     4300002: Cube.003_Cube.003_None
     4300004: Cube_Cube_None
@@ -180,6 +188,8 @@ ModelImporter:
     4300064: Plane_Plane.003_beton
     4300066: Plane_Plane.003_pflastersteine
     4300068: Plane.001_Plane.004_fasade2_altehoelzernedachschindeln_512.jpg
+    4300070: Plane.001_Plane.004_fasade2_hausfassade_putz.png
+    4300072: wall_Plane_Wall1_putz.png.001
     9500000: //RootNode
   materials:
     importMaterials: 1
