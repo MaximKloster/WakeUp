@@ -209,7 +209,7 @@ public class WheelchairController : MonoBehaviour
                     DistanceSegments[(int)(i / 30)] = hit.distance;
 
                 // to show ray just for testing
-                Debug.DrawLine(startPos, targetPos, Color.red);
+                //Debug.DrawLine(startPos, targetPos, Color.red);
             }
             else if (i % 4 == 0 && Physics.Linecast(startPos, targetPos, out hit, 1 << 8))
             {
@@ -222,7 +222,7 @@ public class WheelchairController : MonoBehaviour
                     TurkSegmentList.Add(new TurkSegment((int)(i / 30), hit.distance, hit.transform.name));
 
                 // to show ray just for testing
-                Debug.DrawLine(startPos, targetPos, Color.yellow);
+                //Debug.DrawLine(startPos, targetPos, Color.yellow);
             }
             else
             {
@@ -230,7 +230,7 @@ public class WheelchairController : MonoBehaviour
                     DistanceSegments[(int)(i / 30)] = -1;
 
                 // to show ray just for testing
-                Debug.DrawLine(startPos, targetPos, Color.green);
+                //Debug.DrawLine(startPos, targetPos, Color.green);
             }
         }
     }
@@ -266,27 +266,6 @@ public class WheelchairController : MonoBehaviour
             * transform.forward).normalized * collisionDistance;
 
         List<Transform> eyeRaycastTempList = new List<Transform>();
-
-        //for (int i = -4; i < 5; i++)
-        //    for (int j = -4; j < 5; j++)
-        //    {
-        //        Vector3 newTargetPos = targetPos + transform.FindChild("OVRCameraController").FindChild("CameraRight").right * 0.1f * i + transform.FindChild("OVRCameraController").FindChild("CameraRight").up * 0.1f * j;
-        //        if (Physics.Linecast(startPos, newTargetPos, out hit, 1 << 10))
-        //        {
-        //            Debug.DrawLine(startPos, newTargetPos, Color.cyan);
-
-        //            if (!eyeRaycastList.Exists(o => o.raycastObject == hit.transform))
-        //                eyeRaycastList.Add(new EyeRaycastObject(hit.transform));
-        //            else
-        //            {
-        //                EyeRaycastObject raycastObject = eyeRaycastList.Find(o => o.raycastObject == hit.transform);
-        //                //raycastObject.onAction = true;
-        //            }
-        //            //Debug.Log(hit.transform.tag);
-        //        }
-        //        else
-        //            Debug.DrawLine(startPos, newTargetPos, Color.blue);
-        //    }
 
         //foreach (var eyeRaycastObject in eyeRaycastList)
         //{
@@ -326,10 +305,10 @@ public class WheelchairController : MonoBehaviour
                 {
                     Debug.DrawLine(startPos, newTargetPos, Color.cyan);
 
-                    if (!eyeRaycastList.Exists(t => t.raycastObject == hit.transform))
+                    if (!eyeRaycastTempList.Exists(t => t == hit.transform))
                     {
                         eyeRaycastList.Add(new EyeRaycastObject(hit.transform));
-                        //eyeRaycastTempList.Add(hit.transform);
+                        eyeRaycastTempList.Add(hit.transform);
                         ChooseLookAtAction(hit.transform, true);
                     }
                     //else
