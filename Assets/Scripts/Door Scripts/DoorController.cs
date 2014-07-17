@@ -15,7 +15,7 @@ public class DoorController : MonoBehaviour
     float SpeedToOpen = 2.0f, SpeedToClose = 0.5f;
 
     [SerializeField]
-    bool openByEye = true, doubleDoor;
+    bool openByEye = true, doubleDoor = false;
 
     [SerializeField]
     AudioClip soundOnClose = null, soundOnClosing = null;
@@ -24,8 +24,9 @@ public class DoorController : MonoBehaviour
     string doorType;
     Transform doorTransform;
     Transform startPosition;
-    bool openDoor, closeDoor;
-    float firstLookAt, lookToAktionTime = 2f;
+    bool open, openDoor, closeDoor;
+    int angle;
+    //float firstLookAt, lookToAktionTime = 2f;
     AudioSource doorSounds;
 
     // Use this for initialization
@@ -33,12 +34,12 @@ public class DoorController : MonoBehaviour
     {
         doorType = transform.name;
         doorTransform = transform.FindChild("Door Object");
-        startPosition = transform;
+        startPosition = doorTransform.transform;
         doorSounds = gameObject.AddComponent<AudioSource>();
         doorSounds.playOnAwake = false;
 
-        if (doubleDoor)
-            angleCompleteOpen *= -1;
+        //if (doubleDoor)
+        //    angleCompleteOpen *= -1;
     }
 
     // Update is called once per frame
@@ -51,16 +52,25 @@ public class DoorController : MonoBehaviour
         {
             if (doorType == "Door")
             {
-                doorTransform.transform.rotation = Quaternion.Lerp(doorTransform.transform.rotation,
-                    Quaternion.Euler(new Vector3(0, startPosition.rotation.eulerAngles.y - angleCompleteOpen, 0)),
-                    SpeedToOpen * Time.deltaTime);
+                if (!doubleDoor)
+                    doorTransform.transform.Rotate(-Vector3.up);
+                else
+                    doorTransform.transform.Rotate(Vector3.up);
 
-                if ((!doubleDoor && doorTransform.transform.rotation.eulerAngles.y <= startPosition.rotation.eulerAngles.y - angleCompleteOpen + 3)
-                    || (doubleDoor && doorTransform.transform.rotation.eulerAngles.y >= startPosition.rotation.eulerAngles.y - angleCompleteOpen - 3))
+                angle++;
+                //doorTransform.transform.rotation = Quaternion.Lerp(doorTransform.transform.rotation,
+                //    Quaternion.Euler(new Vector3(0, 360  + startPosition.rotation.eulerAngles.y - angleCompleteOpen, 0)),
+                //    SpeedToOpen * Time.deltaTime);
+
+                //if ((!doubleDoor && doorTransform.transform.rotation.eulerAngles.y <= 360 + startPosition.rotation.eulerAngles.y - angleCompleteOpen + 3)
+                //    || (doubleDoor && doorTransform.transform.rotation.eulerAngles.y >= startPosition.rotation.eulerAngles.y - angleCompleteOpen - 3))
+                if (angle >= angleCompleteOpen)
                 {
                     openDoor = false;
+                    open = true;
                     doorSounds.Stop();
                     eventCount--;
+                    Debug.Log("Door open");
                 }
             }
             else if (doorType == "Slide Door")
@@ -72,6 +82,7 @@ public class DoorController : MonoBehaviour
                 if (doorTransform.transform.position.z >= startPosition.position.z + slideCompleteOpen - 0.1f)
                 {
                     openDoor = false;
+                    open = true;
                     doorSounds.Stop();
                     eventCount--;
                 }
@@ -82,16 +93,26 @@ public class DoorController : MonoBehaviour
         {
             if (doorType == "Door")
             {
-                doorTransform.transform.rotation = Quaternion.Lerp(doorTransform.transform.rotation,
-                    Quaternion.Euler(new Vector3(0, startPosition.rotation.eulerAngles.y, 0)),
-                    SpeedToClose * Time.deltaTime);
+                if (!doubleDoor)
+                    doorTransform.transform.Rotate(Vector3.up);
+                else
+                    doorTransform.transform.Rotate(-Vector3.up);
 
-                if ((!doubleDoor && doorTransform.transform.rotation.eulerAngles.y >= startPosition.rotation.eulerAngles.y - 3)
-                    || (doubleDoor && doorTransform.transform.rotation.eulerAngles.y <= startPosition.rotation.eulerAngles.y - 3))
+                angle--;
+                //doorTransform.transform.rotation = Quaternion.Lerp(doorTransform.transform.rotation,
+                //    Quaternion.Euler(new Vector3(0, startPosition.rotation.eulerAngles.y, 0)),
+                //    SpeedToClose * Time.deltaTime);
+
+                //if ((!doubleDoor && doorTransform.transform.rotation.eulerAngles.y >= 180 - 3)
+                //    || (doubleDoor && doorTransform.transform.rotation.eulerAngles.y <= startPosition.rotation.eulerAngles.y - 3))
+
+                if (angle <= 0)
                 {
                     closeDoor = false;
+                    open = false;
                     if (soundOnClose)
                         PlaySoundOnClose();
+                    Debug.Log("Door closed");
                 }
             }
             else if (doorType == "Slide Door")
@@ -103,6 +124,7 @@ public class DoorController : MonoBehaviour
                 if (doorTransform.transform.position.z <= startPosition.position.z + 0.01f)
                 {
                     closeDoor = false;
+                    open = false;
                     if (soundOnClose)
                         PlaySoundOnClose();
                 }
@@ -123,30 +145,33 @@ public class DoorController : MonoBehaviour
 
     public void OpenDoor()
     {
-        closeDoor = false;
-        openDoor = true;
+        if (!open && !openDoor)
+        {
+            closeDoor = false;
+            openDoor = true;
 
-        PlaySoundOnClosing();
+            PlaySoundOnClosing();
+        }
     }
     public void CloseDoor()
     {
-        openDoor = false;
-        closeDoor = true;
+        if (open && !closeDoor)
+        {
+            openDoor = false;
+            closeDoor = true;
 
-        PlaySoundOnClosing();
+            PlaySoundOnClosing();
+        }
     }
 
     public void LookAt()
     {
-        if (openByEye)// && Time.time - firstLookAt > lookToAktionTime)
+        if (openByEye)
         {
-            firstLookAt = Time.time;
-            OpenDoor();
+            if (!open)
+                OpenDoor();
+            else
+                CloseDoor();
         }
-    }
-    public void LookAway()
-    {
-        if (openByEye)// && Time.time - firstLookAt < lookToAktionTime)
-            CloseDoor();
     }
 }

@@ -58,7 +58,7 @@ public class WheelchairController : MonoBehaviour
     float differenceTolerance = 0.25f, xSensitivity = 1, ySensitivity = 1;
     [SerializeField]
     [Range(1, 180)]
-    int collisionSegments = 360;
+    int collisionSegments = 90;
 
     public bool accelerationDelay = false;
     //[SerializeField]
@@ -83,6 +83,7 @@ public class WheelchairController : MonoBehaviour
     float collisionDistance = 3.0f;
 
     List<EyeRaycastObject> eyeRaycastList = new List<EyeRaycastObject>();
+    List<Transform> eyeRaycastTempList = new List<Transform>();
 
     float yStartAngle;
 
@@ -112,6 +113,10 @@ public class WheelchairController : MonoBehaviour
     {
         xInput = Input.GetAxis("Mouse X") * xSensitivity;
         yInput = Input.GetAxis("Mouse Y") * ySensitivity;
+
+        RaycastSweep();
+
+        RaycastEye();
 
         //CleanInput(xInput * xSensitivity, yInput * ySensitivity, inputListLenght, out xMedian, out yMedian);
     }
@@ -152,10 +157,6 @@ public class WheelchairController : MonoBehaviour
                 transform.Rotate(0, rotationSpeed * 5, 0);
         }
         #endregion
-
-        RaycastSweep();
-
-        RaycastEye();
     }
 
     float SpeedLimit(float xValue, float yValue)
@@ -209,7 +210,7 @@ public class WheelchairController : MonoBehaviour
                     DistanceSegments[(int)(i / 30)] = hit.distance;
 
                 // to show ray just for testing
-                //Debug.DrawLine(startPos, targetPos, Color.red);
+                Debug.DrawLine(startPos, targetPos, Color.red);
             }
             else if (i % 4 == 0 && Physics.Linecast(startPos, targetPos, out hit, 1 << 8))
             {
@@ -222,7 +223,7 @@ public class WheelchairController : MonoBehaviour
                     TurkSegmentList.Add(new TurkSegment((int)(i / 30), hit.distance, hit.transform.name));
 
                 // to show ray just for testing
-                //Debug.DrawLine(startPos, targetPos, Color.yellow);
+                Debug.DrawLine(startPos, targetPos, Color.yellow);
             }
             else
             {
@@ -230,7 +231,7 @@ public class WheelchairController : MonoBehaviour
                     DistanceSegments[(int)(i / 30)] = -1;
 
                 // to show ray just for testing
-                //Debug.DrawLine(startPos, targetPos, Color.green);
+                Debug.DrawLine(startPos, targetPos, Color.green);
             }
         }
     }
@@ -261,108 +262,70 @@ public class WheelchairController : MonoBehaviour
         //Vector3 targetPos = startPos + (transform.FindChild("OVRCameraController").FindChild("CameraRight").rotation * transform.right).normalized * collisionDistance;
         Vector3 targetPos = startPos + (Quaternion.Euler(
             child.rotation.eulerAngles.x,
-            child.rotation.eulerAngles.y - transform.rotation.eulerAngles.y,// - yStartAngle,
+            child.rotation.eulerAngles.y - transform.rotation.eulerAngles.y,
             child.rotation.eulerAngles.z)
             * transform.forward).normalized * collisionDistance;
 
-        List<Transform> eyeRaycastTempList = new List<Transform>();
+        eyeRaycastTempList.Clear();
 
-        //foreach (var eyeRaycastObject in eyeRaycastList)
-        //{
-        //    switch (eyeRaycastObject.raycastObject.tag)
-        //    {
-        //        case "Door":
-        //            if (eyeRaycastObject.onAction)
-        //            {
-        //                if (Time.time - eyeRaycastObject.firstContact > openDoorTime)
-        //                {
-        //                    eyeRaycastObject.raycastObject.GetComponentInParent<DoorController>().OpenDoor();
-        //                }
-        //            }
-        //            else
-        //            {
-        //                if (Time.time - eyeRaycastObject.firstContact < openDoorTime)
-        //                {
-        //                    Debug.Log("close");
-        //                    eyeRaycastObject.raycastObject.GetComponentInParent<DoorController>().CloseDoor(); ////////////////////////////////////////////////////////////////// ??? geht nciht zu 
-        //                }
-        //                else
-        //                    eyeRaycastList.Remove(eyeRaycastList.Find(o => o.raycastObject == eyeRaycastObject.raycastObject));
-        //            }
-
-        //            eyeRaycastObject.OnAction(false);
-        //            break;
-        //        default:
-        //            break;
-        //    }
-        //}
-
-        for (int i = -4; i < 5; i++)
-            for (int j = -4; j < 5; j++)
+        for (int i = -2; i < 3; i++)
+            for (int j = -2; j < 3; j++)
             {
-                Vector3 newTargetPos = targetPos + child.right * 0.1f * i + child.up * 0.1f * j;
+                Vector3 newTargetPos = targetPos + child.right * 0.2f * i + child.up * 0.2f * j;
                 if (Physics.Linecast(startPos, newTargetPos, out hit, 1 << 10))
                 {
                     Debug.DrawLine(startPos, newTargetPos, Color.cyan);
 
                     if (!eyeRaycastTempList.Exists(t => t == hit.transform))
                     {
-                        eyeRaycastList.Add(new EyeRaycastObject(hit.transform));
                         eyeRaycastTempList.Add(hit.transform);
-                        ChooseLookAtAction(hit.transform, true);
+
+                        if (!eyeRaycastList.Exists(t => t.raycastObject == hit.transform))
+                            eyeRaycastList.Add(new EyeRaycastObject(hit.transform));
                     }
-                    //else
-                    //{
-                    //    //EyeRaycastObject raycastObject = eyeRaycastList.Find(o => o.raycastObject == hit.transform);
-                    //    //Debug.Log("allready there");
-                    //    //raycastObject.onAction = true;
-                    //}
-                    ////Debug.Log(hit.transform.tag);
                 }
                 else
-                {
                     Debug.DrawLine(startPos, newTargetPos, Color.blue);
-                }
             }
 
-        //for (int i = eyeRaycastList.Count - 1; i > 0; i--)
-        //{
-        //    if (Time.time - eyeRaycastList[i].firstContact > timeToAction)
-        //    {
-        //        eyeRaycastList.RemoveAt(i);
-        //    }
-        //    else if (eyeRaycastTempList.Exists(t => t == eyeRaycastList[i].raycastObject))
-        //    {
-        //        if (Time.time - eyeRaycastList[i].firstContact < timeToAction)
-        //            ChooseLookAtAction(eyeRaycastList[i].raycastObject, false);
+        Debug.Log(eyeRaycastList.Count);
 
-        //        eyeRaycastTempList.Remove(eyeRaycastList[i].raycastObject);
-        //        eyeRaycastList.RemoveAt(i);
-        //    }
-        //}
+        for (int i = eyeRaycastList.Count; i > 0; i--)
+        {
+            if (Time.time - eyeRaycastList[i - 1].firstContact > timeToAction * Time.deltaTime * 100)
+            {
+                Debug.Log("Action");
+                ChooseLookAtAction(eyeRaycastList[i - 1].raycastObject);
+                eyeRaycastList.RemoveAt(i - 1);
+            }
+            else if (eyeRaycastTempList.Exists(t => t == eyeRaycastList[i - 1].raycastObject))
+            {
+                Debug.Log("waiting");
+                //if (Time.time - eyeRaycastList[i].firstContact < timeToAction)
+                //    ChooseLookAtAction(eyeRaycastList[i].raycastObject, false);
+
+                //eyeRaycastTempList.Remove(eyeRaycastList[i].raycastObject);
+                //eyeRaycastList.RemoveAt(i);
+            }
+            else
+            {
+                Debug.Log("Delet");
+                eyeRaycastList.RemoveAt(i - 1);
+            }
+        }
     }
 
-    void ChooseLookAtAction(Transform lookAtObject, bool look)
+    void ChooseLookAtAction(Transform lookAtObject)
     {
         switch (lookAtObject.tag)
         {
             case "Door":
-                if (look)
-                {
                     lookAtObject.GetComponentInParent<DoorController>().LookAt();
-                }
-                else
-                {
-                    lookAtObject.GetComponentInParent<DoorController>().LookAway();
-                }
                 break;
             case "Flashlight":
-                if (look)
-                {
                     Transform flashlight = Instantiate(lookAtObject, transform.FindChild("Flashlight Spawnpoint").position, transform.FindChild("Flashlight Spawnpoint").rotation) as Transform;
                     flashlight.parent = transform;
                     Destroy(lookAtObject.gameObject);
-                }
                 break;
             default:
                 break;
