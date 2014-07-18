@@ -210,7 +210,7 @@ public class WheelchairController : MonoBehaviour
                     DistanceSegments[(int)(i / 30)] = hit.distance;
 
                 // to show ray just for testing
-                Debug.DrawLine(startPos, targetPos, Color.red);
+                //Debug.DrawLine(startPos, targetPos, Color.red);
             }
             else if (i % 4 == 0 && Physics.Linecast(startPos, targetPos, out hit, 1 << 8))
             {
@@ -223,7 +223,7 @@ public class WheelchairController : MonoBehaviour
                     TurkSegmentList.Add(new TurkSegment((int)(i / 30), hit.distance, hit.transform.name));
 
                 // to show ray just for testing
-                Debug.DrawLine(startPos, targetPos, Color.yellow);
+                //Debug.DrawLine(startPos, targetPos, Color.yellow);
             }
             else
             {
@@ -231,7 +231,7 @@ public class WheelchairController : MonoBehaviour
                     DistanceSegments[(int)(i / 30)] = -1;
 
                 // to show ray just for testing
-                Debug.DrawLine(startPos, targetPos, Color.green);
+                //Debug.DrawLine(startPos, targetPos, Color.green);
             }
         }
     }
@@ -274,7 +274,7 @@ public class WheelchairController : MonoBehaviour
                 Vector3 newTargetPos = targetPos + child.right * 0.2f * i + child.up * 0.2f * j;
                 if (Physics.Linecast(startPos, newTargetPos, out hit, 1 << 10))
                 {
-                    Debug.DrawLine(startPos, newTargetPos, Color.cyan);
+                    //Debug.DrawLine(startPos, newTargetPos, Color.cyan);
 
                     if (!eyeRaycastTempList.Exists(t => t == hit.transform))
                     {
@@ -284,8 +284,8 @@ public class WheelchairController : MonoBehaviour
                             eyeRaycastList.Add(new EyeRaycastObject(hit.transform));
                     }
                 }
-                else
-                    Debug.DrawLine(startPos, newTargetPos, Color.blue);
+                //else
+                    //Debug.DrawLine(startPos, newTargetPos, Color.blue);
             }
 
         Debug.Log(eyeRaycastList.Count);
