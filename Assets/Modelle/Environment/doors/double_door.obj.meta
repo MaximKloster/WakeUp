@@ -1,0 +1,117 @@
+fileFormatVersion: 2
+guid: 10d67960ccec71746966eb4fd2994de3
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Cube.002_Cube.001_glas
+    100002: Cube.002_Cube.001_wood
+    100004: Cube.003_Cube.002_None
+    100006: Cube.004_Cube.005_None
+    100008: Cube.005_Cube.006_None
+    100010: Cube.006_Cube.007_None
+    100012: Cylinder.001_Cylinder.001_None
+    100014: //RootNode
+    100016: griff.001_Cylinder.005_None
+    100018: griff.002_Cylinder.002_None
+    100020: griff.003_Cylinder.006_None
+    100022: griff_Cylinder.004_None
+    400000: Cube.002_Cube.001_glas
+    400002: Cube.002_Cube.001_wood
+    400004: Cube.003_Cube.002_None
+    400006: Cube.004_Cube.005_None
+    400008: Cube.005_Cube.006_None
+    400010: Cube.006_Cube.007_None
+    400012: Cylinder.001_Cylinder.001_None
+    400014: //RootNode
+    400016: griff.001_Cylinder.005_None
+    400018: griff.002_Cylinder.002_None
+    400020: griff.003_Cylinder.006_None
+    400022: griff_Cylinder.004_None
+    2300000: Cube.002_Cube.001_glas
+    2300002: Cube.002_Cube.001_wood
+    2300004: Cube.003_Cube.002_None
+    2300006: Cube.004_Cube.005_None
+    2300008: Cube.005_Cube.006_None
+    2300010: Cube.006_Cube.007_None
+    2300012: Cylinder.001_Cylinder.001_None
+    2300014: griff.001_Cylinder.005_None
+    2300016: griff.002_Cylinder.002_None
+    2300018: griff.003_Cylinder.006_None
+    2300020: griff_Cylinder.004_None
+    3300000: Cube.002_Cube.001_glas
+    3300002: Cube.002_Cube.001_wood
+    3300004: Cube.003_Cube.002_None
+    3300006: Cube.004_Cube.005_None
+    3300008: Cube.005_Cube.006_None
+    3300010: Cube.006_Cube.007_None
+    3300012: Cylinder.001_Cylinder.001_None
+    3300014: griff.001_Cylinder.005_None
+    3300016: griff.002_Cylinder.002_None
+    3300018: griff.003_Cylinder.006_None
+    3300020: griff_Cylinder.004_None
+    4300000: Cube.002_Cube.001_glas
+    4300002: Cube.002_Cube.001_wood
+    4300004: Cube.003_Cube.002_None
+    4300006: Cube.004_Cube.005_None
+    4300008: Cube.005_Cube.006_None
+    4300010: Cube.006_Cube.007_None
+    4300012: Cylinder.001_Cylinder.001_None
+    4300014: griff.001_Cylinder.005_None
+    4300016: griff.002_Cylinder.002_None
+    4300018: griff.003_Cylinder.006_None
+    4300020: griff_Cylinder.004_None
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
