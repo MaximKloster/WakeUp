@@ -49,6 +49,8 @@ public struct EyeRaycastObject
 public class WheelchairController : MonoBehaviour
 {
     #region Variables
+    [SerializeField]
+    Rect foo;
     //[SerializeField]
     //int inputListLenght = 20;
     [SerializeField]
@@ -285,7 +287,7 @@ public class WheelchairController : MonoBehaviour
                     }
                 }
                 //else
-                    //Debug.DrawLine(startPos, newTargetPos, Color.blue);
+                //Debug.DrawLine(startPos, newTargetPos, Color.blue);
             }
 
         Debug.Log(eyeRaycastList.Count);
@@ -320,12 +322,12 @@ public class WheelchairController : MonoBehaviour
         switch (lookAtObject.tag)
         {
             case "Door":
-                    lookAtObject.GetComponentInParent<DoorController>().LookAt();
+                lookAtObject.GetComponentInParent<DoorController>().LookAt();
                 break;
             case "Flashlight":
-                    Transform flashlight = Instantiate(lookAtObject, transform.FindChild("Flashlight Spawnpoint").position, transform.FindChild("Flashlight Spawnpoint").rotation) as Transform;
-                    flashlight.parent = transform;
-                    Destroy(lookAtObject.gameObject);
+                Transform flashlight = Instantiate(lookAtObject, transform.FindChild("Flashlight Spawnpoint").position, transform.FindChild("Flashlight Spawnpoint").rotation) as Transform;
+                flashlight.parent = transform;
+                Destroy(lookAtObject.gameObject);
                 break;
             default:
                 break;

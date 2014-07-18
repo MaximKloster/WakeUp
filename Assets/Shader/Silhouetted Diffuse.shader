@@ -110,7 +110,24 @@ ENDCG
 			SetTexture [_MainTex] { combine primary }
 		}
  
-		
+		Pass {
+			Name "BASE"
+			ZWrite On
+			ZTest LEqual
+			Blend SrcAlpha OneMinusSrcAlpha
+			Material {
+				Diffuse [_Color]
+				Ambient [_Color]
+			}
+			Lighting On
+			SetTexture [_MainTex] {
+				ConstantColor [_Color]
+				Combine texture * constant
+			}
+			SetTexture [_MainTex] {
+				Combine previous * primary DOUBLE
+			}
+		}
 	}
  
 	Fallback "Diffuse"
