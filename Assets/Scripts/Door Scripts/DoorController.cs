@@ -70,7 +70,7 @@ public class DoorController : MonoBehaviour
                     open = true;
                     doorSounds.Stop();
                     eventCount--;
-                    Debug.Log("Door open");
+                    Debug.Log("Door open (ready) time: " + Time.time);
                 }
             }
             else if (doorType == "Slide Door")
@@ -149,6 +149,8 @@ public class DoorController : MonoBehaviour
         {
             closeDoor = false;
             openDoor = true;
+
+            Debug.Log("Door open time: " + Time.time);
 
             PlaySoundOnClosing();
         }

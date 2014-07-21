@@ -61,6 +61,8 @@ public class WheelchairController : MonoBehaviour
     [SerializeField]
     [Range(1, 180)]
     int collisionSegments = 90;
+    [SerializeField]
+    AudioClip standardAudioClip = null;
 
     public bool accelerationDelay = false;
     //[SerializeField]
@@ -86,7 +88,11 @@ public class WheelchairController : MonoBehaviour
 
     List<EyeRaycastObject> eyeRaycastList = new List<EyeRaycastObject>();
     List<Transform> eyeRaycastTempList = new List<Transform>();
+    int doRaycast;
 
+    // Sound
+    AudioSource audioSource;
+    
     float yStartAngle;
 
     #endregion
@@ -97,6 +103,7 @@ public class WheelchairController : MonoBehaviour
         DistanceSegments = new float[12];
         TurkSegmentList = new List<TurkSegment>();
         MasterElementList = new List<MasterElement>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -116,9 +123,14 @@ public class WheelchairController : MonoBehaviour
         xInput = Input.GetAxis("Mouse X") * xSensitivity;
         yInput = Input.GetAxis("Mouse Y") * ySensitivity;
 
-        RaycastSweep();
-
-        RaycastEye();
+        if (doRaycast > 4)
+        {
+            RaycastSweep();
+            RaycastEye();
+            doRaycast = 0;
+        }
+        else
+            doRaycast++;
 
         //CleanInput(xInput * xSensitivity, yInput * ySensitivity, inputListLenght, out xMedian, out yMedian);
     }
@@ -240,17 +252,48 @@ public class WheelchairController : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == 8)
+        {
             currentTriggerType = other.name;
+            return;
+        }
         else if (other.gameObject.layer == 9 && !MasterElementList.Exists(e => e.ID == other.gameObject.GetInstanceID()))
+        {
             MasterElementList.Add(new MasterElement(other.name, other.gameObject.GetInstanceID()));
+            return;
+        }
+
+        // Sound
+        if (other.tag == "Sound")
+        {
+            switch (other.name)
+            {
+                case "foo":
+                    audioSource.clip = standardAudioClip;
+                    break;
+                default:
+                    audioSource.clip = standardAudioClip;
+                    break;
+            }
+        }
     }
     void OnTriggerExit(Collider other)
     {
         if (other.gameObject.layer == 8)
+        {
             currentTriggerType = string.Empty;
+            return;
+        }
         else if (other.gameObject.layer == 9
             && MasterElementList.Exists(e => e.ID == other.gameObject.GetInstanceID()))
+        {
             MasterElementList.Remove(MasterElementList.Find(e => e.ID == other.gameObject.GetInstanceID()));
+            return;
+        }
+
+        if (other.tag == "Sound")
+        {
+            audioSource.clip = standardAudioClip;
+        }
     }
 
     void RaycastEye()
@@ -290,19 +333,17 @@ public class WheelchairController : MonoBehaviour
                 //Debug.DrawLine(startPos, newTargetPos, Color.blue);
             }
 
-        Debug.Log(eyeRaycastList.Count);
-
         for (int i = eyeRaycastList.Count; i > 0; i--)
         {
             if (Time.time - eyeRaycastList[i - 1].firstContact > timeToAction * Time.deltaTime * 100)
             {
-                Debug.Log("Action");
+                //Debug.Log("Action");
                 ChooseLookAtAction(eyeRaycastList[i - 1].raycastObject);
                 eyeRaycastList.RemoveAt(i - 1);
             }
             else if (eyeRaycastTempList.Exists(t => t == eyeRaycastList[i - 1].raycastObject))
             {
-                Debug.Log("waiting");
+                //Debug.Log("waiting");
                 //if (Time.time - eyeRaycastList[i].firstContact < timeToAction)
                 //    ChooseLookAtAction(eyeRaycastList[i].raycastObject, false);
 
@@ -311,7 +352,7 @@ public class WheelchairController : MonoBehaviour
             }
             else
             {
-                Debug.Log("Delet");
+                //Debug.Log("Delet");
                 eyeRaycastList.RemoveAt(i - 1);
             }
         }
