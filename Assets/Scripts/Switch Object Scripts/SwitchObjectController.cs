@@ -24,12 +24,13 @@ public class SwitchObjectController : MonoBehaviour
 
         //initiate the moveable Object and set at the Start Position
         switchObject.position = startPosition.position;
-        if(loadAtStart) loadObject();
+        if (loadAtStart) loadObject();
     }
 
     private void loadObject()
     {
-        controllerObject = Instantiate(moveableObject, startPosition.position, startPosition.rotation) as GameObject;
+        if (moveableObject)
+            controllerObject = Instantiate(moveableObject, startPosition.position, startPosition.rotation) as GameObject;
         controllerObject.transform.parent = transform.FindChild("Switch Object");
         objectLoaded = true;
     }
@@ -56,7 +57,7 @@ public class SwitchObjectController : MonoBehaviour
         else
         {
             //Debug.Log("back to start Position");
-            switchObject.position = startPosition.position; 
+            switchObject.position = startPosition.position;
             switchObject.rotation = startPosition.rotation;
         }
     }

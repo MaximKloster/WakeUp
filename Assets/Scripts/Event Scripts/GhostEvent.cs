@@ -6,11 +6,15 @@ public class GhostEvent : MonoBehaviour
     [SerializeField]
     float timeToEvent = 2f, ghostSpeed = 1f, followDistance = 3f;
 
+    [SerializeField]
+    AudioClip ghostaAppearsAudio, ghostFollowAudio;
+
     Transform player, ghost, particles;
     Vector3 startPosition;
     NavMeshAgent navMeshAgent;
     bool startEvent;
     float eventStartTime;
+    AudioSource audioSource;
 
     // Use this for initialization
     void Start()
@@ -25,6 +29,9 @@ public class GhostEvent : MonoBehaviour
 
         particles = transform.FindChild("Object").FindChild("Particles").transform;
         particles.gameObject.SetActive(false);
+
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.playOnAwake = false;
     }
 
     // Update is called once per frame
