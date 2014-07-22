@@ -55,6 +55,7 @@ ModelImporter:
     2300022: Cylinder_001
     2300024: Cylinder_003
     2300026: Plane
+    2300028: Cylinder_002
     3300000: BezierCurve
     3300002: BezierCurve_001
     3300004: BezierCurve_002
@@ -69,6 +70,7 @@ ModelImporter:
     3300022: Cylinder_001
     3300024: Cylinder_003
     3300026: Plane
+    3300028: Cylinder_002
     4300000: BezierCurve_002
     4300002: Cylinder_002
     4300004: Cylinder_003
@@ -96,6 +98,7 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     optimizeGameObjects: 0
+    motionNodeName: 
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
@@ -138,6 +141,6 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   additionalBone: 0
   userData: 
