@@ -330,7 +330,19 @@ public class WheelchairController : MonoBehaviour
                     eyeRaycastTempObject = hit.transform;
 
                     if (eyeRaycastObject.raycastObject != eyeRaycastTempObject)
-                        eyeRaycastObject = new EyeRaycastObject(eyeRaycastTempObject);
+                    {
+                        if (Time.time - eyeRaycastObject.firstContact * 25 > timeToAction * Time.deltaTime * 100)
+                        {
+                            eyeRaycastObject = new EyeRaycastObject(eyeRaycastTempObject);
+
+                            if (eyeRaycastObject.raycastObject.tag == "Door")
+                            {
+                                print("set new door");
+                                SetEmissionGainOfDoor(0.2f);
+
+                            }
+                        }
+                    }
 
                     break;
                 }
@@ -343,19 +355,24 @@ public class WheelchairController : MonoBehaviour
             }
         }
 
-
         if (eyeRaycastTempObject != null)
         {
+            //if (Time.time - eyeRaycastObject.firstContact * 25 > timeToAction * Time.deltaTime * 100)
+            //{
+            //    if (eyeRaycastObject.raycastObject.tag == "Door")
+            //    {
+            //        SetEmissionGainOfDoor(0f);
+            //    }
+            //    eyeRaycastObject.Delet();
+            //}
             if (Time.time - eyeRaycastObject.firstContact > timeToAction * Time.deltaTime * 100)
             {
-                //Debug.Log("Action");
                 ChooseLookAtAction(eyeRaycastObject.raycastObject);
+
                 eyeRaycastObject.Delet();
             }
             else if (eyeRaycastObject.raycastObject == eyeRaycastTempObject)
             {
-                if(eyeRaycastObject.raycastObject.tag == "Door")
-                if(eyeRaycastObject.raycastObject.GetComponent<
                 //Debug.Log("waiting");
                 //if (Time.time - eyeRaycastList[i].firstContact < timeToAction)
                 //    ChooseLookAtAction(eyeRaycastList[i].raycastObject, false);
@@ -365,8 +382,29 @@ public class WheelchairController : MonoBehaviour
             }
             else
             {
-                //Debug.Log("Delet");
-                eyeRaycastObject.Delet();
+
+            }
+        }
+    }
+
+    void SetEmissionGainOfDoor(float emessionGain)
+    {
+        for (int i = 0; i < eyeRaycastObject.raycastObject.childCount; i++)
+        {
+            if (eyeRaycastObject.raycastObject.GetChild(i).tag == "Door")
+            {
+                for (int j = 0; i < eyeRaycastObject.raycastObject.GetChild(i).childCount; j++)
+                {
+                    if (eyeRaycastObject.raycastObject.GetChild(i).GetChild(j).tag == "GlowObject")
+                    {
+                        //eyeRaycastObject.raycastObject.GetChild(i).GetChild(j).gameObject.SetActive(false);
+                        eyeRaycastObject.raycastObject.GetChild(i).GetChild(j).renderer.material.SetFloat("_EmissionGain", emessionGain);
+                        print("change color");
+                        break;
+                    }
+                }
+
+                break;
             }
         }
     }
@@ -377,6 +415,7 @@ public class WheelchairController : MonoBehaviour
         {
             case "Door":
                 lookAtObject.GetComponentInParent<DoorController>().LookAt();
+                SetEmissionGainOfDoor(0f);
                 break;
             case "Flashlight":
                 Transform flashlight = Instantiate(lookAtObject, transform.FindChild("Flashlight Spawnpoint").position, transform.FindChild("Flashlight Spawnpoint").rotation) as Transform;
