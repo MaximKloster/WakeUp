@@ -40,6 +40,12 @@ public struct EyeRaycastObject
         //onAction = true;
     }
 
+    public void Delet()
+    {
+        raycastObject = null;
+        firstContact = 0;
+    }
+
     //public void OnAction(bool onAction)
     //{
     //    this.onAction = onAction;
@@ -86,13 +92,12 @@ public class WheelchairController : MonoBehaviour
     public List<MasterElement> MasterElementList { get; private set; }
     float collisionDistance = 3.0f;
 
-    List<EyeRaycastObject> eyeRaycastList = new List<EyeRaycastObject>();
-    List<Transform> eyeRaycastTempList = new List<Transform>();
+    EyeRaycastObject eyeRaycastObject;
     int doRaycast;
 
     // Sound
     AudioSource audioSource;
-    
+
     float yStartAngle;
 
     #endregion
@@ -311,9 +316,10 @@ public class WheelchairController : MonoBehaviour
             child.rotation.eulerAngles.z)
             * transform.forward).normalized * collisionDistance;
 
-        eyeRaycastTempList.Clear();
+        Transform eyeRaycastTempObject = null;
 
         for (int i = -2; i < 3; i++)
+        {
             for (int j = -2; j < 3; j++)
             {
                 Vector3 newTargetPos = targetPos + child.right * 0.2f * i + child.up * 0.2f * j;
@@ -321,28 +327,35 @@ public class WheelchairController : MonoBehaviour
                 {
                     //Debug.DrawLine(startPos, newTargetPos, Color.cyan);
 
-                    if (!eyeRaycastTempList.Exists(t => t == hit.transform))
-                    {
-                        eyeRaycastTempList.Add(hit.transform);
+                    eyeRaycastTempObject = hit.transform;
 
-                        if (!eyeRaycastList.Exists(t => t.raycastObject == hit.transform))
-                            eyeRaycastList.Add(new EyeRaycastObject(hit.transform));
-                    }
+                    if (eyeRaycastObject.raycastObject != eyeRaycastTempObject)
+                        eyeRaycastObject = new EyeRaycastObject(eyeRaycastTempObject);
+
+                    break;
                 }
                 //else
-                //Debug.DrawLine(startPos, newTargetPos, Color.blue);
+                //Debug.DrawLine(startPos, newTargetPos, Color.blue)
             }
+            if (eyeRaycastTempObject != null)
+            {
+                break;
+            }
+        }
 
-        for (int i = eyeRaycastList.Count; i > 0; i--)
+
+        if (eyeRaycastTempObject != null)
         {
-            if (Time.time - eyeRaycastList[i - 1].firstContact > timeToAction * Time.deltaTime * 100)
+            if (Time.time - eyeRaycastObject.firstContact > timeToAction * Time.deltaTime * 100)
             {
                 //Debug.Log("Action");
-                ChooseLookAtAction(eyeRaycastList[i - 1].raycastObject);
-                eyeRaycastList.RemoveAt(i - 1);
+                ChooseLookAtAction(eyeRaycastObject.raycastObject);
+                eyeRaycastObject.Delet();
             }
-            else if (eyeRaycastTempList.Exists(t => t == eyeRaycastList[i - 1].raycastObject))
+            else if (eyeRaycastObject.raycastObject == eyeRaycastTempObject)
             {
+                if(eyeRaycastObject.raycastObject.tag == "Door")
+                if(eyeRaycastObject.raycastObject.GetComponent<
                 //Debug.Log("waiting");
                 //if (Time.time - eyeRaycastList[i].firstContact < timeToAction)
                 //    ChooseLookAtAction(eyeRaycastList[i].raycastObject, false);
@@ -353,7 +366,7 @@ public class WheelchairController : MonoBehaviour
             else
             {
                 //Debug.Log("Delet");
-                eyeRaycastList.RemoveAt(i - 1);
+                eyeRaycastObject.Delet();
             }
         }
     }
