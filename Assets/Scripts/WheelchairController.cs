@@ -31,25 +31,29 @@ public struct EyeRaycastObject
 {
     public Transform raycastObject;
     public float firstContact;
-    //public bool onAction;
+    public bool onAction;
 
     public EyeRaycastObject(Transform raycastObject)
     {
         this.raycastObject = raycastObject;
         firstContact = Time.time;
-        //onAction = true;
+        onAction = false;
     }
 
     public void Delet()
     {
         raycastObject = null;
-        firstContact = 0;
+        firstContact = Time.time;
+    }
+    public void SetObjectToNull()
+    {
+        raycastObject = null;
     }
 
-    //public void OnAction(bool onAction)
-    //{
-    //    this.onAction = onAction;
-    //}
+    public void OnAction()
+    {
+        this.onAction = true;
+    }
 }
 
 public class WheelchairController : MonoBehaviour
@@ -92,7 +96,7 @@ public class WheelchairController : MonoBehaviour
     public List<MasterElement> MasterElementList { get; private set; }
     float collisionDistance = 3.0f;
 
-    EyeRaycastObject eyeRaycastObject;
+    EyeRaycastObject eyeRaycastObject = new EyeRaycastObject(null);
     int doRaycast;
 
     // Sound
@@ -328,26 +332,31 @@ public class WheelchairController : MonoBehaviour
                     //Debug.DrawLine(startPos, newTargetPos, Color.cyan);
 
                     eyeRaycastTempObject = hit.transform;
+                    print("set temp");
 
-                    if (eyeRaycastObject.raycastObject != eyeRaycastTempObject)
+                    if (eyeRaycastObject.raycastObject != eyeRaycastTempObject || Time.time > eyeRaycastObject.firstContact + timeToAction * 10)
                     {
-                        if (Time.time - eyeRaycastObject.firstContact * 25 > timeToAction * Time.deltaTime * 100)
+                        eyeRaycastObject = new EyeRaycastObject(eyeRaycastTempObject);
+
+                        if (eyeRaycastObject.raycastObject.tag == "Door")
                         {
-                            eyeRaycastObject = new EyeRaycastObject(eyeRaycastTempObject);
-
-                            if (eyeRaycastObject.raycastObject.tag == "Door")
-                            {
-                                print("set new door");
-                                SetEmissionGainOfDoor(0.2f);
-
-                            }
+                            print("set new door");
+                            SetEmissionGainOfDoor(0.2f);
+                            MoveDoorhandle(true);
                         }
                     }
+                    //else if (Time.time > eyeRaycastObject.firstContact + timeToAction * 10)
+                    //{
+
+                    //}
 
                     break;
                 }
-                //else
-                //Debug.DrawLine(startPos, newTargetPos, Color.blue)
+                //else if (eyeRaycastTempObject != null)
+                //{
+                //    break;
+                //    //Debug.DrawLine(startPos, newTargetPos, Color.blue)
+                //}
             }
             if (eyeRaycastTempObject != null)
             {
@@ -357,33 +366,29 @@ public class WheelchairController : MonoBehaviour
 
         if (eyeRaycastTempObject != null)
         {
-            //if (Time.time - eyeRaycastObject.firstContact * 25 > timeToAction * Time.deltaTime * 100)
-            //{
-            //    if (eyeRaycastObject.raycastObject.tag == "Door")
-            //    {
-            //        SetEmissionGainOfDoor(0f);
-            //    }
-            //    eyeRaycastObject.Delet();
-            //}
-            if (Time.time - eyeRaycastObject.firstContact > timeToAction * Time.deltaTime * 100)
+            if (!eyeRaycastObject.onAction && Time.time - eyeRaycastObject.firstContact > timeToAction * Time.deltaTime * 100)
             {
                 ChooseLookAtAction(eyeRaycastObject.raycastObject);
+                MoveDoorhandle(false);
 
-                eyeRaycastObject.Delet();
+                eyeRaycastObject.OnAction();
             }
             else if (eyeRaycastObject.raycastObject == eyeRaycastTempObject)
             {
-                //Debug.Log("waiting");
+                //SetEmissionGainOfDoor(0.2f);d
+                Debug.Log("waiting");
                 //if (Time.time - eyeRaycastList[i].firstContact < timeToAction)
                 //    ChooseLookAtAction(eyeRaycastList[i].raycastObject, false);
 
                 //eyeRaycastTempList.Remove(eyeRaycastList[i].raycastObject);
                 //eyeRaycastList.RemoveAt(i);
             }
-            else
-            {
-
-            }
+        }
+        else if (eyeRaycastObject.raycastObject != null)
+        {
+            SetEmissionGainOfDoor(0f);
+            MoveDoorhandle(false);
+            eyeRaycastObject.Delet();
         }
     }
 
@@ -407,6 +412,43 @@ public class WheelchairController : MonoBehaviour
                 break;
             }
         }
+    }
+    void MoveDoorhandle(bool down)
+    {
+        Transform doorhandle = null;
+
+        for (int i = 0; i < eyeRaycastObject.raycastObject.childCount; i++)
+        {
+            if (eyeRaycastObject.raycastObject.GetChild(i).tag == "Door")
+            {
+                for (int j = 0; i < eyeRaycastObject.raycastObject.GetChild(i).childCount; j++)
+                {
+                    if (eyeRaycastObject.raycastObject.GetChild(i).GetChild(j).tag == "DoorHandle")
+                    {
+                        doorhandle = eyeRaycastObject.raycastObject.GetChild(i).GetChild(j);
+                        break;
+                    }
+                }
+
+                break;
+            }
+        }
+
+        if (doorhandle != null)
+            if (down)
+            {
+                StartCoroutine("MoveDoorhandleDown", doorhandle);
+            }
+            else
+            {
+                StopCoroutine("MoveDoorhandleDown");
+                doorhandle.rotation = Quaternion.identity;
+            }
+    }
+    void MoveDoorhandleDown(Transform doorhandle)
+    {
+        //if(doorhandle.rotation.eulerAngles.z > -44)
+        //    doorhandle.rotation = Quaternion.Lerp(doorhandle.rotation, doorhandle.rotation. Quaternion.Euler(new Vector3(0, 0, -45)), timeToAction * Time.deltaTime);
     }
 
     void ChooseLookAtAction(Transform lookAtObject)
