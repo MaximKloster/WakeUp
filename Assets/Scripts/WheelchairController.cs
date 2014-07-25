@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 
 public struct TurkSegment
@@ -329,33 +330,34 @@ public class WheelchairController : MonoBehaviour
                 Vector3 newTargetPos = targetPos + child.right * 0.2f * i + child.up * 0.2f * j;
                 if (Physics.Linecast(startPos, newTargetPos, out hit, 1 << 10))
                 {
-                    //Debug.DrawLine(startPos, newTargetPos, Color.cyan);
-
-                    eyeRaycastTempObject = hit.transform;
-                    print("set temp");
-
-                    if (eyeRaycastObject.raycastObject != eyeRaycastTempObject || Time.time > eyeRaycastObject.firstContact + timeToAction * 10)
+                    if ((hit.transform.GetComponentInParent<DoorController>()
+                        && hit.transform.GetComponentInParent<DoorController>().OpenByEye
+                        && !hit.transform.GetComponentInParent<DoorController>().OnAction)
+                        || hit.transform.tag == "Flashlight")
                     {
-                        eyeRaycastObject = new EyeRaycastObject(eyeRaycastTempObject);
+                        Debug.DrawLine(startPos, newTargetPos, Color.cyan);
 
-                        if (eyeRaycastObject.raycastObject.tag == "Door")
+                        eyeRaycastTempObject = hit.transform;
+
+                        if (eyeRaycastObject.raycastObject != eyeRaycastTempObject || Time.time > eyeRaycastObject.firstContact + timeToAction * 15)
                         {
-                            print("set new door");
-                            SetEmissionGainOfDoor(0.2f);
-                            MoveDoorhandle(true);
+                            eyeRaycastObject = new EyeRaycastObject(eyeRaycastTempObject);
+
+                            if (eyeRaycastObject.raycastObject.tag == "Door")
+                            {
+                                SetEmissionGainOfDoor(0.1f);
+                                MoveDoorhandle(true);
+                            }
                         }
+
+                        break;
                     }
-                    //else if (Time.time > eyeRaycastObject.firstContact + timeToAction * 10)
-                    //{
-
-                    //}
-
-                    break;
                 }
                 //else if (eyeRaycastTempObject != null)
                 //{
                 //    break;
-                //    //Debug.DrawLine(startPos, newTargetPos, Color.blue)
+                else
+                    Debug.DrawLine(startPos, newTargetPos, Color.blue);
                 //}
             }
             if (eyeRaycastTempObject != null)
@@ -376,7 +378,6 @@ public class WheelchairController : MonoBehaviour
             else if (eyeRaycastObject.raycastObject == eyeRaycastTempObject)
             {
                 //SetEmissionGainOfDoor(0.2f);d
-                Debug.Log("waiting");
                 //if (Time.time - eyeRaycastList[i].firstContact < timeToAction)
                 //    ChooseLookAtAction(eyeRaycastList[i].raycastObject, false);
 
@@ -404,7 +405,6 @@ public class WheelchairController : MonoBehaviour
                     {
                         //eyeRaycastObject.raycastObject.GetChild(i).GetChild(j).gameObject.SetActive(false);
                         eyeRaycastObject.raycastObject.GetChild(i).GetChild(j).renderer.material.SetFloat("_EmissionGain", emessionGain);
-                        print("change color");
                         break;
                     }
                 }
@@ -425,7 +425,7 @@ public class WheelchairController : MonoBehaviour
                 {
                     if (eyeRaycastObject.raycastObject.GetChild(i).GetChild(j).tag == "DoorHandle")
                     {
-                        doorhandle = eyeRaycastObject.raycastObject.GetChild(i).GetChild(j);
+                        doorhandle = eyeRaycastObject.raycastObject.GetChild(i).GetChild(j).transform;
                         break;
                     }
                 }
@@ -442,13 +442,21 @@ public class WheelchairController : MonoBehaviour
             else
             {
                 StopCoroutine("MoveDoorhandleDown");
-                doorhandle.rotation = Quaternion.identity;
+                doorhandle.localRotation = Quaternion.identity;
             }
     }
-    void MoveDoorhandleDown(Transform doorhandle)
+    IEnumerator MoveDoorhandleDown(Transform doorhandle)
     {
-        //if(doorhandle.rotation.eulerAngles.z > -44)
-        //    doorhandle.rotation = Quaternion.Lerp(doorhandle.rotation, doorhandle.rotation. Quaternion.Euler(new Vector3(0, 0, -45)), timeToAction * Time.deltaTime);
+        while (true)
+        {
+            //if (doorhandle.rotation.eulerAngles.z > -44)
+            //{
+            //float angle = Mathf.Lerp(doorhandle.rotation.eulerAngles.z, -45, timeToAction * Time.deltaTime);
+            doorhandle.localRotation = Quaternion.Slerp(doorhandle.localRotation, doorhandle.localRotation * Quaternion.Euler(new Vector3(0, 0, -75)), timeToAction * Time.deltaTime);
+            //}
+
+            yield return null;
+        }
     }
 
     void ChooseLookAtAction(Transform lookAtObject)
