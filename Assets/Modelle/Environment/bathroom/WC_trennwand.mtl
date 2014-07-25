@@ -1,0 +1,30 @@
+# Blender MTL File: 'Toilettenraum.blend'
+# Material Count: 3
+
+newmtl None
+Ns 0
+Ka 0.000000 0.000000 0.000000
+Kd 0.8 0.8 0.8
+Ks 0.8 0.8 0.8
+d 1
+illum 2
+
+newmtl Wc_Trennwaende
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Z:\GD1012 Projekte (4. Semester)\Wake Up\Art\Textures\FERTIG\für räume und einrichtung\plastik_weiß.png
+
+newmtl wc_trennwand_griff
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Z:\GD1012 Projekte (4. Semester)\Wake Up\Art\Textures\FERTIG\für räume und einrichtung\metall_2_feiner.png
