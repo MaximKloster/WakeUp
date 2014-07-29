@@ -1,21 +1,25 @@
 fileFormatVersion: 2
-guid: b1cd794f46c8c7d4daa320de4b4c9bd4
+guid: f68fa942e8493a941bb9bc6b3c004330
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: BezierCurve
-    100002: Cylinder
-    100004: //RootNode
-    400000: BezierCurve
-    400002: Cylinder
-    400004: //RootNode
-    2300000: BezierCurve
-    2300002: Cylinder
-    3300000: BezierCurve
-    3300002: Cylinder
-    4300000: BezierCurve
-    4300002: Cylinder
-    7400000: Default Take
+    100000: Cylinder.001_Cylinder.001_None
+    100002: Cylinder_Cylinder_Flasche
+    100004: Cylinder_Cylinder_Material
+    100006: //RootNode
+    400000: Cylinder.001_Cylinder.001_None
+    400002: Cylinder_Cylinder_Flasche
+    400004: Cylinder_Cylinder_Material
+    400006: //RootNode
+    2300000: Cylinder.001_Cylinder.001_None
+    2300002: Cylinder_Cylinder_Flasche
+    2300004: Cylinder_Cylinder_Material
+    3300000: Cylinder.001_Cylinder.001_None
+    3300002: Cylinder_Cylinder_Flasche
+    3300004: Cylinder_Cylinder_Material
+    4300000: Cylinder.001_Cylinder.001_None
+    4300002: Cylinder_Cylinder_Flasche
+    4300004: Cylinder_Cylinder_Material
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -36,7 +40,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: .00999999978
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -68,6 +72,6 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   additionalBone: 0
   userData: 
