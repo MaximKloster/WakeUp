@@ -12,9 +12,6 @@ public class DoorController : MonoBehaviour
     int eventCount = -1;
 
     [SerializeField]
-    float SpeedToOpen = 2.0f, SpeedToClose = 0.5f;
-
-    [SerializeField]
     bool openByEye = true, doubleDoor = false;
 
     [SerializeField]
@@ -25,6 +22,7 @@ public class DoorController : MonoBehaviour
     Transform doorTransform;
     float startAngle;
     bool open, openDoor, closeDoor;
+    float SpeedToOpen = 1f, SpeedToClose = 1f;
     float angle;
     public bool OpenByEye { get { return openByEye; } }
     public bool OnAction
@@ -144,7 +142,7 @@ public class DoorController : MonoBehaviour
             //}
         }
     }
-
+    
     void PlaySoundOnClosing()
     {
         doorSounds.clip = soundOnClosing;

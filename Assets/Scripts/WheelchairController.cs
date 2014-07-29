@@ -335,7 +335,7 @@ public class WheelchairController : MonoBehaviour
                         && !hit.transform.GetComponentInParent<DoorController>().OnAction)
                         || hit.transform.tag == "Flashlight")
                     {
-                        Debug.DrawLine(startPos, newTargetPos, Color.cyan);
+                        //Debug.DrawLine(startPos, newTargetPos, Color.cyan);
 
                         eyeRaycastTempObject = hit.transform;
 
@@ -356,8 +356,8 @@ public class WheelchairController : MonoBehaviour
                 //else if (eyeRaycastTempObject != null)
                 //{
                 //    break;
-                else
-                    Debug.DrawLine(startPos, newTargetPos, Color.blue);
+                //else
+                    //Debug.DrawLine(startPos, newTargetPos, Color.blue);
                 //}
             }
             if (eyeRaycastTempObject != null)
