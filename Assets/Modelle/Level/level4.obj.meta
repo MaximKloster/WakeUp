@@ -42,6 +42,14 @@ ModelImporter:
     100072: Plane.001_Plane.004_fasade2_hausfassade_putz.png
     100074: wall_Plane_Wall1_putz.png.001
     100076: top_Plane.002_decke
+    100078: Plane.003_Plane.006_None
+    100080: Plane.004_Plane.007_None
+    100082: Plane.005_Plane.008_None
+    100084: Plane.006_Plane.009_None
+    100086: Plane.007_Plane.010_None
+    100088: Plane.008_Plane.011_None
+    100090: Plane.009_Plane.012_None
+    100092: Plane.010_Plane.013_None
     400000: Cube.001_Cube.001_None
     400002: Cube.003_Cube.003_None
     400004: Cube_Cube_None
@@ -81,6 +89,14 @@ ModelImporter:
     400072: Plane.001_Plane.004_fasade2_hausfassade_putz.png
     400074: wall_Plane_Wall1_putz.png.001
     400076: top_Plane.002_decke
+    400078: Plane.003_Plane.006_None
+    400080: Plane.004_Plane.007_None
+    400082: Plane.005_Plane.008_None
+    400084: Plane.006_Plane.009_None
+    400086: Plane.007_Plane.010_None
+    400088: Plane.008_Plane.011_None
+    400090: Plane.009_Plane.012_None
+    400092: Plane.010_Plane.013_None
     2300000: Cube.001_Cube.001_None
     2300002: Cube.003_Cube.003_None
     2300004: Cube_Cube_None
@@ -119,6 +135,14 @@ ModelImporter:
     2300070: Plane.001_Plane.004_fasade2_hausfassade_putz.png
     2300072: wall_Plane_Wall1_putz.png.001
     2300074: top_Plane.002_decke
+    2300076: Plane.003_Plane.006_None
+    2300078: Plane.004_Plane.007_None
+    2300080: Plane.005_Plane.008_None
+    2300082: Plane.006_Plane.009_None
+    2300084: Plane.007_Plane.010_None
+    2300086: Plane.008_Plane.011_None
+    2300088: Plane.009_Plane.012_None
+    2300090: Plane.010_Plane.013_None
     3300000: Cube.001_Cube.001_None
     3300002: Cube.003_Cube.003_None
     3300004: Cube_Cube_None
@@ -157,6 +181,14 @@ ModelImporter:
     3300070: Plane.001_Plane.004_fasade2_hausfassade_putz.png
     3300072: wall_Plane_Wall1_putz.png.001
     3300074: top_Plane.002_decke
+    3300076: Plane.003_Plane.006_None
+    3300078: Plane.004_Plane.007_None
+    3300080: Plane.005_Plane.008_None
+    3300082: Plane.006_Plane.009_None
+    3300084: Plane.007_Plane.010_None
+    3300086: Plane.008_Plane.011_None
+    3300088: Plane.009_Plane.012_None
+    3300090: Plane.010_Plane.013_None
     4300000: Cube.001_Cube.001_None
     4300002: Cube.003_Cube.003_None
     4300004: Cube_Cube_None
@@ -195,6 +227,14 @@ ModelImporter:
     4300070: Plane.001_Plane.004_fasade2_hausfassade_putz.png
     4300072: wall_Plane_Wall1_putz.png.001
     4300074: top_Plane.002_decke
+    4300076: Plane.003_Plane.006_None
+    4300078: Plane.004_Plane.007_None
+    4300080: Plane.005_Plane.008_None
+    4300082: Plane.006_Plane.009_None
+    4300084: Plane.007_Plane.010_None
+    4300086: Plane.008_Plane.011_None
+    4300088: Plane.009_Plane.012_None
+    4300090: Plane.010_Plane.013_None
     9500000: //RootNode
   materials:
     importMaterials: 1
