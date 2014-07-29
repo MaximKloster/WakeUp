@@ -50,6 +50,66 @@ ModelImporter:
     100088: Plane.008_Plane.011_None
     100090: Plane.009_Plane.012_None
     100092: Plane.010_Plane.013_None
+    100094: Plane.011_Plane.046_None
+    100096: Plane.012_Plane.047_None
+    100098: Plane.013_Plane.048_None
+    100100: Plane.014_Plane.049_None
+    100102: Plane.015_Plane.050_None
+    100104: Plane.016_Plane.051_None
+    100106: Plane.017_Plane.052_None
+    100108: Plane.018_Plane.053_None
+    100110: wall.001_Plane.014_Wall1
+    100112: wall.001_Plane.014_Wall2
+    100114: wall.002_Plane.015_fasade
+    100116: wall.003_Plane.016_fasade
+    100118: wall.004_Plane.017_fasade
+    100120: wall.005_Plane.018_Wall1
+    100122: wall.005_Plane.018_Wall2
+    100124: wall.006_Plane.019_fasade
+    100126: wall.006_Plane.019_Wall1
+    100128: wall.006_Plane.019_Wall2
+    100130: wall.007_Plane.020_Wall1
+    100132: wall.007_Plane.020_Wall2
+    100134: wall.008_Plane.021_fasade
+    100136: wall.009_Plane.022_fasade
+    100138: wall.010_Plane.023_fasade
+    100140: wall.011_Plane.024_fasade
+    100142: wall.012_Plane.025_fasade
+    100144: wall.013_Plane.026_fasade
+    100146: wall.014_Plane.027_fasade
+    100148: wall.015_Plane.028_fasade
+    100150: wall.016_Plane.029_fasade
+    100152: wall.017_Plane.030_fasade
+    100154: wall.018_Plane.031_Wall1
+    100156: wall.018_Plane.031_Wall2
+    100158: wall.019_Plane.032_Wall1
+    100160: wall.019_Plane.032_Wall2
+    100162: wall.020_Plane.033_Wall1
+    100164: wall.020_Plane.033_Wall2
+    100166: wall.021_Plane.034_Wall1
+    100168: wall.021_Plane.034_Wall2
+    100170: wall.022_Plane.035_Fliesen
+    100172: wall.023_Plane.036_Wall1
+    100174: wall.023_Plane.036_Wall2
+    100176: wall.024_Plane.037_Wall1
+    100178: wall.024_Plane.037_Wall2
+    100180: wall.025_Plane.038_Wall1
+    100182: wall.025_Plane.038_Wall2
+    100184: wall.026_Plane.039_Wall1
+    100186: wall.026_Plane.039_Wall1_putz.png.001
+    100188: wall.026_Plane.039_Wall2
+    100190: wall.027_Plane.040_fasade
+    100192: wall.027_Plane.040_Wall2
+    100194: wall.028_Plane.041_Wall1
+    100196: wall.028_Plane.041_Wall2
+    100198: wall.029_Plane.042_fasade
+    100200: wall.029_Plane.042_Wall2
+    100202: wall.030_Plane.043_Wall1
+    100204: wall.030_Plane.043_Wall2
+    100206: wall.031_Plane.044_Wall1
+    100208: wall.031_Plane.044_Wall2
+    100210: wall.032_Plane.045_fasade
+    100212: wall.032_Plane.045_Wall2
     400000: Cube.001_Cube.001_None
     400002: Cube.003_Cube.003_None
     400004: Cube_Cube_None
@@ -97,6 +157,66 @@ ModelImporter:
     400088: Plane.008_Plane.011_None
     400090: Plane.009_Plane.012_None
     400092: Plane.010_Plane.013_None
+    400094: Plane.011_Plane.046_None
+    400096: Plane.012_Plane.047_None
+    400098: Plane.013_Plane.048_None
+    400100: Plane.014_Plane.049_None
+    400102: Plane.015_Plane.050_None
+    400104: Plane.016_Plane.051_None
+    400106: Plane.017_Plane.052_None
+    400108: Plane.018_Plane.053_None
+    400110: wall.001_Plane.014_Wall1
+    400112: wall.001_Plane.014_Wall2
+    400114: wall.002_Plane.015_fasade
+    400116: wall.003_Plane.016_fasade
+    400118: wall.004_Plane.017_fasade
+    400120: wall.005_Plane.018_Wall1
+    400122: wall.005_Plane.018_Wall2
+    400124: wall.006_Plane.019_fasade
+    400126: wall.006_Plane.019_Wall1
+    400128: wall.006_Plane.019_Wall2
+    400130: wall.007_Plane.020_Wall1
+    400132: wall.007_Plane.020_Wall2
+    400134: wall.008_Plane.021_fasade
+    400136: wall.009_Plane.022_fasade
+    400138: wall.010_Plane.023_fasade
+    400140: wall.011_Plane.024_fasade
+    400142: wall.012_Plane.025_fasade
+    400144: wall.013_Plane.026_fasade
+    400146: wall.014_Plane.027_fasade
+    400148: wall.015_Plane.028_fasade
+    400150: wall.016_Plane.029_fasade
+    400152: wall.017_Plane.030_fasade
+    400154: wall.018_Plane.031_Wall1
+    400156: wall.018_Plane.031_Wall2
+    400158: wall.019_Plane.032_Wall1
+    400160: wall.019_Plane.032_Wall2
+    400162: wall.020_Plane.033_Wall1
+    400164: wall.020_Plane.033_Wall2
+    400166: wall.021_Plane.034_Wall1
+    400168: wall.021_Plane.034_Wall2
+    400170: wall.022_Plane.035_Fliesen
+    400172: wall.023_Plane.036_Wall1
+    400174: wall.023_Plane.036_Wall2
+    400176: wall.024_Plane.037_Wall1
+    400178: wall.024_Plane.037_Wall2
+    400180: wall.025_Plane.038_Wall1
+    400182: wall.025_Plane.038_Wall2
+    400184: wall.026_Plane.039_Wall1
+    400186: wall.026_Plane.039_Wall1_putz.png.001
+    400188: wall.026_Plane.039_Wall2
+    400190: wall.027_Plane.040_fasade
+    400192: wall.027_Plane.040_Wall2
+    400194: wall.028_Plane.041_Wall1
+    400196: wall.028_Plane.041_Wall2
+    400198: wall.029_Plane.042_fasade
+    400200: wall.029_Plane.042_Wall2
+    400202: wall.030_Plane.043_Wall1
+    400204: wall.030_Plane.043_Wall2
+    400206: wall.031_Plane.044_Wall1
+    400208: wall.031_Plane.044_Wall2
+    400210: wall.032_Plane.045_fasade
+    400212: wall.032_Plane.045_Wall2
     2300000: Cube.001_Cube.001_None
     2300002: Cube.003_Cube.003_None
     2300004: Cube_Cube_None
@@ -143,6 +263,66 @@ ModelImporter:
     2300086: Plane.008_Plane.011_None
     2300088: Plane.009_Plane.012_None
     2300090: Plane.010_Plane.013_None
+    2300092: Plane.011_Plane.046_None
+    2300094: Plane.012_Plane.047_None
+    2300096: Plane.013_Plane.048_None
+    2300098: Plane.014_Plane.049_None
+    2300100: Plane.015_Plane.050_None
+    2300102: Plane.016_Plane.051_None
+    2300104: Plane.017_Plane.052_None
+    2300106: Plane.018_Plane.053_None
+    2300108: wall.001_Plane.014_Wall1
+    2300110: wall.001_Plane.014_Wall2
+    2300112: wall.002_Plane.015_fasade
+    2300114: wall.003_Plane.016_fasade
+    2300116: wall.004_Plane.017_fasade
+    2300118: wall.005_Plane.018_Wall1
+    2300120: wall.005_Plane.018_Wall2
+    2300122: wall.006_Plane.019_fasade
+    2300124: wall.006_Plane.019_Wall1
+    2300126: wall.006_Plane.019_Wall2
+    2300128: wall.007_Plane.020_Wall1
+    2300130: wall.007_Plane.020_Wall2
+    2300132: wall.008_Plane.021_fasade
+    2300134: wall.009_Plane.022_fasade
+    2300136: wall.010_Plane.023_fasade
+    2300138: wall.011_Plane.024_fasade
+    2300140: wall.012_Plane.025_fasade
+    2300142: wall.013_Plane.026_fasade
+    2300144: wall.014_Plane.027_fasade
+    2300146: wall.015_Plane.028_fasade
+    2300148: wall.016_Plane.029_fasade
+    2300150: wall.017_Plane.030_fasade
+    2300152: wall.018_Plane.031_Wall1
+    2300154: wall.018_Plane.031_Wall2
+    2300156: wall.019_Plane.032_Wall1
+    2300158: wall.019_Plane.032_Wall2
+    2300160: wall.020_Plane.033_Wall1
+    2300162: wall.020_Plane.033_Wall2
+    2300164: wall.021_Plane.034_Wall1
+    2300166: wall.021_Plane.034_Wall2
+    2300168: wall.022_Plane.035_Fliesen
+    2300170: wall.023_Plane.036_Wall1
+    2300172: wall.023_Plane.036_Wall2
+    2300174: wall.024_Plane.037_Wall1
+    2300176: wall.024_Plane.037_Wall2
+    2300178: wall.025_Plane.038_Wall1
+    2300180: wall.025_Plane.038_Wall2
+    2300182: wall.026_Plane.039_Wall1
+    2300184: wall.026_Plane.039_Wall1_putz.png.001
+    2300186: wall.026_Plane.039_Wall2
+    2300188: wall.027_Plane.040_fasade
+    2300190: wall.027_Plane.040_Wall2
+    2300192: wall.028_Plane.041_Wall1
+    2300194: wall.028_Plane.041_Wall2
+    2300196: wall.029_Plane.042_fasade
+    2300198: wall.029_Plane.042_Wall2
+    2300200: wall.030_Plane.043_Wall1
+    2300202: wall.030_Plane.043_Wall2
+    2300204: wall.031_Plane.044_Wall1
+    2300206: wall.031_Plane.044_Wall2
+    2300208: wall.032_Plane.045_fasade
+    2300210: wall.032_Plane.045_Wall2
     3300000: Cube.001_Cube.001_None
     3300002: Cube.003_Cube.003_None
     3300004: Cube_Cube_None
@@ -189,6 +369,66 @@ ModelImporter:
     3300086: Plane.008_Plane.011_None
     3300088: Plane.009_Plane.012_None
     3300090: Plane.010_Plane.013_None
+    3300092: Plane.011_Plane.046_None
+    3300094: Plane.012_Plane.047_None
+    3300096: Plane.013_Plane.048_None
+    3300098: Plane.014_Plane.049_None
+    3300100: Plane.015_Plane.050_None
+    3300102: Plane.016_Plane.051_None
+    3300104: Plane.017_Plane.052_None
+    3300106: Plane.018_Plane.053_None
+    3300108: wall.001_Plane.014_Wall1
+    3300110: wall.001_Plane.014_Wall2
+    3300112: wall.002_Plane.015_fasade
+    3300114: wall.003_Plane.016_fasade
+    3300116: wall.004_Plane.017_fasade
+    3300118: wall.005_Plane.018_Wall1
+    3300120: wall.005_Plane.018_Wall2
+    3300122: wall.006_Plane.019_fasade
+    3300124: wall.006_Plane.019_Wall1
+    3300126: wall.006_Plane.019_Wall2
+    3300128: wall.007_Plane.020_Wall1
+    3300130: wall.007_Plane.020_Wall2
+    3300132: wall.008_Plane.021_fasade
+    3300134: wall.009_Plane.022_fasade
+    3300136: wall.010_Plane.023_fasade
+    3300138: wall.011_Plane.024_fasade
+    3300140: wall.012_Plane.025_fasade
+    3300142: wall.013_Plane.026_fasade
+    3300144: wall.014_Plane.027_fasade
+    3300146: wall.015_Plane.028_fasade
+    3300148: wall.016_Plane.029_fasade
+    3300150: wall.017_Plane.030_fasade
+    3300152: wall.018_Plane.031_Wall1
+    3300154: wall.018_Plane.031_Wall2
+    3300156: wall.019_Plane.032_Wall1
+    3300158: wall.019_Plane.032_Wall2
+    3300160: wall.020_Plane.033_Wall1
+    3300162: wall.020_Plane.033_Wall2
+    3300164: wall.021_Plane.034_Wall1
+    3300166: wall.021_Plane.034_Wall2
+    3300168: wall.022_Plane.035_Fliesen
+    3300170: wall.023_Plane.036_Wall1
+    3300172: wall.023_Plane.036_Wall2
+    3300174: wall.024_Plane.037_Wall1
+    3300176: wall.024_Plane.037_Wall2
+    3300178: wall.025_Plane.038_Wall1
+    3300180: wall.025_Plane.038_Wall2
+    3300182: wall.026_Plane.039_Wall1
+    3300184: wall.026_Plane.039_Wall1_putz.png.001
+    3300186: wall.026_Plane.039_Wall2
+    3300188: wall.027_Plane.040_fasade
+    3300190: wall.027_Plane.040_Wall2
+    3300192: wall.028_Plane.041_Wall1
+    3300194: wall.028_Plane.041_Wall2
+    3300196: wall.029_Plane.042_fasade
+    3300198: wall.029_Plane.042_Wall2
+    3300200: wall.030_Plane.043_Wall1
+    3300202: wall.030_Plane.043_Wall2
+    3300204: wall.031_Plane.044_Wall1
+    3300206: wall.031_Plane.044_Wall2
+    3300208: wall.032_Plane.045_fasade
+    3300210: wall.032_Plane.045_Wall2
     4300000: Cube.001_Cube.001_None
     4300002: Cube.003_Cube.003_None
     4300004: Cube_Cube_None
@@ -235,6 +475,66 @@ ModelImporter:
     4300086: Plane.008_Plane.011_None
     4300088: Plane.009_Plane.012_None
     4300090: Plane.010_Plane.013_None
+    4300092: Plane.011_Plane.046_None
+    4300094: Plane.012_Plane.047_None
+    4300096: Plane.013_Plane.048_None
+    4300098: Plane.014_Plane.049_None
+    4300100: Plane.015_Plane.050_None
+    4300102: Plane.016_Plane.051_None
+    4300104: Plane.017_Plane.052_None
+    4300106: Plane.018_Plane.053_None
+    4300108: wall.001_Plane.014_Wall1
+    4300110: wall.001_Plane.014_Wall2
+    4300112: wall.002_Plane.015_fasade
+    4300114: wall.003_Plane.016_fasade
+    4300116: wall.004_Plane.017_fasade
+    4300118: wall.005_Plane.018_Wall1
+    4300120: wall.005_Plane.018_Wall2
+    4300122: wall.006_Plane.019_fasade
+    4300124: wall.006_Plane.019_Wall1
+    4300126: wall.006_Plane.019_Wall2
+    4300128: wall.007_Plane.020_Wall1
+    4300130: wall.007_Plane.020_Wall2
+    4300132: wall.008_Plane.021_fasade
+    4300134: wall.009_Plane.022_fasade
+    4300136: wall.010_Plane.023_fasade
+    4300138: wall.011_Plane.024_fasade
+    4300140: wall.012_Plane.025_fasade
+    4300142: wall.013_Plane.026_fasade
+    4300144: wall.014_Plane.027_fasade
+    4300146: wall.015_Plane.028_fasade
+    4300148: wall.016_Plane.029_fasade
+    4300150: wall.017_Plane.030_fasade
+    4300152: wall.018_Plane.031_Wall1
+    4300154: wall.018_Plane.031_Wall2
+    4300156: wall.019_Plane.032_Wall1
+    4300158: wall.019_Plane.032_Wall2
+    4300160: wall.020_Plane.033_Wall1
+    4300162: wall.020_Plane.033_Wall2
+    4300164: wall.021_Plane.034_Wall1
+    4300166: wall.021_Plane.034_Wall2
+    4300168: wall.022_Plane.035_Fliesen
+    4300170: wall.023_Plane.036_Wall1
+    4300172: wall.023_Plane.036_Wall2
+    4300174: wall.024_Plane.037_Wall1
+    4300176: wall.024_Plane.037_Wall2
+    4300178: wall.025_Plane.038_Wall1
+    4300180: wall.025_Plane.038_Wall2
+    4300182: wall.026_Plane.039_Wall1
+    4300184: wall.026_Plane.039_Wall1_putz.png.001
+    4300186: wall.026_Plane.039_Wall2
+    4300188: wall.027_Plane.040_fasade
+    4300190: wall.027_Plane.040_Wall2
+    4300192: wall.028_Plane.041_Wall1
+    4300194: wall.028_Plane.041_Wall2
+    4300196: wall.029_Plane.042_fasade
+    4300198: wall.029_Plane.042_Wall2
+    4300200: wall.030_Plane.043_Wall1
+    4300202: wall.030_Plane.043_Wall2
+    4300204: wall.031_Plane.044_Wall1
+    4300206: wall.031_Plane.044_Wall2
+    4300208: wall.032_Plane.045_fasade
+    4300210: wall.032_Plane.045_Wall2
     9500000: //RootNode
   materials:
     importMaterials: 1
