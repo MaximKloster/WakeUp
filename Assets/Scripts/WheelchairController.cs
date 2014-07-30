@@ -345,17 +345,19 @@ public class WheelchairController : MonoBehaviour
 
                             if (eyeRaycastObject.raycastObject.tag == "Door")
                             {
-                                SetEmissionGainOfDoor(0.1f);
+                                SetEmissionGainOfDoor(0.15f);
                                 MoveDoorhandle(true);
+                            }
+                            else if (eyeRaycastObject.raycastObject.tag == "Flashlight")
+                            {
+                                SetEmissionGainOfFlashlight(0.6f);
+                                print("flashlight");
                             }
                         }
 
                         break;
                     }
                 }
-                //else if (eyeRaycastTempObject != null)
-                //{
-                //    break;
                 //else
                     //Debug.DrawLine(startPos, newTargetPos, Color.blue);
                 //}
@@ -374,15 +376,6 @@ public class WheelchairController : MonoBehaviour
                 MoveDoorhandle(false);
 
                 eyeRaycastObject.OnAction();
-            }
-            else if (eyeRaycastObject.raycastObject == eyeRaycastTempObject)
-            {
-                //SetEmissionGainOfDoor(0.2f);d
-                //if (Time.time - eyeRaycastList[i].firstContact < timeToAction)
-                //    ChooseLookAtAction(eyeRaycastList[i].raycastObject, false);
-
-                //eyeRaycastTempList.Remove(eyeRaycastList[i].raycastObject);
-                //eyeRaycastList.RemoveAt(i);
             }
         }
         else if (eyeRaycastObject.raycastObject != null)
@@ -403,7 +396,6 @@ public class WheelchairController : MonoBehaviour
                 {
                     if (eyeRaycastObject.raycastObject.GetChild(i).GetChild(j).tag == "GlowObject")
                     {
-                        //eyeRaycastObject.raycastObject.GetChild(i).GetChild(j).gameObject.SetActive(false);
                         eyeRaycastObject.raycastObject.GetChild(i).GetChild(j).renderer.material.SetFloat("_EmissionGain", emessionGain);
                         break;
                     }
@@ -452,10 +444,30 @@ public class WheelchairController : MonoBehaviour
             //if (doorhandle.rotation.eulerAngles.z > -44)
             //{
             //float angle = Mathf.Lerp(doorhandle.rotation.eulerAngles.z, -45, timeToAction * Time.deltaTime);
-            doorhandle.localRotation = Quaternion.Slerp(doorhandle.localRotation, doorhandle.localRotation * Quaternion.Euler(new Vector3(0, 0, -75)), timeToAction * Time.deltaTime);
+            doorhandle.localRotation = Quaternion.Slerp(doorhandle.localRotation, doorhandle.localRotation * Quaternion.Euler(new Vector3(0, 0, -45)), timeToAction * Time.deltaTime);
             //}
 
             yield return null;
+        }
+    }
+
+    void SetEmissionGainOfFlashlight(float emessionGain)
+    {
+        for (int i = 0; i < eyeRaycastObject.raycastObject.childCount; i++)
+        {
+            //if (eyeRaycastObject.raycastObject.GetChild(i).tag == "Flashlight")
+            //{
+            //    for (int j = 0; i < eyeRaycastObject.raycastObject.GetChild(i).childCount; j++)
+            //    {
+                    if (eyeRaycastObject.raycastObject.GetChild(i).tag == "GlowObject")
+                    {
+                        eyeRaycastObject.raycastObject.GetChild(i).renderer.material.SetFloat("_EmissionGain", emessionGain);
+                        break;
+                    }
+                //}
+
+                //break;
+            //}
         }
     }
 
@@ -468,6 +480,7 @@ public class WheelchairController : MonoBehaviour
                 SetEmissionGainOfDoor(0f);
                 break;
             case "Flashlight":
+                SetEmissionGainOfFlashlight(0f);
                 Transform flashlight = Instantiate(lookAtObject, transform.FindChild("Flashlight Spawnpoint").position, transform.FindChild("Flashlight Spawnpoint").rotation) as Transform;
                 flashlight.parent = transform;
                 Destroy(lookAtObject.gameObject);
@@ -497,7 +510,7 @@ public class WheelchairController : MonoBehaviour
 
     //    // Y output
     //    inputYList.Add(inputY);
-
+    
 
     //    if (inputYList.Count > listLenght)
     //        inputYList.RemoveAt(0);
