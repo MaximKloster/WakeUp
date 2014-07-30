@@ -141,6 +141,8 @@ ModelImporter:
     100270: transform8
     100272: transform9
     100274: ZBrush_defualt_group_003
+    100276: pCube1
+    100278: pCube2
     400000: cc_r_thumb_a_01OFF1
     400002: cc_r_thumb_a_01SKD1
     400004: Character2_Ctrl_ChestEndEffector
@@ -279,6 +281,12 @@ ModelImporter:
     400270: transform8
     400272: transform9
     400274: ZBrush_defualt_group_003
+    400276: pCube1
+    400278: pCube2
+    2300000: pCube1
+    2300002: pCube2
+    3300000: pCube1
+    3300002: pCube2
     4300000: Plane_004
     4300002: Plane_003
     4300004: Plane_002
@@ -287,6 +295,8 @@ ModelImporter:
     4300010: ZBrush_defualt_group_003
     4300012: Plane
     4300014: Patient_Augenlos_Test1_Mesh_002
+    4300016: pCube1
+    4300018: pCube2
     7400000: wallbang
     9500000: //RootNode
     11100000: //RootNode
