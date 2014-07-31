@@ -60,8 +60,9 @@ public struct EyeRaycastObject
 public class WheelchairController : MonoBehaviour
 {
     #region Variables
-    [SerializeField]
-    Rect foo;
+    //[SerializeField]
+
+    //Rect foo;
     //[SerializeField]
     //int inputListLenght = 20;
     [SerializeField]
@@ -73,7 +74,7 @@ public class WheelchairController : MonoBehaviour
     [Range(1, 180)]
     int collisionSegments = 90;
     [SerializeField]
-    AudioClip standardAudioClip = null;
+    AudioClip standardAudioClip = null, wheelMovement = null, collisionWithWall = null;
 
     public bool accelerationDelay = false;
     //[SerializeField]
@@ -102,6 +103,10 @@ public class WheelchairController : MonoBehaviour
 
     // Sound
     AudioSource audioSource;
+    bool collisionSound;
+
+    // Fill level
+    Transform fillLevel;
 
     float yStartAngle;
 
@@ -114,6 +119,7 @@ public class WheelchairController : MonoBehaviour
         TurkSegmentList = new List<TurkSegment>();
         MasterElementList = new List<MasterElement>();
         audioSource = GetComponent<AudioSource>();
+        fillLevel = transform.FindChild("FillLevel");
     }
 
     void Start()
@@ -130,7 +136,7 @@ public class WheelchairController : MonoBehaviour
 
     void Update()
     {
-        xInput = Input.GetAxis("Mouse X") * xSensitivity;
+        xInput = Input.GetAxis("Mouses X") * xSensitivity;
         yInput = Input.GetAxis("Mouse Y") * ySensitivity;
 
         if (doRaycast > 4)
@@ -141,6 +147,8 @@ public class WheelchairController : MonoBehaviour
         }
         else
             doRaycast++;
+
+        UpdateWheelSound();
 
         //CleanInput(xInput * xSensitivity, yInput * ySensitivity, inputListLenght, out xMedian, out yMedian);
     }
@@ -190,12 +198,21 @@ public class WheelchairController : MonoBehaviour
         if (currentSpeed > maximumSpeed) return maximumSpeed;
         else return currentSpeed;
     }
-    void UpdateWheel()
+    void UpdateWheelSound()
     {
-        //wheelBackRight.Rotate(0, -wheelColliderBackRight.rpm / 60 * 360 * Time.deltaTime, 0);
-        //wheelBackLeft.Rotate(0, -wheelColliderBackLeft.rpm / 60 * 360 * Time.deltaTime, 0);
-        //wheelFrontRight.Rotate(0, -wheelColliderFrontRight.rpm / 60 * 360 * Time.deltaTime, 0);
-        //wheelFrontLeft.Rotate(0, -wheelColliderFrontLeft.rpm / 60 * 360 * Time.deltaTime, 0);
+        if ((Mathf.Abs(xInput) + Mathf.Abs(yInput)) / 2 < 10 && audioSource.clip == wheelMovement)
+        {
+            audioSource.loop = false;
+            audioSource.clip = null;
+            audioSource.Stop();
+        }
+        else
+            if ((Mathf.Abs(xInput) + Mathf.Abs(yInput)) / 2 > 10 && audioSource.clip != wheelMovement && !collisionSound)
+        {
+            audioSource.loop = true;
+            audioSource.clip = wheelMovement;
+            audioSource.Play();
+        }
     }
 
     void RaycastSweep()
@@ -273,18 +290,18 @@ public class WheelchairController : MonoBehaviour
         }
 
         // Sound
-        if (other.tag == "Sound")
-        {
-            switch (other.name)
-            {
-                case "foo":
-                    audioSource.clip = standardAudioClip;
-                    break;
-                default:
-                    audioSource.clip = standardAudioClip;
-                    break;
-            }
-        }
+        //if (other.tag == "Sound")
+        //{
+        //    switch (other.name)
+        //    {
+        //        case "foo":
+        //            audioSource.clip = standardAudioClip;
+        //            break;
+        //        default:
+        //            audioSource.clip = standardAudioClip;
+        //            break;
+        //    }
+        //}
     }
     void OnTriggerExit(Collider other)
     {
@@ -299,11 +316,26 @@ public class WheelchairController : MonoBehaviour
             MasterElementList.Remove(MasterElementList.Find(e => e.ID == other.gameObject.GetInstanceID()));
             return;
         }
+    }
 
-        if (other.tag == "Sound")
+    void OnCollisionEnter(Collision collision)
+    {
+        if (!collisionSound && collision.transform.tag == "Wall")// && (xInput + yInput) / 2 > 5)
         {
-            audioSource.clip = standardAudioClip;
+            collisionSound = true;
+            audioSource.loop = false;
+            audioSource.clip = collisionWithWall;
+            audioSource.Play();
+            StartCoroutine(StopSound());
         }
+    }
+
+    IEnumerator StopSound()
+    {
+        yield return new WaitForSeconds(1f);
+
+        audioSource.Stop();
+        collisionSound = false;
     }
 
     void RaycastEye()
