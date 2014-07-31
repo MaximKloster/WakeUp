@@ -107,6 +107,7 @@ public class WheelchairController : MonoBehaviour
 
     // Fill level
     Transform fillLevel;
+    float fillLevelStatus = 1;
 
     float yStartAngle;
 
@@ -120,6 +121,7 @@ public class WheelchairController : MonoBehaviour
         MasterElementList = new List<MasterElement>();
         audioSource = GetComponent<AudioSource>();
         fillLevel = transform.FindChild("FillLevel");
+        SetFillLevel(-0.4f);
     }
 
     void Start()
@@ -136,7 +138,7 @@ public class WheelchairController : MonoBehaviour
 
     void Update()
     {
-        xInput = Input.GetAxis("Mouses X") * xSensitivity;
+        xInput = Input.GetAxis("Mouse X") * xSensitivity;
         yInput = Input.GetAxis("Mouse Y") * ySensitivity;
 
         if (doRaycast > 4)
@@ -208,11 +210,11 @@ public class WheelchairController : MonoBehaviour
         }
         else
             if ((Mathf.Abs(xInput) + Mathf.Abs(yInput)) / 2 > 10 && audioSource.clip != wheelMovement && !collisionSound)
-        {
-            audioSource.loop = true;
-            audioSource.clip = wheelMovement;
-            audioSource.Play();
-        }
+            {
+                audioSource.loop = true;
+                audioSource.clip = wheelMovement;
+                audioSource.Play();
+            }
     }
 
     void RaycastSweep()
@@ -289,6 +291,14 @@ public class WheelchairController : MonoBehaviour
             return;
         }
 
+        if (other.name == "Ghost Object")
+        {
+            if (fillLevelStatus > 0)
+            {
+                SetFillLevel(-0.1f);
+            }
+        }
+
         // Sound
         //if (other.tag == "Sound")
         //{
@@ -338,6 +348,12 @@ public class WheelchairController : MonoBehaviour
         collisionSound = false;
     }
 
+    void SetFillLevel(float change)
+    {
+        fillLevelStatus += change;
+        fillLevel.transform.localScale = new Vector3(1, fillLevelStatus, 1);
+    }
+
     void RaycastEye()
     {
         RaycastHit hit;
@@ -365,7 +381,8 @@ public class WheelchairController : MonoBehaviour
                     if ((hit.transform.GetComponentInParent<DoorController>()
                         && hit.transform.GetComponentInParent<DoorController>().OpenByEye
                         && !hit.transform.GetComponentInParent<DoorController>().OnAction)
-                        || hit.transform.tag == "Flashlight")
+                        || hit.transform.tag == "Flashlight"
+                        || hit.transform.tag == "MediPack")
                     {
                         //Debug.DrawLine(startPos, newTargetPos, Color.cyan);
 
@@ -380,10 +397,10 @@ public class WheelchairController : MonoBehaviour
                                 SetEmissionGainOfDoor(0.15f);
                                 MoveDoorhandle(true);
                             }
-                            else if (eyeRaycastObject.raycastObject.tag == "Flashlight")
+                            else if (eyeRaycastObject.raycastObject.tag == "Flashlight"
+                                || (eyeRaycastObject.raycastObject.tag == "MediPack" && fillLevelStatus <= 0.8f))
                             {
-                                SetEmissionGainOfFlashlight(0.6f);
-                                print("flashlight");
+                                SetEmissionGainOfItem(0.2f);
                             }
                         }
 
@@ -391,7 +408,7 @@ public class WheelchairController : MonoBehaviour
                     }
                 }
                 //else
-                    //Debug.DrawLine(startPos, newTargetPos, Color.blue);
+                //Debug.DrawLine(startPos, newTargetPos, Color.blue);
                 //}
             }
             if (eyeRaycastTempObject != null)
@@ -483,23 +500,15 @@ public class WheelchairController : MonoBehaviour
         }
     }
 
-    void SetEmissionGainOfFlashlight(float emessionGain)
+    void SetEmissionGainOfItem(float emessionGain)
     {
         for (int i = 0; i < eyeRaycastObject.raycastObject.childCount; i++)
         {
-            //if (eyeRaycastObject.raycastObject.GetChild(i).tag == "Flashlight")
-            //{
-            //    for (int j = 0; i < eyeRaycastObject.raycastObject.GetChild(i).childCount; j++)
-            //    {
-                    if (eyeRaycastObject.raycastObject.GetChild(i).tag == "GlowObject")
-                    {
-                        eyeRaycastObject.raycastObject.GetChild(i).renderer.material.SetFloat("_EmissionGain", emessionGain);
-                        break;
-                    }
-                //}
-
-                //break;
-            //}
+            if (eyeRaycastObject.raycastObject.GetChild(i).tag == "GlowObject")
+            {
+                eyeRaycastObject.raycastObject.GetChild(i).renderer.material.SetFloat("_EmissionGain", emessionGain);
+                break;
+            }
         }
     }
 
@@ -512,10 +521,18 @@ public class WheelchairController : MonoBehaviour
                 SetEmissionGainOfDoor(0f);
                 break;
             case "Flashlight":
-                SetEmissionGainOfFlashlight(0f);
+                SetEmissionGainOfItem(0f);
                 Transform flashlight = Instantiate(lookAtObject, transform.FindChild("Flashlight Spawnpoint").position, transform.FindChild("Flashlight Spawnpoint").rotation) as Transform;
                 flashlight.parent = transform;
                 Destroy(lookAtObject.gameObject);
+                break;
+            case "MediPack":
+                SetEmissionGainOfItem(0f);
+                if (fillLevelStatus <= 0.8f)
+                {
+                    SetFillLevel(0.2f);
+                    Destroy(lookAtObject.gameObject);
+                }
                 break;
             default:
                 break;
@@ -542,7 +559,7 @@ public class WheelchairController : MonoBehaviour
 
     //    // Y output
     //    inputYList.Add(inputY);
-    
+
 
     //    if (inputYList.Count > listLenght)
     //        inputYList.RemoveAt(0);
