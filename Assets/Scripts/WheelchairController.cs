@@ -371,11 +371,11 @@ public class WheelchairController : MonoBehaviour
 
         Transform eyeRaycastTempObject = null;
 
-        for (int i = -2; i < 3; i++)
+        for (int i = -1; i < 2; i++)
         {
-            for (int j = -2; j < 3; j++)
+            for (int j = -1; j < 2; j++)
             {
-                Vector3 newTargetPos = targetPos + child.right * 0.2f * i + child.up * 0.2f * j;
+                Vector3 newTargetPos = targetPos + child.right * 0.4f * i + child.up * 0.4f * j;
                 if (Physics.Linecast(startPos, newTargetPos, out hit, 1 << 10))
                 {
                     if ((hit.transform.GetComponentInParent<DoorController>()
@@ -408,8 +408,7 @@ public class WheelchairController : MonoBehaviour
                     }
                 }
                 //else
-                //Debug.DrawLine(startPos, newTargetPos, Color.blue);
-                //}
+                //    Debug.DrawLine(startPos, newTargetPos, Color.blue);
             }
             if (eyeRaycastTempObject != null)
             {
@@ -422,15 +421,26 @@ public class WheelchairController : MonoBehaviour
             if (!eyeRaycastObject.onAction && Time.time - eyeRaycastObject.firstContact > timeToAction * Time.deltaTime * 100)
             {
                 ChooseLookAtAction(eyeRaycastObject.raycastObject);
-                MoveDoorhandle(false);
+
+                if (eyeRaycastObject.raycastObject.tag == "Door")
+                {
+                    MoveDoorhandle(false);
+                }
 
                 eyeRaycastObject.OnAction();
             }
         }
         else if (eyeRaycastObject.raycastObject != null)
         {
-            SetEmissionGainOfDoor(0f);
-            MoveDoorhandle(false);
+            if (eyeRaycastObject.raycastObject.tag == "Door")
+            {
+                SetEmissionGainOfDoor(0f);
+                MoveDoorhandle(false);
+            }
+            else
+            {
+                SetEmissionGainOfItem(0f);
+            }
             eyeRaycastObject.Delet();
         }
     }
