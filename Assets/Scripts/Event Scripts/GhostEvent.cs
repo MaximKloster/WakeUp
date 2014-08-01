@@ -15,6 +15,7 @@ public class GhostEvent : MonoBehaviour
     bool startEvent;
     float eventStartTime;
     AudioSource audioSource;
+    Animation patientAnimation;
 
     // Use this for initialization
     void Start()
@@ -29,6 +30,7 @@ public class GhostEvent : MonoBehaviour
 
         particles = transform.FindChild("Object").FindChild("Particles").transform;
         particles.gameObject.SetActive(false);
+        patientAnimation = transform.FindChild("Object").GetComponentInChildren<Animation>();
 
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.playOnAwake = false;
@@ -77,6 +79,7 @@ public class GhostEvent : MonoBehaviour
             particles.gameObject.SetActive(true);
             startEvent = true;
             eventStartTime = Time.time;
+            patientAnimation.Play("summon");
         }
     }
 }

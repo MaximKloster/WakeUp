@@ -4,6 +4,7 @@ using System.Collections;
 public class PatientEvent : MonoBehaviour
 {
     NavMeshAgent navMeshAgent;
+    Animation animation;
     bool startEvent;
     Vector3 startPosition;
     Transform player;
@@ -14,6 +15,7 @@ public class PatientEvent : MonoBehaviour
     {
         startPosition = transform.position;
         navMeshAgent = transform.GetComponentInChildren<NavMeshAgent>();
+        animation = transform.GetChild(0).GetComponentInChildren<Animation>();
         navMeshAgent.enabled = false;
     }
 
@@ -46,6 +48,7 @@ public class PatientEvent : MonoBehaviour
             startEvent = true;
             eventStartTime = Time.time;
             navMeshAgent.enabled = true;
+            animation.Play("walk");
         }
     }
     void OnTriggerExit(Collider other)

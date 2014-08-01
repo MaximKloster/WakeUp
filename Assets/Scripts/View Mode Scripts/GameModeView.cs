@@ -15,6 +15,7 @@ public class GameModeView : MonoBehaviour
     {
         controllerObject = transform.GetComponent<ViewMode>().ControllerObject;
         valueSkin = transform.GetComponent<ViewMode>().ValueSkin;
+        Screen.showCursor = false;
     }
 
     // Update is called once per frame
@@ -39,6 +40,7 @@ public class GameModeView : MonoBehaviour
     {
         keyButtonText = keyButtonText == "Keys" ? "Turk" : "Keys";
         keys = !keys;
+        Screen.showCursor = !Screen.showCursor;
         controllerObject.GetComponent<WheelchairController>().Keys = keys;
     }
 }
