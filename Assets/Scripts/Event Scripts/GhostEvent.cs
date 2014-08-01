@@ -80,6 +80,7 @@ public class GhostEvent : MonoBehaviour
             startEvent = true;
             eventStartTime = Time.time;
             patientAnimation.Play("summon");
+            audioSource.clip = ghostaAppearsAudio;
         }
     }
 }

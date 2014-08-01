@@ -123,7 +123,6 @@ public class DoorController : MonoBehaviour
                     open = false;
                     if (soundOnClose)
                         PlaySoundOnClose();
-                    Debug.Log("Door closed");
                 }
             }
             //else if (doorType == "Slide Door")
