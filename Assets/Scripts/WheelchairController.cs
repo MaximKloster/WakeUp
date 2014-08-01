@@ -394,7 +394,7 @@ public class WheelchairController : MonoBehaviour
 
                             if (eyeRaycastObject.raycastObject.tag == "Door")
                             {
-                                SetEmissionGainOfDoor(0.15f);
+                                SetEmissionGainOfDoor(0.2f);
                                 MoveDoorhandle(true);
                             }
                             else if (eyeRaycastObject.raycastObject.tag == "Flashlight"
