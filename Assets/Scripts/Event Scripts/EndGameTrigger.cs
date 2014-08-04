@@ -19,8 +19,10 @@ public class EndGameTrigger : MonoBehaviour
     {
         if (endGame)
         {
-            var endSprite = player.FindChild("OVRCameraController").FindChild("End Sprite").GetComponent<SpriteRenderer>();
-            endSprite.color = Color.Lerp(endSprite.color, new Color(1, 1, 1, 1), 1f * Time.deltaTime);
+            //var endSprite = player.FindChild("OVRCameraController").FindChild("End Sprite").GetComponent<SpriteRenderer>();
+            //endSprite.color = Color.Lerp(endSprite.color, new Color(1, 1, 1, 1), 1f * Time.deltaTime);
+
+
         }
     }
 }
