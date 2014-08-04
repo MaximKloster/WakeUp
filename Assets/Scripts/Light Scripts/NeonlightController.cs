@@ -59,6 +59,8 @@ public class NeonlightController : MonoBehaviour
                     if (disableStartTime + toFloat < Time.time)
                     {
                         lightChild.gameObject.transform.FindChild("Light").gameObject.SetActive(false);
+                        lightChild.gameObject.transform.FindChild("Object").gameObject.renderer.materials[2].SetColor("_EmissionColor", Color.black);
+
                         seriesLightCount--;
                     }
                 }
