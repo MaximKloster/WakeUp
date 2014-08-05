@@ -1,0 +1,110 @@
+# Blender MTL File: 'Essenausgabe_Final.blend'
+# Material Count: 11
+
+newmtl Essen_1
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Z:\GD1012 Projekte (4. Semester)\Wake Up\Art\Textures\FERTIG\für räume und einrichtung\essen1.png
+
+newmtl Glasplatte
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Z:\GD1012 Projekte (4. Semester)\Wake Up\Art\Textures\FERTIG\für räume und einrichtung\glasbecher.png
+
+newmtl Kubel
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Z:\GD1012 Projekte (4. Semester)\Wake Up\Art\Textures\FERTIG\für räume und einrichtung\metall_2_feiner.png
+
+newmtl Streifen
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl essen_2
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Z:\GD1012 Projekte (4. Semester)\Wake Up\Art\Textures\FERTIG\für räume und einrichtung\essen2.png
+
+newmtl essen_3
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Z:\GD1012 Projekte (4. Semester)\Wake Up\Art\Textures\FERTIG\für räume und einrichtung\essen3.png
+
+newmtl essen_4
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Z:\GD1012 Projekte (4. Semester)\Wake Up\Art\Textures\FERTIG\für räume und einrichtung\essen4.png
+
+newmtl essen_5
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Z:\GD1012 Projekte (4. Semester)\Wake Up\Art\Textures\FERTIG\für räume und einrichtung\essen5.png
+
+newmtl glas_platte
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl stangen
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Z:\GD1012 Projekte (4. Semester)\Wake Up\Art\Textures\FERTIG\für räume und einrichtung\metall_2_feiner.png
+
+newmtl unterteilfarbe
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Z:\GD1012 Projekte (4. Semester)\Wake Up\Art\Textures\FERTIG\für räume und einrichtung\linoleum.png
