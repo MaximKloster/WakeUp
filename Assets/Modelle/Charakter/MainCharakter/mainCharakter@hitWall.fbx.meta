@@ -153,6 +153,17 @@ ModelImporter:
     100294: Rollstuhl_inffussion2_Mesh_007
     100296: top1
     100298: Wheelchair
+    100300: Hp01
+    100302: Hp02
+    100304: Hp03
+    100306: Hp04
+    100308: Hp05
+    100310: Hp06
+    100312: Hp07
+    100314: Hp08
+    100316: Hp09
+    100318: Hp10
+    100320: Live
     400000: BezierCurve
     400002: Character2_Ctrl_ChestEndEffector
     400004: Character2_Ctrl_ChestOriginEffector
@@ -303,6 +314,17 @@ ModelImporter:
     400294: Rollstuhl_inffussion2_Mesh_007
     400296: top1
     400298: Wheelchair
+    400300: Hp01
+    400302: Hp02
+    400304: Hp03
+    400306: Hp04
+    400308: Hp05
+    400310: Hp06
+    400312: Hp07
+    400314: Hp08
+    400316: Hp09
+    400318: Hp10
+    400320: Live
     2300000: Rollstuhl_inffussion2_Mesh
     2300002: Rollstuhl_inffussion2_Mesh_001
     2300004: Rollstuhl_inffussion2_Mesh_002
@@ -326,6 +348,15 @@ ModelImporter:
     4300020: Rollstuhl_inffussion2_Mesh_001
     4300022: Rollstuhl_inffussion2_Mesh
     4300024: pCylinder1
+    4300026: Hp10
+    4300028: Hp09
+    4300030: Hp08
+    4300032: Hp07
+    4300034: Hp06
+    4300036: Hp05
+    4300038: Hp04
+    4300040: Hp03
+    4300042: Hp02
     7400000: Take 001
     9500000: //RootNode
     11100000: //RootNode
@@ -337,6 +368,15 @@ ModelImporter:
     13700010: Rollstuhl_inffussion2_Mesh_005
     13700012: Rollstuhl_inffussion2_Mesh_006
     13700014: Rollstuhl_inffussion2_Mesh_007
+    13700016: Hp02
+    13700018: Hp03
+    13700020: Hp04
+    13700022: Hp05
+    13700024: Hp06
+    13700026: Hp07
+    13700028: Hp08
+    13700030: Hp09
+    13700032: Hp10
   materials:
     importMaterials: 1
     materialName: 0
