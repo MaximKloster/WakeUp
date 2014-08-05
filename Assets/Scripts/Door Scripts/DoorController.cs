@@ -15,7 +15,7 @@ public class DoorController : MonoBehaviour
     bool openByEye = true, doubleDoor = false;
 
     [SerializeField]
-    AudioClip soundOnClose = null, soundOnClosing = null;
+    AudioClip soundOnClose = null, soundOnClosing = null, soundLocked = null, soundOnOpening = null;
 
     // Door variables
     string doorType;
@@ -64,6 +64,7 @@ public class DoorController : MonoBehaviour
         {
             if (doorType == "Door")
             {
+                
                 if (!doubleDoor)
                     doorTransform.transform.Rotate(-Vector3.up * SpeedToOpen);
                 else
@@ -121,8 +122,7 @@ public class DoorController : MonoBehaviour
                 {
                     closeDoor = false;
                     open = false;
-                    if (soundOnClose)
-                        PlaySoundOnClose();
+                    
                 }
             }
             //else if (doorType == "Slide Door")
@@ -144,15 +144,37 @@ public class DoorController : MonoBehaviour
     
     void PlaySoundOnClosing()
     {
-        doorSounds.clip = soundOnClosing;
-        doorSounds.Play();
+        if (soundOnClosing)
+        {
+            doorSounds.clip = soundOnClosing;
+            doorSounds.Play();
+        }
     }
     void PlaySoundOnClose()
     {
-        doorSounds.clip = soundOnClose;
-        doorSounds.Play();
+        if (soundOnClose)
+        {
+            doorSounds.clip = soundOnClose;
+            doorSounds.Play();
+        }
+    }
+    void PlaySoundLocked()
+    {
+        if (soundLocked)
+        {
+            doorSounds.clip = soundLocked;
+            doorSounds.Play();
+        }
     }
 
+    void PlaySoundOnOpening()
+    {
+        if (soundOnOpening)
+        {
+            doorSounds.clip = soundOnOpening;
+            doorSounds.Play();
+        }
+    }
     public void OpenDoor()
     {
         if (!open && !openDoor)
@@ -160,7 +182,7 @@ public class DoorController : MonoBehaviour
             closeDoor = false;
             openDoor = true;
 
-            PlaySoundOnClosing();
+            PlaySoundOnOpening();
         }
     }
     public void CloseDoor()
@@ -182,6 +204,8 @@ public class DoorController : MonoBehaviour
                 OpenDoor();
             else
                 CloseDoor();
+        }else{
+            PlaySoundLocked();
         }
     }
 }

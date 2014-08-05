@@ -10,5 +10,6 @@ public class DoorTrigger : MonoBehaviour
                 transform.parent.GetComponent<DoorController>().OpenDoor();
             else if (transform.name == "Door Close Trigger")
                 transform.parent.GetComponent<DoorController>().CloseDoor();
+                
     }
 }
