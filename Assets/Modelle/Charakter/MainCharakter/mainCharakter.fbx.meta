@@ -175,6 +175,17 @@ ModelImporter:
     100338: Hp09
     100340: Hp10
     100342: Live
+    100344: Leben_01
+    100346: Leben_02
+    100348: Leben_03
+    100350: Leben_04
+    100352: Leben_05
+    100354: Leben_06
+    100356: Leben_07
+    100358: Leben_08
+    100360: Leben_09
+    100362: Leben_10
+    100364: Life
     400000: BezierCurve
     400002: Character2_Ctrl_ChestEndEffector
     400004: Character2_Ctrl_ChestOriginEffector
@@ -347,6 +358,17 @@ ModelImporter:
     400338: Hp09
     400340: Hp10
     400342: Live
+    400344: Leben_01
+    400346: Leben_02
+    400348: Leben_03
+    400350: Leben_04
+    400352: Leben_05
+    400354: Leben_06
+    400356: Leben_07
+    400358: Leben_08
+    400360: Leben_09
+    400362: Leben_10
+    400364: Life
     2300000: Rollstuhl_inffussion2_Mesh
     2300002: Rollstuhl_inffussion2_Mesh_001
     2300004: Rollstuhl_inffussion2_Mesh_002
@@ -409,6 +431,16 @@ ModelImporter:
     4300058: Hp04
     4300060: Hp03
     4300062: Hp02
+    4300064: Leben_10
+    4300066: Leben_09
+    4300068: Leben_08
+    4300070: Leben_07
+    4300072: Leben_06
+    4300074: Leben_05
+    4300076: Leben_04
+    4300078: Leben_03
+    4300080: Leben_02
+    4300082: Leben_01
     7400000: Take 001
     9500000: //RootNode
     11100000: //RootNode
@@ -429,6 +461,16 @@ ModelImporter:
     13700028: Hp08
     13700030: Hp09
     13700032: Hp10
+    13700034: Leben_01
+    13700036: Leben_02
+    13700038: Leben_03
+    13700040: Leben_04
+    13700042: Leben_05
+    13700044: Leben_06
+    13700046: Leben_07
+    13700048: Leben_08
+    13700050: Leben_09
+    13700052: Leben_10
   materials:
     importMaterials: 1
     materialName: 0

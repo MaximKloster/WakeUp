@@ -7,7 +7,7 @@ public class GhostEvent : MonoBehaviour
     float timeToEvent = 2f, ghostSpeed = 1f, followDistance = 3f;
 
     [SerializeField]
-    AudioClip ghostaAppearsAudio, ghostFollowAudio;
+    AudioClip ghostSummonAudio, ghostSpawnAudio;
 
     Transform player, ghost, particles;
     Vector3 startPosition;
@@ -49,6 +49,8 @@ public class GhostEvent : MonoBehaviour
                 particles.gameObject.SetActive(false);
                 startEvent = false;
                 navMeshAgent.enabled = true;
+                audioSource.clip = ghostSpawnAudio;
+                audioSource.Play();
             }
         }
 
@@ -80,7 +82,8 @@ public class GhostEvent : MonoBehaviour
             startEvent = true;
             eventStartTime = Time.time;
             patientAnimation.Play("summon");
-            audioSource.clip = ghostaAppearsAudio;
+            audioSource.clip = ghostSummonAudio;
+            audioSource.Play();
         }
     }
 }
