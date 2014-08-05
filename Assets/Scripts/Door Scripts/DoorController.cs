@@ -12,7 +12,7 @@ public class DoorController : MonoBehaviour
     int eventCount = -1;
 
     [SerializeField]
-    bool openByEye = true, doubleDoor = false;
+    bool openByEye = true, doubleDoor = false, locked =false;
 
     [SerializeField]
     AudioClip soundOnClose = null, soundOnClosing = null, soundLocked = null, soundOnOpening = null;
@@ -81,7 +81,6 @@ public class DoorController : MonoBehaviour
                 {
                     openDoor = false;
                     open = true;
-                    doorSounds.Stop();
                     eventCount--;
                 }
             }
@@ -200,12 +199,18 @@ public class DoorController : MonoBehaviour
     {
         if (openByEye)
         {
-            if (!open)
-                OpenDoor();
+            if (locked)
+            {
+                PlaySoundLocked();
+            }
             else
-                CloseDoor();
-        }else{
-            PlaySoundLocked();
+            {
+                if (!open)
+                    OpenDoor();
+                else
+                    CloseDoor();
+            }
+        
         }
     }
 }

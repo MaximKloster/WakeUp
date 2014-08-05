@@ -74,7 +74,7 @@ public class WheelchairController : MonoBehaviour
     [Range(1, 180)]
     int collisionSegments = 90;
     [SerializeField]
-    AudioClip standardAudioClip = null, wheelMovement = null, collisionWithWall = null;
+    AudioClip standardAudioClip = null, wheelMovement = null, collisionWithWall = null, takeFlashlight =null;
 
     public bool accelerationDelay = false;
     //[SerializeField]
@@ -531,6 +531,8 @@ public class WheelchairController : MonoBehaviour
                 SetEmissionGainOfDoor(0f);
                 break;
             case "Flashlight":
+                audioSource.clip = takeFlashlight;
+                audioSource.Play();
                 SetEmissionGainOfItem(0f);
                 Transform flashlight = Instantiate(lookAtObject, transform.FindChild("Flashlight Spawnpoint").position, transform.FindChild("Flashlight Spawnpoint").rotation) as Transform;
                 flashlight.parent = transform;
