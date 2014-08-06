@@ -152,6 +152,7 @@ public class WheelchairController : MonoBehaviour
             doRaycast++;
 
         UpdateWheelSound();
+        UpdateWheelAnimation();
 
         //CleanInput(xInput * xSensitivity, yInput * ySensitivity, inputListLenght, out xMedian, out yMedian);
     }
