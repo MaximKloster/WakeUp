@@ -74,7 +74,7 @@ public class WheelchairController : MonoBehaviour
     [Range(1, 180)]
     int collisionSegments = 90;
     [SerializeField]
-    AudioClip standardAudioClip = null, wheelMovement = null, collisionWithWall = null, takeFlashlight =null;
+    AudioClip standardAudioClip = null, wheelMovement = null, collisionWithWall = null, takeFlashlight = null;
 
     public bool accelerationDelay = false;
     //[SerializeField]
@@ -105,9 +105,12 @@ public class WheelchairController : MonoBehaviour
     AudioSource audioSource;
     bool collisionSound;
 
+    // Animation
+    Animation playerAnimation;
+
     // Fill level
-    Transform fillLevel;
-    float fillLevelStatus = 1;
+    Transform life;
+    int lifeStatus;
 
     float yStartAngle;
 
@@ -119,8 +122,9 @@ public class WheelchairController : MonoBehaviour
         TurkSegmentList = new List<TurkSegment>();
         MasterElementList = new List<MasterElement>();
         audioSource = GetComponent<AudioSource>();
-        fillLevel = transform.FindChild("FillLevel");
-        SetFillLevel(-0.4f);
+        playerAnimation = GetComponentInChildren<Animation>();
+        life = transform.FindChild("Life");
+        SetLifeStatus(5);
     }
 
     void Start()
@@ -200,19 +204,39 @@ public class WheelchairController : MonoBehaviour
     }
     void UpdateWheelSound()
     {
-        if ((Mathf.Abs(xInput) + Mathf.Abs(yInput)) / 2 < 10 && audioSource.clip == wheelMovement)
+        if ((Mathf.Abs(xInput) + Mathf.Abs(yInput)) / 2 <= 10 && audioSource.clip == wheelMovement)
         {
             audioSource.loop = false;
             audioSource.clip = null;
             audioSource.Stop();
         }
-        else
-            if ((Mathf.Abs(xInput) + Mathf.Abs(yInput)) / 2 > 10 && audioSource.clip != wheelMovement && !collisionSound)
-            {
-                audioSource.loop = true;
-                audioSource.clip = wheelMovement;
-                audioSource.Play();
-            }
+        else if ((Mathf.Abs(xInput) + Mathf.Abs(yInput)) / 2 > 10 && audioSource.clip != wheelMovement && !collisionSound)
+        {
+            audioSource.loop = true;
+            audioSource.clip = wheelMovement;
+            audioSource.Play();
+        }
+    }
+    void UpdateWheelAnimation()
+    {
+        int stopDiffenrece = 3;
+
+        if (Mathf.Abs(xInput) > stopDiffenrece && Mathf.Abs(yInput) > stopDiffenrece)
+        {
+            playerAnimation.Play("walkForward");
+        }
+        else if (Mathf.Abs(xInput) < stopDiffenrece && Mathf.Abs(yInput) < stopDiffenrece)
+        {
+            playerAnimation.Play("walkBackward");
+        }
+        else if (Mathf.Abs(xInput) > stopDiffenrece && Mathf.Abs(yInput) < stopDiffenrece)
+        {
+            playerAnimation.Play("rotateLeft");
+        }
+        else if (Mathf.Abs(xInput) < stopDiffenrece && Mathf.Abs(yInput) > stopDiffenrece)
+        {
+            playerAnimation.Play("rotateRight");
+        }
     }
 
     void RaycastSweep()
@@ -291,9 +315,9 @@ public class WheelchairController : MonoBehaviour
 
         if (other.name == "Ghost Object")
         {
-            if (fillLevelStatus > 0)
+            if (lifeStatus > 0)
             {
-                SetFillLevel(-0.1f);
+                SetLifeStatus(-1);
             }
         }
 
@@ -333,14 +357,15 @@ public class WheelchairController : MonoBehaviour
             switch (collision.transform.tag)
             {
                 case "Wall":
-                        collisionSound = true;
-                        audioSource.loop = false;
-                        audioSource.clip = collisionWithWall;
-                        audioSource.Play();
-                        StartCoroutine(StopSound());
-                        break;
+                    collisionSound = true;
+                    audioSource.loop = false;
+                    audioSource.clip = collisionWithWall;
+                    audioSource.Play();
+                    playerAnimation.Play("hitWall");
+                    StartCoroutine(StopSound());
+                    break;
                 default:
-                        break;
+                    break;
             }
         }
     }
@@ -353,10 +378,24 @@ public class WheelchairController : MonoBehaviour
         collisionSound = false;
     }
 
-    void SetFillLevel(float change)
+    void SetLifeStatus(int change)
     {
-        fillLevelStatus += change;
-        fillLevel.transform.localScale = new Vector3(1, fillLevelStatus, 1);
+        life.FindChild("Leben_" + lifeStatus).gameObject.SetActive(false);
+
+        if (lifeStatus + change < 10 && lifeStatus + change >= 0)
+        {
+            lifeStatus += change;
+        }
+        else if(lifeStatus + change >= 10)
+        {
+            lifeStatus = 9;
+        }
+        else if (lifeStatus + change < 0)
+        {
+            lifeStatus = 0;
+        }
+
+        life.FindChild("Leben_" + lifeStatus).gameObject.SetActive(true);
     }
 
     void RaycastEye()
@@ -393,7 +432,7 @@ public class WheelchairController : MonoBehaviour
 
                         eyeRaycastTempObject = hit.transform;
 
-                        if (eyeRaycastObject.raycastObject != eyeRaycastTempObject || Time.time > eyeRaycastObject.firstContact + timeToAction * 15)
+                        if (eyeRaycastObject.raycastObject != eyeRaycastTempObject || Time.time > eyeRaycastObject.firstContact + timeToAction * 30)
                         {
                             eyeRaycastObject = new EyeRaycastObject(eyeRaycastTempObject);
 
@@ -403,7 +442,7 @@ public class WheelchairController : MonoBehaviour
                                 MoveDoorhandle(true);
                             }
                             else if (eyeRaycastObject.raycastObject.tag == "Flashlight"
-                                || (eyeRaycastObject.raycastObject.tag == "MediPack" && fillLevelStatus <= 0.8f))
+                                || (eyeRaycastObject.raycastObject.tag == "MediPack" && lifeStatus <= 0.8f))
                             {
                                 SetEmissionGainOfItem(0.2f);
                             }
@@ -545,9 +584,9 @@ public class WheelchairController : MonoBehaviour
                 break;
             case "MediPack":
                 SetEmissionGainOfItem(0f);
-                if (fillLevelStatus <= 0.8f)
+                if (lifeStatus < 8)
                 {
-                    SetFillLevel(0.2f);
+                    SetLifeStatus(2);
                     Destroy(lookAtObject.gameObject);
                 }
                 break;
