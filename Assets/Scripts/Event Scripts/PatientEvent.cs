@@ -9,6 +9,10 @@ public class PatientEvent : MonoBehaviour
     Vector3 startPosition;
     Transform player;
     float eventStartTime;
+    AudioSource patientSounds;
+
+    [SerializeField]
+    AudioClip idle = null, walk = null, groan = null;
 
     // Use this for initialization
     void Start()
@@ -17,6 +21,9 @@ public class PatientEvent : MonoBehaviour
         navMeshAgent = transform.GetComponentInChildren<NavMeshAgent>();
         animation = transform.GetChild(0).GetComponentInChildren<Animation>();
         navMeshAgent.enabled = false;
+
+        patientSounds = GetComponentInChildren<AudioSource>();
+        PlaySoundIdle();
     }
 
     // Update is called once per frame
@@ -44,11 +51,14 @@ public class PatientEvent : MonoBehaviour
     {
         if (other.tag == "Player" && !startEvent)
         {
+            
             player = other.transform;
             startEvent = true;
             eventStartTime = Time.time;
             navMeshAgent.enabled = true;
             animation.Play("walk");
+            PlaySoundWalke();
+
         }
     }
     void OnTriggerExit(Collider other)
@@ -56,6 +66,38 @@ public class PatientEvent : MonoBehaviour
         if (other.tag == "Player" && startEvent)
         {
             startEvent = false;
+            animation.Play("twitch");
+            PlaySoundGroan();
         }
     }
+
+
+
+
+    void PlaySoundIdle()
+    {
+        if (idle)
+        {
+            patientSounds.clip = idle;
+            patientSounds.Play();
+        }
+    }
+    void PlaySoundWalke()
+    {
+        if (walk)
+        {
+            patientSounds.clip = walk;
+            patientSounds.Play();
+        }
+    }
+
+    void PlaySoundGroan()
+    {
+        if (groan)
+        {
+            patientSounds.clip = groan;
+            patientSounds.Play();
+        }
+    }
+
 }
