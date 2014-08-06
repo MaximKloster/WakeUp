@@ -432,7 +432,7 @@ public class WheelchairController : MonoBehaviour
 
                         eyeRaycastTempObject = hit.transform;
 
-                        if (eyeRaycastObject.raycastObject != eyeRaycastTempObject && Time.time > eyeRaycastObject.firstContact + timeToAction * 30)
+                        if (eyeRaycastObject.raycastObject != eyeRaycastTempObject && Time.time > eyeRaycastObject.firstContact + timeToAction * 5)
                         {
                             eyeRaycastObject = new EyeRaycastObject(eyeRaycastTempObject, Time.time);
 
