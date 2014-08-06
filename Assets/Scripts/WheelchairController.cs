@@ -34,17 +34,16 @@ public struct EyeRaycastObject
     public float firstContact;
     public bool onAction;
 
-    public EyeRaycastObject(Transform raycastObject)
+    public EyeRaycastObject(Transform raycastObject, float firstContact)
     {
         this.raycastObject = raycastObject;
-        firstContact = Time.time;
+        this.firstContact = firstContact;
         onAction = false;
     }
 
     public void Delet()
     {
         raycastObject = null;
-        firstContact = Time.time;
     }
     public void SetObjectToNull()
     {
@@ -98,7 +97,7 @@ public class WheelchairController : MonoBehaviour
     public List<MasterElement> MasterElementList { get; private set; }
     float collisionDistance = 3.0f;
 
-    EyeRaycastObject eyeRaycastObject = new EyeRaycastObject(null);
+    EyeRaycastObject eyeRaycastObject = new EyeRaycastObject(null, Time.time);
     int doRaycast;
 
     // Sound
@@ -432,9 +431,9 @@ public class WheelchairController : MonoBehaviour
 
                         eyeRaycastTempObject = hit.transform;
 
-                        if (eyeRaycastObject.raycastObject != eyeRaycastTempObject || Time.time > eyeRaycastObject.firstContact + timeToAction * 30)
+                        if (eyeRaycastObject.raycastObject != eyeRaycastTempObject && Time.time > eyeRaycastObject.firstContact + timeToAction * 30)
                         {
-                            eyeRaycastObject = new EyeRaycastObject(eyeRaycastTempObject);
+                            eyeRaycastObject = new EyeRaycastObject(eyeRaycastTempObject, Time.time);
 
                             if (eyeRaycastObject.raycastObject.tag == "Door")
                             {
@@ -442,7 +441,7 @@ public class WheelchairController : MonoBehaviour
                                 MoveDoorhandle(true);
                             }
                             else if (eyeRaycastObject.raycastObject.tag == "Flashlight"
-                                || (eyeRaycastObject.raycastObject.tag == "MediPack" && lifeStatus <= 0.8f))
+                                || (eyeRaycastObject.raycastObject.tag == "MediPack" && lifeStatus < 8f))
                             {
                                 SetEmissionGainOfItem(0.2f);
                             }

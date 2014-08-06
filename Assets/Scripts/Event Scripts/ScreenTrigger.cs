@@ -3,48 +3,57 @@ using System.Collections;
 
 public class ScreenTrigger : MonoBehaviour
 {
-    enum Screens
-    {
-        StartScreen,
-        Endscreen, 
-        GameOverScreen
-    }
-
-    [SerializeField]
-    Screens screenTrigger = Screens.StartScreen;
-
     [SerializeField]
     Texture startScreenTexture, endScreenTexture, gameOverTexture;
-
-    Transform player;
 
     GUITexture screen;
 
     void Start()
     {
         screen = GameObject.Find("Screen").GetComponent<GUITexture>();
-        screen.gameObject.SetActive(false);
+
+        screen.texture = startScreenTexture;
+        StartCoroutine(HideScreen());
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            screen.texture = screenTrigger == Screens.StartScreen ? startScreenTexture :
-                screenTrigger == Screens.Endscreen ? endScreenTexture : gameOverTexture;
-
+            screen.texture = endScreenTexture;
             screen.gameObject.SetActive(true);
-            player = other.transform;
+
             StartCoroutine(ShowScreen());
         }
     }
 
+    public void OnPlayerDead()
+    {
+        screen.texture = gameOverTexture;
+        screen.gameObject.SetActive(true);
+
+        StartCoroutine(ShowScreen());
+    }
+
     IEnumerator ShowScreen()
     {
-        while (screen.color.a < 0.95)
+        while (screen.color.a < 0.95f)
         {
             screen.color = Color.Lerp(screen.color, Color.gray, Time.deltaTime);
             yield return null;
         }
+    }
+
+    IEnumerator HideScreen()
+    {
+        yield return new WaitForSeconds(10);
+
+        while (screen.color.a > 0.05f)
+        {
+            screen.color = Color.Lerp(screen.color, Color.clear, Time.deltaTime);
+            yield return null;
+        }
+
+        screen.gameObject.SetActive(false);
     }
 }
