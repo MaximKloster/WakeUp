@@ -113,7 +113,6 @@ public class WheelchairController : MonoBehaviour
 
     #endregion
 
-    // Use this for initialization
     void Awake()
     {
         DistanceSegments = new float[12];
@@ -129,7 +128,6 @@ public class WheelchairController : MonoBehaviour
         yStartAngle = transform.rotation.eulerAngles.y;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         UpdateMovement();
@@ -330,13 +328,20 @@ public class WheelchairController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (!collisionSound && collision.transform.tag == "Wall")// && (xInput + yInput) / 2 > 5)
+        if (!collisionSound)
         {
-            collisionSound = true;
-            audioSource.loop = false;
-            audioSource.clip = collisionWithWall;
-            audioSource.Play();
-            StartCoroutine(StopSound());
+            switch (collision.transform.tag)
+            {
+                case "Wall":
+                        collisionSound = true;
+                        audioSource.loop = false;
+                        audioSource.clip = collisionWithWall;
+                        audioSource.Play();
+                        StartCoroutine(StopSound());
+                        break;
+                default:
+                        break;
+            }
         }
     }
 
