@@ -11,6 +11,7 @@ public class PatientControler : MonoBehaviour {
 	void Start () {
         patientSounds = gameObject.AddComponent<AudioSource>();
         patientSounds.playOnAwake = false;
+        patientSounds.loop = true;
         animation = transform.GetChild(0).GetComponentInChildren<Animation>();
 	}
 
@@ -29,6 +30,7 @@ public class PatientControler : MonoBehaviour {
         if (other.tag == "Player")
         {
             animation.Play("walk");
+            patientSounds.Stop();
            
         }
     }
