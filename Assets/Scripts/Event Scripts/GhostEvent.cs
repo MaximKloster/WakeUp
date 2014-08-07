@@ -39,7 +39,7 @@ public class GhostEvent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (startEvent && eventStartTime + timeToEvent <= Time.time)
+        if (startEvent)// && eventStartTime + timeToEvent >= Time.time)
         {
             ghost.position = Vector3.Lerp(ghost.position, transform.position, ghostSpeed * Time.deltaTime);
 
@@ -51,6 +51,7 @@ public class GhostEvent : MonoBehaviour
                 navMeshAgent.enabled = true;
                 audioSource.clip = ghostSpawnAudio;
                 audioSource.Play();
+                print("foo");
             }
         }
 
@@ -67,7 +68,7 @@ public class GhostEvent : MonoBehaviour
                 && navMeshAgent.transform.position.z > startPosition.z - 0.05f && navMeshAgent.transform.position.z < startPosition.z + 0.05f)
             {
                 navMeshAgent.transform.position = startPosition;
-                navMeshAgent.enabled = false;
+                //navMeshAgent.enabled = false;
             }
         }
     }
@@ -79,8 +80,8 @@ public class GhostEvent : MonoBehaviour
             player = other.transform;
             ghost.gameObject.SetActive(true);
             particles.gameObject.SetActive(true);
-            startEvent = true;
             eventStartTime = Time.time;
+            startEvent = true;
             patientAnimation.Play("summon");
             audioSource.clip = ghostSummonAudio;
             audioSource.Play();

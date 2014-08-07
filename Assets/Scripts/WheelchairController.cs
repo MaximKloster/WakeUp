@@ -469,7 +469,7 @@ public class WheelchairController : MonoBehaviour
                                 MoveDoorhandle(true);
                             }
                             else if (eyeRaycastObject.raycastObject.tag == "Flashlight"
-                                || (eyeRaycastObject.raycastObject.tag == "MediPack" && lifeStatus < 8f))
+                                || (eyeRaycastObject.raycastObject.tag == "MediPack" && lifeStatus < 9f))
                             {
                                 SetEmissionGainOfItem(0.2f);
                             }
@@ -611,11 +611,11 @@ public class WheelchairController : MonoBehaviour
                 break;
             case "MediPack":
                 SetEmissionGainOfItem(0f);
-                if (lifeStatus < 8)
+                if (lifeStatus < 9)
                 {
                     audioSource.clip = takeMedipack;
                     audioSource.Play();
-                    SetLifeStatus(2);
+                    SetLifeStatus(3);
                     Destroy(lookAtObject.gameObject);
                 }
                 break;
