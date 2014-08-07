@@ -73,7 +73,7 @@ public class WheelchairController : MonoBehaviour
     [Range(1, 180)]
     int collisionSegments = 90;
     [SerializeField]
-    AudioClip standardAudioClip = null, wheelMovement = null, collisionWithWall = null, takeFlashlight = null;
+    AudioClip standardAudioClip = null, wheelMovement = null, collisionWithWall = null, takeFlashlight = null, heardBeat = null;
 
     public bool accelerationDelay = false;
     //[SerializeField]
@@ -102,6 +102,7 @@ public class WheelchairController : MonoBehaviour
 
     // Sound
     AudioSource audioSource;
+    AudioSource heardBeatSound;
     bool collisionSound;
 
     // Animation
@@ -121,6 +122,11 @@ public class WheelchairController : MonoBehaviour
         TurkSegmentList = new List<TurkSegment>();
         MasterElementList = new List<MasterElement>();
         audioSource = GetComponent<AudioSource>();
+        heardBeatSound = gameObject.AddComponent<AudioSource>();
+        heardBeatSound.clip = heardBeat;
+        heardBeatSound.loop = true;
+        heardBeatSound.Play();
+        heardBeatSound.enabled = false;
         playerAnimation = GetComponentInChildren<Animation>();
         life = transform.FindChild("Life");
         SetLifeStatus(5);
@@ -219,7 +225,7 @@ public class WheelchairController : MonoBehaviour
     }
     void UpdateWheelAnimation()
     {
-        int stopDiffenrece = 3;
+        int stopDiffenrece = 10;
 
         if (Mathf.Abs(xInput) > stopDiffenrece && Mathf.Abs(yInput) > stopDiffenrece)
         {
@@ -385,6 +391,15 @@ public class WheelchairController : MonoBehaviour
         if (lifeStatus + change < 10 && lifeStatus + change > 0)
         {
             lifeStatus += change;
+
+            if (lifeStatus < 3)
+            {
+                heardBeatSound.enabled = true;
+            }
+            else
+            {
+                heardBeatSound.enabled = false;
+            }
         }
         else if(lifeStatus + change >= 10)
         {
