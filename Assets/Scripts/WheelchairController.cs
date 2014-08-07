@@ -321,10 +321,10 @@ public class WheelchairController : MonoBehaviour
 
         if (other.name == "Ghost Object")
         {
-            if (lifeStatus > 0)
-            {
-                SetLifeStatus(-1);
-            }
+            //if (lifeStatus > 0)
+            //{
+            //    SetLifeStatus(-1);
+            //}
         }
 
         // Sound
