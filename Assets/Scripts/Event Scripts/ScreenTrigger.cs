@@ -6,6 +6,8 @@ public class ScreenTrigger : MonoBehaviour
     [SerializeField]
     Texture startScreenTexture, endScreenTexture, gameOverTexture;
 
+    Vector3 playerStartposition;
+    Transform playerTransform;
     GUITexture screen;
     bool ingame;
 
@@ -13,6 +15,9 @@ public class ScreenTrigger : MonoBehaviour
     {
         screen = GameObject.Find("Screen").GetComponent<GUITexture>();
 
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        playerStartposition = playerTransform.position;
+        playerTransform.position = new Vector3(1000, 1000, 1000);
         screen.texture = startScreenTexture;
         //StartCoroutine(HideScreen());
     }
@@ -22,6 +27,7 @@ public class ScreenTrigger : MonoBehaviour
         if (!ingame && Input.GetKeyDown(KeyCode.Space))
         {
             ingame = true;
+            playerTransform.position = playerStartposition;
             StartCoroutine(HideScreen());
         }
     }

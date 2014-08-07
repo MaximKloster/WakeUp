@@ -378,7 +378,7 @@ public class WheelchairController : MonoBehaviour
         collisionSound = false;
     }
 
-    void SetLifeStatus(int change)
+    public void SetLifeStatus(int change)
     {
         life.FindChild("Leben_" + lifeStatus).gameObject.SetActive(false);
 
