@@ -22,7 +22,7 @@ public class TriggerChangeTexture : MonoBehaviour
     {
         renderer.material.mainTexture = changeToTexture;
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.2f);
 
         gameObject.SetActive(false);
     }
