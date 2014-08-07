@@ -73,7 +73,7 @@ public class WheelchairController : MonoBehaviour
     [Range(1, 180)]
     int collisionSegments = 90;
     [SerializeField]
-    AudioClip standardAudioClip = null, wheelMovement = null, collisionWithWall = null, takeFlashlight = null, heardBeat = null;
+    AudioClip standardAudioClip = null, wheelMovement = null, collisionWithWall = null, takeFlashlight = null, takeMedipack = null, heardBeat = null;
 
     public bool accelerationDelay = false;
     //[SerializeField]
@@ -401,7 +401,7 @@ public class WheelchairController : MonoBehaviour
                 heardBeatSound.enabled = false;
             }
         }
-        else if(lifeStatus + change >= 10)
+        else if (lifeStatus + change >= 10)
         {
             lifeStatus = 9;
         }
@@ -412,6 +412,17 @@ public class WheelchairController : MonoBehaviour
         }
 
         life.FindChild("Leben_" + lifeStatus).gameObject.SetActive(true);
+
+        StartCoroutine(HighlightLife(life.FindChild("Leben_" + lifeStatus)));
+    }
+
+    IEnumerator HighlightLife(Transform life)
+    {
+        life.renderer.material.SetFloat("_EmissionGain", 0.2f);
+
+        yield return new WaitForSeconds(0.5f);
+
+        life.renderer.material.SetFloat("_EmissionGain", 0f);
     }
 
     void RaycastEye()
@@ -602,6 +613,8 @@ public class WheelchairController : MonoBehaviour
                 SetEmissionGainOfItem(0f);
                 if (lifeStatus < 8)
                 {
+                    audioSource.clip = takeMedipack;
+                    audioSource.Play();
                     SetLifeStatus(2);
                     Destroy(lookAtObject.gameObject);
                 }
