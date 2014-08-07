@@ -7,13 +7,23 @@ public class ScreenTrigger : MonoBehaviour
     Texture startScreenTexture, endScreenTexture, gameOverTexture;
 
     GUITexture screen;
+    bool ingame;
 
     void Start()
     {
         screen = GameObject.Find("Screen").GetComponent<GUITexture>();
 
         screen.texture = startScreenTexture;
-        StartCoroutine(HideScreen());
+        //StartCoroutine(HideScreen());
+    }
+
+    void Update()
+    {
+        if (!ingame && Input.GetKeyDown(KeyCode.Space))
+        {
+            ingame = true;
+            StartCoroutine(HideScreen());
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -46,7 +56,7 @@ public class ScreenTrigger : MonoBehaviour
 
     IEnumerator HideScreen()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(1);
 
         while (screen.color.a > 0.05f)
         {

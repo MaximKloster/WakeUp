@@ -382,7 +382,7 @@ public class WheelchairController : MonoBehaviour
     {
         life.FindChild("Leben_" + lifeStatus).gameObject.SetActive(false);
 
-        if (lifeStatus + change < 10 && lifeStatus + change >= 0)
+        if (lifeStatus + change < 10 && lifeStatus + change > 0)
         {
             lifeStatus += change;
         }
@@ -390,9 +390,10 @@ public class WheelchairController : MonoBehaviour
         {
             lifeStatus = 9;
         }
-        else if (lifeStatus + change < 0)
+        else if (lifeStatus + change <= 0)
         {
             lifeStatus = 0;
+            GameObject.Find("Screen Trigger").GetComponent<ScreenTrigger>().OnPlayerDead();
         }
 
         life.FindChild("Leben_" + lifeStatus).gameObject.SetActive(true);
