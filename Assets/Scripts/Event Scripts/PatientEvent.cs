@@ -14,6 +14,8 @@ public class PatientEvent : MonoBehaviour
     [SerializeField]
     AudioClip idle = null, walk = null, groan = null;
 
+   
+
     // Use this for initialization
     void Start()
     {

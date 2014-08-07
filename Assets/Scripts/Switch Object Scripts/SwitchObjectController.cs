@@ -7,8 +7,8 @@ public class SwitchObjectController : MonoBehaviour
     [SerializeField]
     GameObject moveableObject = null;
     [SerializeField]
-    bool loadAtStart = true;
-
+    bool loadAtStart = true, switchable=true;
+    
     bool objectLoaded = false;
     Transform startPosition, secondPosition, thirdPosition, switchObject;
     GameObject controllerObject;
@@ -42,19 +42,19 @@ public class SwitchObjectController : MonoBehaviour
             //Debug.Log("loading Object");
             loadObject();
         }
-        else if (switchObject.position == startPosition.position)
+        else if (switchObject.position == startPosition.position && switchable)
         {
             //Debug.Log("loading second Position");
             switchObject.position = secondPosition.position;
             switchObject.rotation = secondPosition.rotation;
         }
-        else if (switchObject.position == secondPosition.position)
+        else if (switchObject.position == secondPosition.position && switchable)
         {
             //Debug.Log("loading third Position");
             switchObject.position = thirdPosition.position;
             switchObject.rotation = thirdPosition.rotation;
         }
-        else
+        else if(switchable)
         {
             //Debug.Log("back to start Position");
             switchObject.position = startPosition.position;
