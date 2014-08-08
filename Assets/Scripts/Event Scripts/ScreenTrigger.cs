@@ -56,6 +56,8 @@ public class ScreenTrigger : MonoBehaviour
 
     IEnumerator ShowScreen()
     {
+        GameObject.FindGameObjectWithTag("Flashlight").SetActive(false);
+
         while (screen.color.a < 0.95f)
         {
             screen.color = Color.Lerp(screen.color, Color.gray, Time.deltaTime);
