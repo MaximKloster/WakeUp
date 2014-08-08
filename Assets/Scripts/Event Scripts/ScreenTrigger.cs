@@ -39,6 +39,8 @@ public class ScreenTrigger : MonoBehaviour
             screen.gameObject.SetActive(true);
 
             StartCoroutine(ShowScreen());
+
+            GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3(1000, 0, 800);
         }
     }
 
@@ -48,6 +50,8 @@ public class ScreenTrigger : MonoBehaviour
         screen.gameObject.SetActive(true);
 
         StartCoroutine(ShowScreen());
+
+        GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3(1000, 0, 1000);
     }
 
     IEnumerator ShowScreen()
@@ -57,8 +61,6 @@ public class ScreenTrigger : MonoBehaviour
             screen.color = Color.Lerp(screen.color, Color.gray, Time.deltaTime);
             yield return null;
         }
-
-        GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3(1000, 0, 1000);
     }
 
     IEnumerator HideScreen()
