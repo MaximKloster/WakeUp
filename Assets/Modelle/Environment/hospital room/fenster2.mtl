@@ -1,0 +1,79 @@
+# Blender MTL File: 'fenster2.blend'
+# Material Count: 8
+
+newmtl Glass
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl Glass.001
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl Glass.002
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl Material
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Z:\GD1012 Projekte (4. Semester)\Wake Up\Art\Textures\FERTIG\für räume und einrichtung\plastik_weiß.png
+
+newmtl Material.001
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Z:\GD1012 Projekte (4. Semester)\Wake Up\Art\Textures\FERTIG\für räume und einrichtung\plastik_weiß.png
+
+newmtl Material.005
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Z:\GD1012 Projekte (4. Semester)\Wake Up\Art\Textures\FERTIG\für räume und einrichtung\plastik_weiß.png
+
+newmtl fein_metal_heller
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Z:\GD1012 Projekte (4. Semester)\Wake Up\Art\Textures\FERTIG\für räume und einrichtung\metall_2_feiner_heller.png
+
+newmtl fein_metal_heller.001
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Z:\GD1012 Projekte (4. Semester)\Wake Up\Art\Textures\FERTIG\für räume und einrichtung\metall_2_feiner_heller.png

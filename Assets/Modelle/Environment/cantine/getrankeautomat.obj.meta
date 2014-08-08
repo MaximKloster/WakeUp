@@ -1,14 +1,30 @@
 fileFormatVersion: 2
-guid: 334cca9e9f870c14d8214b258ce982ad
+guid: ea3f608e2d1721846988122ee575861b
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Cube
-    7400000: Default Take
+    100000: Cube.013_Cube.014_bot
+    100002: Cube.013_Cube.014_geh__use
+    100004: Cube.013_Cube.014_top_window
+    100006: Cube.013_Cube.014_top_window_NONE
+    100008: //RootNode
+    400000: Cube.013_Cube.014_bot
+    400002: Cube.013_Cube.014_geh__use
+    400004: Cube.013_Cube.014_top_window
+    400006: Cube.013_Cube.014_top_window_NONE
+    400008: //RootNode
+    2300000: Cube.013_Cube.014_bot
+    2300002: Cube.013_Cube.014_geh__use
+    2300004: Cube.013_Cube.014_top_window
+    2300006: Cube.013_Cube.014_top_window_NONE
+    3300000: Cube.013_Cube.014_bot
+    3300002: Cube.013_Cube.014_geh__use
+    3300004: Cube.013_Cube.014_top_window
+    3300006: Cube.013_Cube.014_top_window_NONE
+    4300000: Cube.013_Cube.014_bot
+    4300002: Cube.013_Cube.014_geh__use
+    4300004: Cube.013_Cube.014_top_window
+    4300006: Cube.013_Cube.014_top_window_NONE
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -29,7 +45,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: .00999999978
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
