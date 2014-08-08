@@ -73,7 +73,7 @@ public class WheelchairController : MonoBehaviour
     [Range(1, 180)]
     int collisionSegments = 90;
     [SerializeField]
-    AudioClip standardAudioClip = null, wheelMovement = null, collisionWithWall = null, takeFlashlight = null, takeMedipack = null, heardBeat = null;
+    AudioClip standardAudioClip = null, wheelMovement = null, collisionWithWall = null, takeFlashlight = null, takeMedipack = null, heartBeat = null, heartBeatFast = null;
 
     public bool accelerationDelay = false;
     //[SerializeField]
@@ -123,7 +123,7 @@ public class WheelchairController : MonoBehaviour
         MasterElementList = new List<MasterElement>();
         audioSource = GetComponent<AudioSource>();
         heardBeatSound = gameObject.AddComponent<AudioSource>();
-        heardBeatSound.clip = heardBeat;
+        heardBeatSound.clip = heartBeat;
         heardBeatSound.loop = true;
         heardBeatSound.Play();
         heardBeatSound.enabled = false;
@@ -394,6 +394,14 @@ public class WheelchairController : MonoBehaviour
 
             if (lifeStatus < 3)
             {
+                if (lifeStatus < 2)
+                {
+                    heardBeatSound.clip = heartBeatFast;
+                }
+                else
+                {
+                    heardBeatSound.clip = heartBeat;
+                }
                 heardBeatSound.enabled = true;
             }
             else
