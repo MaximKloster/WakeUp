@@ -392,7 +392,7 @@ public class WheelchairController : MonoBehaviour
         {
             lifeStatus += change;
 
-            if (lifeStatus < 3)
+            if (lifeStatus < 4)
             {
                 if (lifeStatus < 2)
                 {
@@ -403,6 +403,7 @@ public class WheelchairController : MonoBehaviour
                     heardBeatSound.clip = heartBeat;
                 }
                 heardBeatSound.enabled = true;
+                heardBeatSound.Play();
             }
             else
             {
@@ -417,6 +418,7 @@ public class WheelchairController : MonoBehaviour
         {
             lifeStatus = 0;
             GameObject.Find("Screen Trigger").GetComponent<ScreenTrigger>().OnPlayerDead();
+            heardBeatSound.enabled = false;
         }
 
         life.FindChild("Leben_" + lifeStatus).gameObject.SetActive(true);

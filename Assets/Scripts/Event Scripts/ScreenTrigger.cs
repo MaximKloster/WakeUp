@@ -58,7 +58,7 @@ public class ScreenTrigger : MonoBehaviour
             yield return null;
         }
 
-        GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3(1000, 1000, 1000);
+        GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3(1000, 0, 1000);
     }
 
     IEnumerator HideScreen()
