@@ -25,7 +25,7 @@ public class AttackEvent : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(2.5f);
+            yield return new WaitForSeconds(1.5f);
             player.GetComponent<WheelchairController>().SetLifeStatus(-1);
         }
     }
